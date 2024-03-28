@@ -1,0 +1,42 @@
+.bcontainer {
+    width: 50%;
+    border: solid red;
+}
+
+.carousel-container {
+    position: relative;
+    border: solid red;
+    width: 70%;
+    /* height: 25vh; */
+    /* overflow: hidden; */
+}
+
+.carousel-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    flex: 0 0 100%;
+    /* Ensure each slide takes full width */
+    width: 100%;
+    text-align: center;
+}
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* background: transparent; */
+    /* border: none; */
+    cursor: pointer;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
