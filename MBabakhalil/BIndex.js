@@ -1,171 +1,388 @@
-// // let bcontainer=document.querySelector(".bcontainer");
 
-// // document.addEventListener('DOMContentLoaded', function () {
-//     let slider = document.querySelector('.carousel-slider');
-//     let slides = document.querySelectorAll('.slide');
-//     const prevBtn = document.querySelector('.prev-btn');
-//     const nextBtn = document.querySelector('.next-btn');
-//     let currentIndex = 0;
-//     let slideWidth = slides[0].clientWidth;
-//     // console.log(slideWidth);
-//     // let isDragging = false;
-//     // let startPos = 0;
-//     // let currentTranslate = 0;
-//     // let prevTranslate = 0;
+document.addEventListener('DOMContentLoaded', function () {
+  let slider = document.querySelector('.carousel-slider');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let currentIndex = 0;
+  let slideWidth;
+  const urls = ["https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg",
+    "https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg",
+    "https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg",
+    "https://a0.muscache.com/pictures/957f8022-dfd7-426c-99fd-77ed792f6d7a.jpg",
+    "https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg",
+    "https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg"]
 
-//     const categories = [
-//         "Islands", "Design", "Arctic", "Luxe", "Earth homes", "Top of the world", "Treehouses",
-//         "Tiny homes", "Beach", "Caves", "OMG!", "Historical homes", "Rooms", "Castles", "National parks",
-//         "Camper vans", "Amazing pools", "Cabins", "Surfing", "Camping", "Trending", "Tropical",
-//         "Bed & breakfasts", "New", "Golfing", "Countryside", "Mansions", "Iconic cities", "Amazing views",
-//         "Farms", "A-frames", "Lake", "Vineyards", "Hanoks", "Windmills", "Skiing", "Cycladic homes",
-//         "Lakefront", "Chef's kitchens", "Minsus", "Barns", "Shepherd's huts", "Towers", "Ryokans", "Yurts",
-//         "Domes", "Casas particulares", "Desert", "Off-the-grid", "Play", "Adapted", "Ski-in/out", "Boats",
-//         "Houseboats", "Containers", "Beachfront", "Grand pianos", "Creative spaces", "Riads", "Trulli", "Dammusi"
-//     ];
-//     categories.forEach(element => {
-//         let div=document.createElement("div");
-//         div.className="slide";
-//         // let p=document.createElement("p");
-//         // p.innerText=element;
-//         div.innerText=element;
-//         console.log(element);
-//         // div.append(p);
-//         slider.append(div);
-        
-//     });
+  const categories = [
+    "Islands", "Design", "Arctic", "Luxe", "Earth homes", "Top of the world", "Treehouses",
+    "Tiny homes", "Beach", "Caves", "OMG!", "Historical homes", "Rooms", "Castles", "National parks",
+    "Camper vans", "Amazing pools", "Cabins", "Surfing", "Camping", "Trending", "Tropical",
+    "Bed & breakfasts", "New", "Golfing", "Countryside", "Mansions", "Iconic cities", "Amazing views",
+    "Farms", "A-frames", "Lake", "Vineyards", "Hanoks", "Windmills", "Skiing", "Cycladic homes",
+    "Lakefront", "Chef's kitchens", "Minsus", "Barns", "Shepherd's huts", "Towers", "Ryokans", "Yurts",
+    "Domes", "Casas particulares", "Desert", "Off-the-grid", "Play", "Adapted", "Ski-in/out", "Boats",
+    "Houseboats", "Containers", "Beachfront", "Grand pianos", "Creative spaces", "Riads", "Trulli", "Dammusi"
+  ];
 
-//     slides.forEach((slide, index) => {
-//         slide.style.left = `${index * 100}%`;
-//     });
+  function createSlide(startIndex) {
+    let div = document.createElement("div");
+    div.className = "slide";
+    let k = 0;
+    for (let i = startIndex; i < startIndex + 6 && i < categories.length; i++) {
+      let figure = document.createElement("figure");
+      let figcaption = document.createElement("figcaption");
+      let btn = document.createElement("button");
+      let img = document.createElement("img");
+      img.src = urls[k];
+      img.alt ="loading";
+      k++;
+      btn.addEventListener("click", (ele) => {
+        console.log(categories[i]);
+        async function fetchDataAndProcess() {
+          try {
+            let mydata = await fetchcardData();
+            
+            if (mydata) { 
+              findCategoryByName(categories[i], mydata); 
+            } else {
+              console.log("Data is undefined or empty.");
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }
 
-//     function updateSlider() {
-//         slider.style.transform = `translateX(${currentTranslate}px)`;
-//     }
+        fetchDataAndProcess();
+      });
+      btn.append(figure);
+      figure.append(img, figcaption);
+      figcaption.innerText = categories[i];
+      div.appendChild(btn);
+    }
 
-//     function setSliderPosition() {
-//         slider.style.transition = 'transform 0.5s ease';
-//         currentTranslate = currentIndex * -slideWidth;
-//         updateSlider();
-//     }
+    slider.appendChild(div);
+  }
+
+  function updateSlides() {
+    slider.innerHTML = ''; 
+
+    for (let i = 0; i < categories.length; i += 6) {
+      createSlide(i);
+    }
+
+    slideWidth = slider.querySelector('.slide').clientWidth;
+  }
+
+  updateSlides();
+
+  function updateSlider() {
+    slider.style.transform = `translateX(${currentIndex * -slideWidth}px)`;
+
+    // Update visibility of prevBtn and nextBtn based on currentIndex
+    if (currentIndex === 0) {
+      prevBtn.style.display = "none";
+    } else {
+      prevBtn.style.display = "block";
+    }
+
+    if (currentIndex >= Math.floor(categories.length / 6) - 1) {
+      nextBtn.style.display = "none";
+    } else {
+      nextBtn.style.display = "block";
+    }
+  }
+
+  prevBtn.addEventListener('click', function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  nextBtn.addEventListener('click', function () {
+    if (currentIndex < Math.floor(categories.length / 6) - 1) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+});
+async function fetchcartdata(url) {
+  try {
+    let ans = await fetch(url);
+    let data = await ans.json();
+    return data;
+  } catch (err) {
+    console.log("error getting", err);
+  }
+}
+
+async function fetchcardData() {
+  try {
+    let mydata = await fetchcartdata("https://airbnbproject-id6p.onrender.com/categories");
+    return mydata;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function fetchDataAndProcess() {
+  try {
+    let mydata = await fetchcardData();
+    // console.log(mydata);
+    if (mydata) {
+      findCategoryByName("Islands", mydata);
+    } else {
+      console.log("Data is undefined or empty.");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+fetchDataAndProcess();
+
+let cont = document.querySelector(".cont");
+function findCategoryByName(name, mydata) {
+  cont.innerHTML = "";
+  let islandsCategory = mydata.find(category => category.name === name);
+  if (islandsCategory) {
+    const islandsCards = islandsCategory.cards;
+    console.log(islandsCards);
+    islandsCards.forEach(element => {
+      createCard(element);
+    });
+    createmorebtn(name);
+  } else {
+    console.log("Category not found.");
+  }
+}
+let z = 32;
+function createmorebtn(name) {
+  let showdi = document.querySelector(".showdiv");
+  let h2 = document.createElement("h2");
+  h2.innerText = `Continue exploring ${name}`;
+  showdi.innerHTML = "";
+  let showdiv = document.createElement("div");
+  let showmorebtn = document.createElement("button");
+  showdiv.append(showmorebtn);
+  showmorebtn.className = "showbtn";
+  showmorebtn.innerText = "Show More";
+
+  showmorebtn.addEventListener("click", () => {
+    const showmoredata = generateCardData(name, z);
+    showmoredata.cards.forEach(element => {
+      createCard(element);
+    });
+    z += 20;
+    createmorebtn(name);
+  })
+
+  showdi.append(h2, showdiv);
+}
+
+function generateCardData(category, z) {
+  const data = { name: category, cards: [] };
+  for (let i = z; i < z + 20; i++) {
+    const card = {
+      images: [
+        "https://a0.muscache.com/im/pictures/miso/Hosting-852899544635683289/original/c627f47e-8ca9-4471-90d4-1fd987dd2362.jpeg?im_w=720",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-852929652016621394/original/49a9a199-6d71-4504-87fa-a95fe818e44f.jpeg?im_w=720",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-852929652016621394/original/49610013-776d-4061-9c58-8e5a3c1e9314.jpeg?im_w=720",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-852929652016621394/original/e9c6f8d0-83f3-46d7-b2e2-b9d66bf079ce.jpeg?im_w=720",
+        "https://a0.muscache.com/im/pictures/d0e3bb05-a96a-45cf-af92-980269168096.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/448bee34-7416-4262-a02f-b39e29d7ce4f.jpg?im_w=720"
+      ],
+      place_name: `Place${i} in ${category}`,
+      Ratting: ((Math.random() * 4) + 1).toFixed(2),
+      distance_away_km: Math.floor(Math.random() * 5000) + 1,
+      date_available: randomDateRange(),
+      price_per_night: Math.floor(Math.random() * 9001) + 1000 // Random price between 1000 and 10000
+    };
+    data.cards.push(card);
+  }
+  return data; // Return the generated data
+}
+
+function randomDateRange() {
+  const start = new Date();
+  const end = new Date(start.getTime() + (365 * 24 * 60 * 60 * 1000));
+  const startDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  const endDate = new Date(startDate.getTime() + Math.random() * (end.getTime() - startDate.getTime()));
+  const monthNames = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+    "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+  const startDay = startDate.getDate().toString().padStart(2, '0');
+  const startMonthName = monthNames[startDate.getMonth()];
+  const endDay = endDate.getDate().toString().padStart(2, '0');
+  const endMonthName = monthNames[endDate.getMonth()];
+  return `${startDay} ${startMonthName} - ${endDay} ${endMonthName}`;
+}
 
 
-//     prevBtn.addEventListener('click', function () {
-//         if (currentIndex !== 0) {
-//             currentIndex--;
-//         }
-//         setSliderPosition();
-//     });
+function createCard(data) {
+  let div = document.createElement("div");
+  let fav = document.createElement("button");
+  fav.innerText = `\u2661`;
+  div.className = "slide1"; // Add the .slide class to the div
+  let divhead = document.createElement("div");
+  let divbody = document.createElement("div");
+  let placename = document.createElement("p");
+  let rating = document.createElement("h3");
+  let distance = document.createElement("p");
+  let dateavailable = document.createElement("p");
+  let price = document.createElement("p");
 
-//     nextBtn.addEventListener('click', function () {
-//         if (currentIndex !== slides.length - 1) {
-//             console.log(slides.length);
-//             currentIndex++;
-//         }
-//         setSliderPosition();
-//     });
+  let carouselDiv = document.createElement("div");
+  carouselDiv.className = "carousel";
+  fav.className = "b_favorate";
+  carouselDiv.append(fav);
+  fav.addEventListener("click", (e) => {
+  });
+  for (let i = 0; i < data.images.length - 1; i++) {
+    let img = document.createElement("img");
+    img.src = data.images[i];
+    carouselDiv.appendChild(img);
+  }
 
-    // slider.addEventListener('mousedown', dragStart);
+  divhead.appendChild(carouselDiv);
+
+  placename.innerText = data.place_name;
+  placename.style.fontWeight = "700";
+  rating.innerText = `\u2605 ${data.Ratting}`;
+  rating.style.float = "right";
+
+  distance.innerHTML = `<span style="font-weight: bold;"> ${data.distance_away_km}</span> Kilometres away`;
+  dateavailable.innerText = data.date_available;
+  // price.innerText = `<span style="font-weight: bold;">\u20B9 ${data.price_per_night}</span> night`;
+  price.innerHTML = `<span style="font-weight: bold;">\u20B9 ${data.price_per_night}</span> night`;
+
+  divbody.append(rating, placename, distance, dateavailable, price);
+  div.append(divhead, divbody);
+  cont.appendChild(div);
 
 
-    // slider.addEventListener('mousemove', function(e) {
-    //     if (!isDragging) {
-    //       const mouseX = e.clientX;
-    //       const sliderRect = slider.getBoundingClientRect();
-    //       const sliderX = mouseX - sliderRect.left;
-    //       const progress = sliderX / sliderRect.width;
-    //       const slideIndex = Math.floor(progress * slides.length);
-    //       if (slideIndex !== currentIndex && slideIndex >= 0 && slideIndex < slides.length) {
-    //         currentIndex = slideIndex;
-    //         setSliderPosition();
-    //       }
-    //     }
-    //   });
+}
+
+// function updateSlider1() {
+// slider1.style.transform = `translateX(${currentIndex1 * -100}%)`;
+// if (currentIndex1 === 0) {
+//   prevBtn1.style.display = "none";
+// } else {
+//   prevBtn1.style.display = "block";
+// }
+// if (currentIndex1 >= slider1.children.length - 1) {
+//   nextBtn1.style.display = "none";
+// } else {
+//   nextBtn1.style.display = "block";
+// }
+// }
+
+// prevBtn1.addEventListener('click', function () {
+//   if (currentIndex1 > 0) {
+//     currentIndex1--;
+//     updateSlider1();
+//   }
 // });
 
-
-    // function dragStart(e) {
-    //     isDragging = true;
-    //     startPos = e.clientX;
-    //     slider.style.transition = 'none';
-    //     prevTranslate = currentTranslate;
-    //     document.addEventListener('mousemove', dragMove);
-    //     document.addEventListener('mouseup', dragEnd);
-    // }
-
-    // function dragMove(e) {
-    //     if (isDragging) {
-    //         const currentPosition = e.clientX;
-    //         currentTranslate = prevTranslate + currentPosition - startPos;
-    //         updateSlider();
-    //     }
-    // }
-
-    // function dragEnd() {
-    //     isDragging = false;
-    //     const moveBy = currentTranslate - prevTranslate;
-    //     if (Math.abs(moveBy) > slideWidth / 3 && currentIndex !== slides.length - 1) {
-    //         currentIndex += moveBy > 0 ? -1 : 1;
-    //     }
-    //     setSliderPosition();
-    //     document.removeEventListener('mousemove', dragMove);
-    //     document.removeEventListener('mouseup', dragEnd);
-    // }
+// nextBtn1.addEventListener('click', function () {
+//   if (currentIndex1 < slider1.children.length - 1) {
+//     currentIndex1++;
+//     updateSlider1();
+//   }
+// });
+// function updateSlider1() {
+//   // Implement your logic for updating slider1 here
+// }
 
 
-    document.addEventListener('DOMContentLoaded', function() {
-        let slider = document.querySelector('.carousel-slider');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        let currentIndex = 0;
-        let slideWidth;
-        
-        const categories = [
-          "Islands", "Design", "Arctic", "Luxe", "Earth homes", "Top of the world", "Treehouses",
-          "Tiny homes", "Beach", "Caves", "OMG!", "Historical homes", "Rooms", "Castles", "National parks",
-          "Camper vans", "Amazing pools", "Cabins", "Surfing", "Camping", "Trending", "Tropical",
-          "Bed & breakfasts", "New", "Golfing", "Countryside", "Mansions", "Iconic cities", "Amazing views",
-          "Farms", "A-frames", "Lake", "Vineyards", "Hanoks", "Windmills", "Skiing", "Cycladic homes",
-          "Lakefront", "Chef's kitchens", "Minsus", "Barns", "Shepherd's huts", "Towers", "Ryokans", "Yurts",
-          "Domes", "Casas particulares", "Desert", "Off-the-grid", "Play", "Adapted", "Ski-in/out", "Boats",
-          "Houseboats", "Containers", "Beachfront", "Grand pianos", "Creative spaces", "Riads", "Trulli", "Dammusi"
-        ];
-      
-        function createSlide(element) {
-          let div = document.createElement("div");
-          div.className = "slide";
-          div.innerText = element;
-          slider.append(div);
-        }
-      
-        function updateSlides() {
-          slider.innerHTML = ''; // Clear existing slides
-          categories.forEach(element => {
-            createSlide(element);
-          });
-          slideWidth = slider.querySelector('.slide').clientWidth;
-        }
-      
-        updateSlides();
-      
-        function updateSlider() {
-          slider.style.transform = `translateX(${currentIndex * -slideWidth}px)`;
-        }
-      
-        prevBtn.addEventListener('click', function() {
-          if (currentIndex !== 0) {
-            currentIndex--;
-          }
-          updateSlider();
-        });
-      
-        nextBtn.addEventListener('click', function() {
-          if (currentIndex !== categories.length - 1) {
-            currentIndex++;
-          }
-          updateSlider();
-        });
-      });
-    
-    
-    
+
+async function fetchfooterdata(url) {
+  try {
+    let ans = await fetch(url);
+    let data = await ans.json();
+    // console.log(data);
+    return data;
+  }
+  catch (err) {
+    console.log("error getting", err);
+  }
+}
+async function fetchData() {
+  try {
+    let footer = await fetchfooterdata("https://airbnbproject-id6p.onrender.com/footer");
+    // console.log(footer);
+    createheadinspiration(footer);
+
+    createbodyinspiration("popular", footer["popular"]);
+  } catch (err) {
+    // Handle errors if needed
+    console.error(err);
+  }
+}
+fetchData();
+
+let inspiration = document.querySelector(".b_inspiration");
+let headinspiration = document.querySelector(".headinpirration");
+let bodyinspiration = document.querySelector(".bodyinspiration");
+
+function createheadinspiration(footer) {
+  for (let key in footer) {
+    // console.log(key);
+    let p = document.createElement("button");
+    p.innerText = key;
+    p.addEventListener("click", () => {
+      // p.style="bolder";
+      createbodyinspiration(key, footer[key]);
+    });
+    headinspiration.append(p);
+  }
+}
+let flag = true;
+function createbodyinspiration(key, arr) {
+  bodyinspiration.innerHTML = "";
+  if (!arr || !Array.isArray(arr)) {
+    console.error("Invalid input array:", arr);
+    return;
+  }
+  if (flag) {
+    for (let i = 0; i < arr.length && i < 17; i++) {
+      let div = document.createElement("div");
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      if (key === "const categories") {
+        p1.innerText = arr[i];
+      }
+      else {
+        p1.innerText = arr[i][0] || arr[i];
+        p2.innerText = arr[i][1] || arr[i];
+      }
+      // console.log(element[0]);
+      div.append(p1, p2);
+      bodyinspiration.append(div);
+    }
+    const readMoreButton = document.createElement("button");
+    readMoreButton.innerText = `Read More \u25BC`;
+
+    readMoreButton.addEventListener("click", () => {
+      flag = false;
+      createbodyinspiration(key, arr);
+    });
+
+    bodyinspiration.append(readMoreButton);
+  }
+  if (!flag) {
+    arr.forEach(element => {
+      let div = document.createElement("div");
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      if (key === "const categories") {
+        p1.innerText = element;
+      }
+      else {
+        p1.innerText = element[0];
+        p2.innerText = element[1];
+      }
+      div.append(p1, p2);
+      bodyinspiration.append(div);
+    });
+  }
+}

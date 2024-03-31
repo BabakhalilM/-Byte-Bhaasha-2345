@@ -1,14 +1,44 @@
-.bcontainer {
-    width: 50%;
-    border: solid red;
-}
-
 .carousel-container {
     position: relative;
-    border: solid red;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    overflow-x:scroll;
     width: 70%;
-    /* height: 25vh; */
+    height: 15vh;
     /* overflow: hidden; */
+}
+.carousel-container::-webkit-scrollbar {
+    display: none; 
+}
+.carousel-container div div {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    overflow: hidden;
+    column-gap: 40px;
+    overflow: hidden;
+    justify-content: space-around;
+}
+
+.carousel-container>div button {
+    background: none;
+    border: none;
+}
+
+.carousel-container>div button figure {
+    height: 60px;
+    width: 50px;
+    margin: 0px 0px 10px 0px;
+}
+
+.carousel-container>div div button:hover {
+    color: rgb(134, 130, 130);
+
+}
+
+.carousel-container>div button figure img {
+    height: 40px;
+    width: 40px;
 }
 
 .carousel-slider {
@@ -18,7 +48,6 @@
 
 .slide {
     flex: 0 0 100%;
-    /* Ensure each slide takes full width */
     width: 100%;
     text-align: center;
 }
@@ -26,11 +55,23 @@
 .prev-btn,
 .next-btn {
     position: absolute;
+    /* position: sticky; */
     top: 50%;
+    /* width: 100%; */
+    height: 100%;
+    background: white;
     transform: translateY(-50%);
     /* background: transparent; */
-    /* border: none; */
+    /* border-radius: 50%; */
     cursor: pointer;
+    border: none;
+}
+
+.prev-btn>span,
+.next-btn>span {
+    border-radius: 50%;
+    border: 1px solid;
+    margin-bottom: 20px;
 }
 
 .prev-btn {
@@ -39,4 +80,184 @@
 
 .next-btn {
     right: 10px;
+}
+
+
+.headinpirration::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+}
+.headinpirration{
+    display: flex;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; 
+    overflow-x:scroll;
+    height: 5vh;
+    overflow-y: hidden;
+    overflow-x: visible;
+    column-gap: 40px;
+    width: 100%;
+    justify-content: space-around;
+}
+.headinpirration>button{
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    color: rgb(97, 95, 95);
+}
+
+
+.headinpirration>button:hover{
+    font-size: 20px;
+    color: black;
+}
+.bodyinspiration{
+    display: grid;
+    margin-top: 30px;
+    margin-left: 50px;
+    grid-template-columns: repeat(6,1fr);
+}
+
+.bodyinspiration>div{
+    /* border: 1px solid; */
+    padding: 10px 10px 10px 0px;
+}
+.bodyinspiration>div>p{
+    padding: 0;
+    margin: 0;
+}
+.bodyinspiration>div>p:nth-of-type(1){
+    font-weight: bold;
+}
+.bodyinspiration>button{
+    background: transparent;
+    border: none;
+    margin: 0 0 0 -10px;
+    /* padding: 0 0 0 10px; */
+    min-width: 100px;
+    font-weight: bold;
+}
+.headinpirration>button {
+    position: relative;
+    min-width: 100px;
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 16px; /* Adjust the font size as needed */
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .headinpirration>button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px; /* Adjust the distance of the line from the text */
+    width: 100%;
+    height: 2px; /* Adjust the height of the line */
+    background-color: transparent; /* Initially transparent */
+    transition: background-color 0.3s ease;
+  }
+  .headinpirration>button:hover::after,
+  .headinpirration>button:focus::after {
+    background-color: black; /* Change the line color on hover or focus */
+  }
+  
+@media screen and (max-width: 1024px) {
+    .bodyinspiration{
+        grid-template-columns:repeat(3,1fr)
+    }    
+}
+
+@media screen and (max-width: 768px) {
+    .bodyinspiration{
+        grid-template-columns:repeat(3,1fr)
+    }    
+}
+
+.showbtn{
+    width: 200px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+
+    .cont {
+        margin: 0;
+        display: grid;
+        border: 1px solid;
+        /* flex-basis: 20%; */
+        flex-grow: 1;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        /* flex-wrap: wrap; */
+    }
+    .cont>div{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        width: 22%;
+        min-width: 280px;
+        flex-grow: 2;
+        padding: 10px;
+        /* border: solid red; */
+        border-radius: 15px;
+        margin: 10px;
+    }
+    .cont>div>div p{
+        font-size: 18px;
+    }
+    .cont>div>div>div{
+        background-position: center;
+        width: 100%;
+    }
+    .cont>div>div:nth-last-of-type(1){
+        height: 170px;
+    }
+    .cont>div>div{
+        width: 100%;
+        height: 250px;
+        /* min-width: 23%; */
+        /* background-color: yellow; */
+        overflow: hidden;
+        overflow-x: scroll;
+        position: relative;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .cont>div>div>div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-image: cover;
+        background-size: cover;
+        display: flex;
+    }
+
+    .cont>div>div>div img {
+        border-radius: 15px;
+        margin-right: 10px;
+        background-position: center;
+        background-image: cover;
+        background-size: cover;
+    }
+    .b_favorate{
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        font-size: 36px;
+        right: 10px;
+        background: transparent;
+        border: none;       
+}
+.showdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
