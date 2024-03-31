@@ -34,7 +34,7 @@
             top: -100px;
         }
 
-        #filter h3,h5,a,input {
+        #filter h3,h5,a {
             margin-left: 15px;
             margin-top: 10px;
         }
@@ -62,6 +62,9 @@
 
         .material-symbols-outlined {
             margin-left: 5%;
+        }
+        .material-symbols-outlined:hover{
+            cursor: pointer;
         }
 
         #pricerange_container {
@@ -164,10 +167,8 @@
             margin: 0px;
         }
 
-        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(3)>p:nth-of-type(2) {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 4px;
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(3)>input:nth-of-type(1):focus {
+           outline: none;
         }
 
         #pricerange_container>div:nth-of-type(3)>div:nth-of-type(1)>p:nth-of-type(1) {
@@ -175,12 +176,10 @@
             margin: 0px;
         }
 
-        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(1)>p:nth-of-type(2) {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 4px;
-        }
-
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(1)>input:nth-of-type(1):focus {
+            outline: none;
+        } 
+         
         .place_type {
             width: 100% !important;
             margin-top: 20px;
@@ -228,7 +227,7 @@
             text-align: center;
             border-radius: 6px;
             margin-top: 20px;
-            width: 100px;
+            width: 170px;
             height: 40px;
             margin-right: 15px;
 
@@ -408,7 +407,7 @@
             height: 15px;
         }
         #extra_features>div label {
-            margin-top: 10px;
+            
             font-size: 15px;
             font-family: sans-serif;
             margin-left: 7px;
@@ -434,6 +433,24 @@
         #addmore>div>div>div>p{
           margin-top: 15px;
         }
+        #languages>div{
+            display: flex;
+            width:45%;
+            align-items: center;
+            margin-left: 15px;
+        }
+        #languages{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #languages input{
+            width:15px;
+            height:15px;
+        }
+        #languages p{
+            margin-top: 17px;
+        }
+
     </style>
 </head>
 
@@ -451,14 +468,14 @@
                     <h3>Type of place</h3>
                     <p>Search rooms, entire homes or any type of place</p>
                 </div>
-                <div class="btn-group" role="group" aria-label="Basic example"
+                    <div class="btn-group" role="group" aria-label="Basic example"
                     style="width: 80%; margin-left:100px;margin-right:auto">
                     <button type="button" class="btn btn-primary" fdprocessedid="1e0nah"
-                        style="background-color:white;color:black; height:50px">Left</button>
+                        style="background-color:white;color:black; height:50px">Any type</button>
                     <button type="button" class="btn btn-primary" fdprocessedid="sz95fd"
-                        style="background-color:white;color:black; height:50px">Middle</button>
+                        style="background-color:white;color:black; height:50px">Room</button>
                     <button type="button" class="btn btn-primary" fdprocessedid="34fiva"
-                        style="background-color:white;color:black; height:50px">Right</button>
+                        style="background-color:white;color:black; height:50px">Entire Room</button>
                 </div>
             </section>
             <div id="pricerange_container">
@@ -477,12 +494,12 @@
                 <div>
                     <div>
                         <p>Minimum</p>
-                        <p>$860</p>
+                        <input type="text" style="width: 100%; border:none " id="mininput">
                     </div>
                     <div></div>
                     <div>
                         <p>Maximum</p>
-                        <p>$26000</p>
+                        <input type="text" style="width: 100%; border:none;" id="maxinput">
                     </div>
                 </div>
             </div>
@@ -527,7 +544,7 @@
             </section>
             <section class="Toptier_container">
                 <h3>Top-tier stays</h3>
-                <div>
+                <div id="rating">
                     <span class="material-symbols-outlined">
                         local_florist
                     </span>
@@ -567,27 +584,27 @@
                 <h5>Essentials</h5>
                 <div id="Amenities">
                     <div>
-                        <input type="checkbox" name="Essentials" value="wifi">
+                        <input title="Rakesh" type="checkbox" name="Essentials" value="Wifi">
                         <label for="wifi">Wifi</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="Essentials" value="kitchen">
+                        <input type="checkbox" name="Essentials" value="Kitchen">
                         <label for="kitchen">Kitchen</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="Essentials" value="washing">
+                        <input type="checkbox" name="Essentials" value="Washing machine">
                         <label for="washing">Washing machine</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="Essentials" value="dryer">
+                        <input type="checkbox" name="Essentials" value="Dryer">
                         <label for="dryer">Dryer</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="Essentials" value="air">
+                        <input type="checkbox" name="Essentials" value="Air conditioning">
                         <label for="air">Air Condition</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="Essentials" value="heating">
+                        <input type="checkbox" name="Essentials" value="Heating">
                         <label for="Heating">Heating</label>
                     </div>
                 </div>
@@ -649,25 +666,25 @@
                         <p>Listings you can book without waiting for host approval</p>
                     </div>
                     <div>
-                        <input type="checkbox" name="booking">
+                        <input type="checkbox" name="booking" value="Instant Book">
                     </div>
                 </div>
                 <div>
                     <div>
-                        <p>Instant Book</p>
-                        <p>Listings you can book without waiting for host approval</p>
+                        <p>Self check-in</p>
+                        <p>Easy access to the property once you arrive</p>
                     </div>
                     <div>
-                        <input type="checkbox" name="booking">
+                        <input type="checkbox" name="booking" value="Self check-in">
                     </div>
                 </div>
                 <div>
                     <div>
-                        <p>Instant Book</p>
-                        <p>Listings you can book without waiting for host approval</p>
+                        <p>Allows pets</p>
+                        <p>Bringing a service animal?</p>
                     </div>
                     <div>
-                        <input type="checkbox" name="booking">
+                        <input type="checkbox" name="booking" value="Allows pets">
                     </div>
                 </div>
             </section>
@@ -697,13 +714,19 @@
                 <section id="addmore"></section>
                 <a href="#">Show More</a>
             </section>
+            <section id="languages_container">
+               <h3>Host language</h3>
+               <div id="languages"></div>
+               <a href="#">Show All</a>
+            </section>
         </div>
         <div class="lower">
             <button> Clear All</button>
-            <button>Show All</button>
+            <button id="mymainbutton">Show All</button>
         </div>
     </div>
     <div id="main_container"></div>
+    <div id="Empty"></div>
 </body>
 <script src="./Rindex.js"></script>
 
