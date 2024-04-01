@@ -52,6 +52,7 @@ var Amenities_button5=document.querySelector("#Amenities>div:nth-of-type(5)>inpu
 var Amenities_button6=document.querySelector("#Amenities>div:nth-of-type(6)>input:nth-of-type(1)");
 var booking_container=document.querySelectorAll("#booking_container input");
 var close_button=document.querySelector(".material-symbols-outlined");
+var clear_button=document.querySelector(".lower button:nth-of-type(1)");
 // var booking_container2=document.querySelector("#booking_container input:nth-of-type(2)");
 // var booking_container3=document.querySelector("#booking_container input:nth-of-type(3)");
 var maxX = range_container.offsetWidth - min_button.offsetWidth;
@@ -71,11 +72,19 @@ var query10="";
 var query11="";
 var query12="";
 var query13="";
-var empty=document.getElementById("empty");
+
 
 close_button.addEventListener('click',()=>{
     filter_container.innerHTML=" ";
     filter_container.style.border="none"
+})
+clear_button.addEventListener('click',()=>{
+    data=[];
+    console.log(data,"clear")
+    main_button.innerText="Show All"
+    location.reload()
+    
+
 })
 let url = "https://airbin-data-8.onrender.com/data/";
 
@@ -196,6 +205,40 @@ function addExtraInfo() {
     show_more_extrainfo.innerText = "Show less"
 }
 
+mininput.addEventListener("input", ()=>{
+    debounce();
+});
+
+maxinput.addEventListener("input", ()=>{
+    debounce1();
+});
+
+let id;
+function debounce(){
+  if(id){
+    clearInterval(id)
+  }
+   id=setTimeout(()=>{
+    let newmax = maxinput.value.substring(1, maxinput.value.length);
+    let newmin = mininput.value.substring(1, mininput.value.length);
+
+
+    filterFetch(url, query1,`&listings.price_per_night_gte=${newmin}&listings.price_per_night_lte=${newmax}`,query3,query4,query5,query6,query7,query8,query9, "")
+   },1000)
+}
+let id1;
+function debounce1(){
+    if(id1){
+      clearInterval(id)
+    }
+     id1=setTimeout(()=>{
+      let newmax = maxinput.value.substring(1, maxinput.value.length);
+      let newmin = mininput.value.substring(1, mininput.value.length);
+  
+  
+      filterFetch(url, query1,`&listings.price_per_night_gte=${newmin}&listings.price_per_night_lte=${newmax}`,query3,query4,query5,query6,query7,query8,query9, "")
+     },1000)
+  }
 function removeExtraInfo() {
     bool = false;
     extra_features_add.innerHTML = " ";
@@ -350,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var newY = event.clientX - startY;
         newY = Math.min(minY, Math.max(0, newY));
         isDragging = true;
-        console.log(newY)
+        //console.log(newY)
         // Calculate the direction of mouse movement
         if (event.pageX > startY && ans2 <= 27776 && ans2 >= 0) {
             if (event.pageX > mde) {
@@ -359,18 +402,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 ans2 -= 45; // Increase by 45
             }
         }
-
+   
         // Limit the value to 27776 only if it hasn't reached yet
-        if (newY >= 421 && !reachedMax || ans2 > 27776) {
+        if (event.pageX >= 1100 && !reachedMax) {
             ans2 = 27776;
             reachedMax = true;
         }
-        if (newY < 210 && newY > 205) {
+        if (newY < 210 && newY > 305) {
             ans2 = 13336;
         }
         if (newY <= 0) {
             ans2 = 836;
         }
+    
 
         // Update max input value
         maxinput.value = `₹${Math.ceil(ans2)}`;
@@ -420,7 +464,13 @@ async function filterFetch(url, querys1 = "",querys2="", querys3="",querys4="", 
         if(btn===""){
             main_button.innerText = `Show All ${data.length} Places`
         }
-        console.log(data, "mydata")
+        main_button.addEventListener('click',()=>{
+            if(data){
+            filter_container.innerHTML=" ";
+            filter_container.style.border="none"
+            appendData(data)
+            }
+        })
     }
     catch (err) {
         console.log(err)
@@ -431,7 +481,7 @@ async function filterFetch(url, querys1 = "",querys2="", querys3="",querys4="", 
 
 left_button.addEventListener('click', () => {
     query1=""
-    left_button.style.backgroundColor = "dimgrey"
+    left_button.style.backgroundColor = "rgb(54,54,54)"
     left_button.style.color = "white"
     middle_button.style.backgroundColor = "white"
     right_button.style.backgroundColor = "white"
@@ -442,7 +492,7 @@ left_button.addEventListener('click', () => {
 
 middle_button.addEventListener('click', () => {
     query1=""
-    middle_button.style.backgroundColor = "dimgrey"
+    middle_button.style.backgroundColor = "rgb(54,54,54)"
     middle_button.style.color = "white"
     right_button.style.backgroundColor = "white"
     left_button.style.backgroundColor = "white"
@@ -452,100 +502,326 @@ middle_button.addEventListener('click', () => {
 })
 
 right_button.addEventListener('click', () => {
-    right_button.style.backgroundColor = "dimgrey"
+    right_button.style.backgroundColor = "rgb(54,54,54)"
     right_button.style.color = "white"
     left_button.style.backgroundColor = "white"
     middle_button.style.backgroundColor = "white"
     middle_button.style.color = "black"
     left_button.style.color = "black"
 
-    console.log("hii")
     filterFetch(url, `&listings.property_type=House`,query2,query3,query4,query5,query6,query7,query8,query9,query10, 2)
 })
 
 room_button1.addEventListener('click',()=>{
+    room_button1.classList.add('selected');
+    room_button2.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button8.classList.remove('selected')
+    room_button1.focus()
     filterFetch(url, query1,query2,"",query4,query5,query6,query7,query8,query9,query10 ,"")
 })
 
 room_button2.addEventListener('click',()=>{
-    console.log("hii")
+    room_button2.classList.add('selected');
+    room_button1.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button8.classList.remove('selected')
     filterFetch(url,query1,query2,`&listings.rooms=1`,query4,query5,query6,query7,query8,query9,query10,"")
 })
 
 room_button3.addEventListener("click",()=>{
+    room_button3.classList.add('selected');
+    room_button1.classList.remove('selected')
+    room_button2.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button8.classList.remove('selected')
     filterFetch(url,query1,query2,`&listings.rooms=2`,query4,query5,query6,query7,query8,query9,query10,"")
 })
 room_button4.addEventListener("click",()=>{
+    room_button4.classList.add('selected');
+    room_button1.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button2.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button8.classList.remove('selected')
+   
     filterFetch(url,query1,query2,`&listings.rooms=3`,query4,query5,query6,query7,query8,query9,query10,"")
 })
 room_button5.addEventListener("click",()=>{
+    room_button5.classList.add('selected');
+    room_button1.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button2.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button8.classList.remove('selected')
     filterFetch(url,query1,query2,`&listings.rooms=4`,query4,query5,query6,query7,query8,query9,query10,"")
 })
 room_button6.addEventListener("click",()=>{
+    room_button6.classList.add('selected');
+    room_button1.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button2.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button8.classList.remove('selected')
     filterFetch(url,query1,query2,`&listings.rooms=5`,query4,query5,query6,query7,query8,query9,query10,"")
 })
 room_button7.addEventListener("click",()=>{
+    room_button7.classList.add('selected');
+    room_button1.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button2.classList.remove('selected')
+    room_button8.classList.remove('selected')
     filterFetch(url,query1,query2,`&listings.rooms=6`,query4,query5,query6,query7,query8,query9,query10,"")
 })
 room_button8.addEventListener("click",()=>{
+    room_button8.classList.add('selected');
+    room_button1.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button2.classList.remove('selected')
     filterFetch(url,query1,query2,`&listings.rooms=7`,query4,query5,query6,query7,query8,query9,query10,"")
 })
 
 
 bed_button1.addEventListener("click",()=>{
+    bed_button1.classList.add('selected');
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
     filterFetch(url, query1,query2,query3,"",query5,query6,query7,query8,query9,query10,"")
 })
 
 bed_button2.addEventListener('click',()=>{
+    bed_button2.classList.add('selected');
+    bed_button1.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,`&listings.beds=1`,query5,query6,query7,query8,query9,query10,"")
 })
 bed_button3.addEventListener('click',()=>{
+    bed_button3.classList.add('selected');
+    bed_button2.classList.remove('selected')
+    bed_button1.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,`&listings.beds=2`,query5,query6,query7,query8,query9,query10,"")
 })
 bed_button4.addEventListener('click',()=>{
+    bed_button4.classList.add('selected');
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button1.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,`&listings.beds=3`,query5,query6,query7,query8,query9,query10,"")
 })
 bed_button5.addEventListener('click',()=>{
+    bed_button5.classList.add('selected');
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button1.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,`&listings.beds=4`,query5,query6,query7,query8,query9,query10,"")
 })
 bed_button6.addEventListener('click',()=>{
+    bed_button6.classList.add('selected');
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button1.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,`&listings.beds=5`,query5,query6,query7,query8,query9,query10,"")
 })
 bed_button7.addEventListener('click',()=>{
+    bed_button7.classList.add('selected');
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button1.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,`&listings.beds=6`,query5,query6,query7,query8,query10,"")
 })
 bed_button8.addEventListener('click',()=>{
+    bed_button8.classList.add('selected');
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button1.classList.remove('selected')
+    bed_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,`&listings.beds=7`,query5,query6,query7,query8,query9,query10,"")
 })
 bed_button9.addEventListener('click',()=>{
+    bed_button9.classList.add('selected');
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button1.classList.remove('selected')
     filterFetch(url,query1,query2,query3,`&listings.beds_gte=8`,query5,query6,query7,query8,query9,query10,"")
 })
 
 bathroom_button1.addEventListener('click',()=>{
+    bathroom_button1.classList.add('selected');
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bathroom_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,"",query6,query7,query8,query9,query10,"");
 })
 bathroom_button2.addEventListener('click',()=>{
+    bathroom_button2.classList.add('selected');
+    bathroom_button9.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bathroom_button1.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,`&listings.bathrooms=1`,query6,query7,query8,query9,query10,"")
 })
 bathroom_button3.addEventListener('click',()=>{
+    bathroom_button3.classList.add('selected');
+    bathroom_button2.classList.remove('selected')
+    bathroom_button9.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bathroom_button1.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,`&listings.bathrooms=2`,query6,query7,query8,query9,query10,"")
 })
 bathroom_button4.addEventListener('click',()=>{
+    bathroom_button4.classList.add('selected');
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button9.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bathroom_button1.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,`&listings.bathrooms=3`,query6,query7,query8,query9,query10,"")
 })
 bathroom_button5.addEventListener('click',()=>{
+    bathroom_button5.classList.add('selected');
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button9.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bathroom_button1.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,`&listings.bathrooms=4`,query6,query7,query8,query9,query10,"")
 })
 bathroom_button6.addEventListener('click',()=>{
+    bathroom_button6.classList.add('selected');
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button9.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bathroom_button1.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,`&listings.bathrooms=5`,query6,query7,query8,query9,query10,"")
 })
 bathroom_button7.addEventListener('click',()=>{
+    bathroom_button7.classList.add('selected');
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button9.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bathroom_button1.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,`&listings.bathrooms=6`,query6,query7,query8,query9,query10,"")
 })
 bathroom_button8.addEventListener('click',()=>{
+    bathroom_button8.classList.add('selected');
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button1.classList.remove('selected')
+    bathroom_button9.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,`&listings.bathrooms=7`,query6,query7,query8,query9,query10,"")
 })
 bathroom_button9.addEventListener('click',()=>{
+    bathroom_button9.classList.add('selected');
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bathroom_button1.classList.remove('selected')
     filterFetch(url,query1,query2,query3,query4,`&listings.bathrooms_gte=8`,query6,query7,query8,query9,query10,"")
 })
 
@@ -639,15 +915,87 @@ booking_container.forEach(ele=>{
             else if(ele.checked && ele.value=="Allows pets"){
                 filterFetch(url,query1,query2,query3,query4,query5,query6,query7,query8,`&listings.isPetAllowed=${true}`,query10,"") 
             }
-            else if(ele.checked===false){
-                filterFetch(url,"","","","","","","","","","","")
-            }
+            
 
         })
  
 })
 
+function createCard(ele, images) {
+    let div = document.createElement("div");
+    let imgContainer = document.createElement("div");
+    let carouselContainer = document.createElement("div");
+    let prevBtn = document.createElement("span");
+    let nextBtn = document.createElement("span");
+    let img = document.createElement("img");
+    let h5 = document.createElement("h5");
+    let p1 = document.createElement("p");
+    let p2 = document.createElement("p");
 
+    div.classList.add("Rakesh_card");
+
+    // Configure carousel container
+    carouselContainer.classList.add("carousel-container");
+
+    // Configure image container
+    imgContainer.classList.add("img-container");
+
+    // Configure previous and next buttons<span class="material-symbols-outlined">
+   
+    prevBtn.classList.add("material-symbols-outlined");
+    prevBtn.textContent = "arrow_back_ios_new";
+    nextBtn.classList.add("material-symbols-outlined");
+    nextBtn.textContent = " arrow_forward_ios";
+
+    // Add event listeners for previous and next buttons
+    let currentImageIndex = 0;
+
+    function showImage(index) {
+        if (index < 0 || index >= images.length) {
+            return; // index out of bounds
+        }
+        img.src = images[index];
+        currentImageIndex = index;
+    }
+
+    prevBtn.addEventListener('click', ()=> {
+        showImage(currentImageIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', ()=> {
+        showImage(currentImageIndex + 1);
+    });
+
+    // Append elements to their respective containers
+    imgContainer.appendChild(img);
+    carouselContainer.appendChild(prevBtn);
+    carouselContainer.appendChild(nextBtn);
+    h5.innerText=ele.listings.location;
+    p1.innerText=`Price: ₹${ele.listings.price_per_night}`;
+    p2.innerText=`Rating:${ele.listings.rating}`;
+    div.append(imgContainer,carouselContainer,h5,p1,p2)
+  
+
+
+    // Show the first image initially
+    showImage(0);
+    return div;
+}
+
+// Example usage
+var container = document.getElementById("carding_container"); // Replace "container" with the ID of the parent element where you want to append the card
+ // Add URLs of your images
+
+
+function appendData(arr){
+    container.innerHTML=""
+   arr.forEach(ele=>{
+     const images = [ele.listings.images[0].img1,ele.listings.images[1].img2,ele.listings.images[2].img3];
+     let ans=createCard(ele,images)
+     container.append(ans);
+
+   })
+}
 // booking_container.addEventListener('click',()=>{
 //     console.log(booking_container.value)
 // })

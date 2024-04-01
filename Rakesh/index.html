@@ -22,6 +22,42 @@
         crossorigin="anonymous"></script>
 
     <style>
+        #carding_container{
+            display: flex;;
+            flex-wrap: wrap;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            gap:10px;
+        }
+        .Rakesh_card{
+            position: relative;
+            width:300px;
+            height: auto;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        }
+        .Rakesh_card img{
+            width:100%;
+            height: 300px;
+        }
+        #carding_container h5{
+          margin-left: 100px;
+          margin-right: auto;
+        }
+        #carding_container p{
+            margin-left: 100px;
+            margin-right: auto;
+          }
+        .carousel-container>span:nth-of-type(1){
+            position: absolute;
+            bottom: 250px;
+            
+          }
+          .carousel-container>span:nth-of-type(2){
+            position: absolute;
+            bottom: 250px;
+            left: 250px;
+            
+          }
         #filter {
             width: 60%;
             height: 83vh;
@@ -29,22 +65,28 @@
             margin-right: 20%;
             margin-top: 10%;
             margin-bottom: 10%;
-            border: 1px solid black;
             position: fixed !important;
             top: -100px;
+            border-radius: 10px;
+            border: .5px solid rgb(232, 226, 226);
         }
 
         #filter h3,h5,a {
             margin-left: 15px;
             margin-top: 10px;
         }
-
+        #filter a{
+            color:black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
         #head {
             width: 100%;
             height: 60px;
             display: flex;
             align-items: center;
-            border: 1px solid red;
+            border-top-right-radius:10px ;
+            border-top-left-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 
         }
 
@@ -52,6 +94,12 @@
             display: flex !important;
             margin-left: 40%;
             margin-right: 50%;
+            margin-top: 10px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+          
+
         }
 
         .middle {
@@ -71,25 +119,26 @@
             width: 100%;
             height: 250px;
             margin-top: 20px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid rgb(219,219,219);
         }
 
         #min {
             position: absolute;
             padding: 10px 10px 10px 10px;
-            background-color: #007bff;
+            background-color: white;
             color: #fff;
             border: none;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.1s ease;
             margin-top: 12px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
 
         #max {
             position: absolute;
             padding: 10px 10px 10px 10px;
-            background-color: #007bff;
+            background-color: white;
             color: #fff;
             border: none;
             border-radius: 50%;
@@ -97,7 +146,7 @@
             transition: all 0.1s ease;
             left: 100%;
             margin-top: 12px;
-
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
         }
 
@@ -134,7 +183,7 @@
             width: 320px;
             height: 50px;
             margin-top: 15px;
-            border: 1px solid red;
+            border: 1px solid rgb(219,219,219);
             margin-left: 100px;
             border-radius: 5px;
         }
@@ -156,7 +205,7 @@
             width: 320px;
             height: 50px;
             margin-top: 15px;
-            border: 1px solid red;
+            border: 1px solid rgb(219,219,219);
             margin-left: 80px;
             margin-left: 15px;
             border-radius: 5px;
@@ -183,7 +232,7 @@
         .place_type {
             width: 100% !important;
             margin-top: 20px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid rgb(219,219,219);
             height: 150px;
         }
 
@@ -192,18 +241,40 @@
         }
 
         .btn-group>button:nth-of-type(1):focus {
-            background-color: dimgrey !important;
+            background-color:rgb(54,54,54) !important;
             color: white !important;
+            border: 1px solid rgb(175, 174, 174) !important;
         }
 
         .btn-group>button:nth-of-type(2):focus {
-            background-color: dimgrey !important;
+            background-color:rgb(54,54,54) !important;
             color: white !important;
+            border: 1px solid rgb(175, 174, 174) !important;
         }
 
         .btn-group>button:nth-of-type(3):focus {
-            background-color: dimgrey !important;
+            background-color:rgb(54,54,54) !important;
             color: white !important;
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+        .btn-group>button:nth-of-type(1){
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+        .btn-group>button:nth-of-type(2){
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+        .btn-group>button:nth-of-type(3){
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+
+        .btn-group>button:nth-of-type(1):hover{
+           border: 1px solid black !important;
+        }
+        .btn-group>button:nth-of-type(2):hover{
+            border: 1px solid black !important;
+        }
+        .btn-group>button:nth-of-type(3):hover{
+            border: 1px solid black !important;
         }
 
         .lower {
@@ -222,7 +293,7 @@
         }
 
         .lower>button:nth-of-type(2) {
-            background-color: dimgrey;
+            background-color:rgb(54,54,54);
             color: white;
             text-align: center;
             border-radius: 6px;
@@ -259,15 +330,17 @@
         .rooms_container button {
             padding: 10px 35px 10px 25px !important;
             box-sizing: border-box;
-            background-color: rgb(252, 247, 247);
+            background-color:white;
             border: .5px solid rgb(147, 145, 145);
             border-radius: 40%;
-            background-color: aqua;
+            color: black;
         }
+
+       
 
         .toptier_container {
             margin-top: 10px;
-            border-top: 1px solid black;
+            border-top: 1px solid rgb(219,219,219);
             width: 100%;
             height: 300px;
         }
@@ -292,6 +365,11 @@
 
         .toptier_container>div:nth-of-type(1):active {
             transform: scale(0.8);
+        }
+
+        .selected{
+            background-color: dimgray !important;
+            color: white !important;
         }
 
         #prototype {
@@ -325,7 +403,7 @@
 
         .Amenities_container {
             margin-top: 10px;
-            border-top: 1px solid black;
+            border-top: 1px solid rgb(219,219,219);
         }
 
         #Amenities {
@@ -383,11 +461,12 @@
         #booking_container input {
             width: 30px;
             height: 30px;
+            margin-right: 15px;
         }
 
         #booking_container {
             margin-top: 10px;
-            border-top: 1px solid black;
+            border-top: 1px solid rgb(219,219,219);
         }
 
         #extra_features>div {
@@ -414,7 +493,7 @@
         }
         #extra_features{
             margin-top: 10px;
-            border-top: 1px solid black;
+            border-top: 1px solid rgb(219,219,219);
         }
         #addmore>div>div>div{
             display: flex;
@@ -475,7 +554,7 @@
                     <button type="button" class="btn btn-primary" fdprocessedid="sz95fd"
                         style="background-color:white;color:black; height:50px">Room</button>
                     <button type="button" class="btn btn-primary" fdprocessedid="34fiva"
-                        style="background-color:white;color:black; height:50px">Entire Room</button>
+                        style="background-color:white;color:black; height:50px">Entire House</button>
                 </div>
             </section>
             <div id="pricerange_container">
@@ -552,7 +631,7 @@
                     <p style="margin-top: 10px;">The most loved homes on Airbnb,<br> according to guests</p>
                 </div>
             </section>
-            <section style="border-top: 1px solid black;">
+            <section style="border-top: 1px solid rgb(219,219,219);">
                 <h3>Prototype</h3>
                 <div id="prototype">
                     <div>
@@ -727,6 +806,9 @@
     </div>
     <div id="main_container"></div>
     <div id="Empty"></div>
+    <div id="carding_container">
+
+    </div>
 </body>
 <script src="./Rindex.js"></script>
 
