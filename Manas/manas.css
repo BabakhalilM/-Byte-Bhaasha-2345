@@ -1,0 +1,129 @@
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 40vw;
+    font-size: 20px;
+    padding: 20px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none;
+}
+
+#co {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#co img {
+    width: 90px;
+}
+
+#cv span {
+    margin: 20px;
+}
+
+.first {
+    width: 80%;
+    height: 10vh;
+    margin: auto;
+    display: flex;
+    border-radius: 50px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.f {
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
+    padding: 10px;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    box-sizing: border-box;
+    border-radius: 25px;
+}
+
+#i {
+    font-size: 28px;
+    background-color: red;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+    margin-left: 20px;
+}
+
+hr {
+    opacity: 0.6;
+    margin: 0;
+}
+
+h4,
+a {
+    margin: 0;
+    text-decoration: none;
+    color: black;
+}
+
+/* a:hover {
+            color: blue;
+        } */
+
+/* h4:hover {
+            background-color: gray;
+            border-radius: 40px;
+            width: 250px;
+            height: 50px;
+        } */
+
+.secondIcon {
+    display: flex;
+    align-items: center;
+}
+
+.iconContainer {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    padding: 20px;
+    border-radius: 14px;
+    margin-left: 20px;
+}
+
+.iconContainer i {
+    font-size: 25px;
+    /* Adjusted font size */
+    margin-right: 10px;
+    /* Added margin */
+}
+
+.guest-card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 40vw;
+    font-size: 20px;
+    padding: 20px;
+    position: absolute;
+    top: 40%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+
+#m_container {
+    display: none;
+}
+
+.guest-counter button {
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}

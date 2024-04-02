@@ -1,138 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Airbnb</title>
     <script src="https://kit.fontawesome.com/e913741245.js" crossorigin="anonymous"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <!-- <link rel="stylesheet" href="./Aditya/styles.css"> -->
+
+    <script src="https://kit.fontawesome.com/38d3418c06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- <title>Bootstrap Example</title> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+
+
+    <link rel="stylesheet" href="./Rakesh/rindex.css">
     <link rel="stylesheet" href="./MBabakhalil/bstyles.css">
-    <style>
-         .card {
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 40vw;
-  font-size: 20px;
-  padding: 20px;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-/* .hiddens{
-display:none;
-} */
-.hidden {
-  display: none;
-}
-#co {
-            width: 100vw;
-            height: 10vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
+    <link rel="stylesheet" href="./Manas/manas.css">
+    <!-- <link rel="stylesheet" href="./Aditya/styles.css"> -->
 
-        #co img {
-            width: 90px;
-        }
-
-        #cv span {
-            margin: 20px;
-        }
-
-        .first {
-            width: 1200px;
-            height: 5vh;
-            margin: auto;
-            display: flex;
-            border-radius: 50px;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-            padding: 30px; 
-            justify-content: space-between;
-            align-items: center;
-        }
-        .f{
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-            padding: 10px;
-            box-sizing: border-box;
-            border-radius: 25px;
-        }
-        #i {
-            font-size: 30px;
-            background-color: red;
-            padding: 10px;
-            border-radius: 50%;
-            color: white;
-            margin-left: 20px;
-        }
-
-        hr {
-            opacity: 0.6;
-            margin: 0;
-        }
-
-        h4, a {
-            margin: 0;
-            text-decoration: none;
-            color: black;
-        }
-
-        /* a:hover {
-            color: blue;
-        } */
-
-        /* h4:hover {
-            background-color: gray;
-            border-radius: 40px;
-            width: 250px;
-            height: 50px;
-        } */
-
-        .secondIcon {
-            display: flex;
-            align-items: center; 
-        }
-
-        .iconContainer {
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-            padding: 20px;
-            border-radius: 14px;
-            margin-left: 20px; 
-        }
-
-        .iconContainer i {
-            font-size: 25px; /* Adjusted font size */
-            margin-right: 10px; /* Added margin */
-        }
-        .guest-card{
-            background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 40vw;
-  font-size: 20px;
-  padding: 20px;
-  position: absolute;
-  top: 40%;
-  left: 80%;
-  transform: translate(-50%, -50%);
-        }
-  #m_container{
-    display: none;
-  }
-
-  .guest-counter button {
-    font-size: 20px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-    </style>
 </head>
+
 <body>
     <!-- Manas Start -->
     <button id="button">SIGN IN</button>
@@ -140,57 +37,53 @@ display:none;
     <div id="signInCard" class="card hidden">
         <div class="card-content">
             <h4 style="text-align: center;">Log In Or Sign Up</h4>
-          <h2>Welcome to Airbnb</h2>
-          <form>
-            <!-- <label for="username">Country/Region:</label> -->
-            <!-- <input type="text" id="username" name="username" value="Country/Region" required> -->
-            <!-- <label for="password">Password:</label> -->
-            <select class="form-control" id="country-code" placeholder="Country/Region">
-                <option value="" disabled selected hidden>Please select an option</option>
-                <option value="+91" >India (+91)</option>
-                <option value="+1">USA (+1)</option>
-                <option value="+44">UK (+44)</option>
-                <option value="+61">Australia (+61)</option>
-                <option value="+81">Japan (+81)</option>
-              </select>
-            <div>
-            <input type="text" id="PHONE-NO" name="PHONE-NO" placeholder="Phone"  required>
-            </div>
-            <button type="submit" style="background-color: red;color: white;width: 200px;">Continue</button>
-          </form>
+            <h2>Welcome to Airbnb</h2>
+            <form>
+                <!-- <label for="username">Country/Region:</label> -->
+                <!-- <input type="text" id="username" name="username" value="Country/Region" required> -->
+                <!-- <label for="password">Password:</label> -->
+                <select class="form-control" id="country-code" placeholder="Country/Region">
+                    <option value="" disabled selected hidden>Please select an option</option>
+                    <option value="+91">India (+91)</option>
+                    <option value="+1">USA (+1)</option>
+                    <option value="+44">UK (+44)</option>
+                    <option value="+61">Australia (+61)</option>
+                    <option value="+81">Japan (+81)</option>
+                </select>
+                <div>
+                    <input type="text" id="PHONE-NO" name="PHONE-NO" placeholder="Phone" required>
+                </div>
+                <button type="submit" style="background-color: red;color: white;width: 200px;">Continue</button>
+            </form>
         </div>
-      </div>
-    
-
-      <div id="co">
+    </div>
+    <div id="co">
         <img src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png" alt="air bnb">
         <div id="cv">
-            <span >Stays</span>
+            <span>Stays</span>
             <span>Experience</span>
             <span>Online Experience</span>
         </div>
-        <div class="secondIcon"> 
+        <div class="secondIcon">
             <span>Airbnb Your Home</span>
             <i class="fas fa-globe" style="margin-left: 9px;"></i>
-            <div class="iconContainer"> 
-                <i class="fas fa-list"></i> 
-                <i class="fas fa-user"></i> 
+            <div class="iconContainer">
+                <i class="fas fa-list"></i>
+                <i class="fas fa-user"></i>
             </div>
         </div>
     </div>
 
     <div class="first">
-        <h4 class="f">Where <br><input type="text" id="d_name" name="name" style="border:#ffffff;border-radius: 25px;" placeholder="search destinations"  required  /><button id="d_search">search</button></h4><hr>
-        <h4 class="f">Check in <br><input
-            type="date"
-            id="check-in"
-            name="check-in"
-             style="border:#ffffff;border-radius: 25px;" placeholder="Add Dates"/></h4><hr>
-        <h4 class="f">Check out <br><input
-            type="date"
-            id="check-out"
-            name="check-out"
-             style="border:#ffffff;border-radius: 25px;"/></h4><hr>
+        <h4 class="f">Where <br><input type="text" id="d_name" name="name" style="border:#ffffff;border-radius: 25px;"
+                placeholder="search destinations" required /><button id="d_search">search</button></h4>
+        <hr>
+        <h4 class="f">Check in <br><input type="date" id="check-in" name="check-in"
+                style="border:#ffffff;border-radius: 25px;" placeholder="Add Dates" /></h4>
+        <hr>
+        <h4 class="f">Check out <br><input type="date" id="check-out" name="check-out"
+                style="border:#ffffff;border-radius: 25px;" /></h4>
+        <hr>
         <!-- <button class="f" style="background-color: red;border-radius: 20px;">SEARCH</button> -->
         <h4 class="f">Who<br><button style="text-decoration: none;border: #ffffff;" id="addguest">Add Guests</button>
         </h4>
@@ -199,8 +92,8 @@ display:none;
         </div>
     </div>
 
-<div id="m_container">
-    <!-- <div class="guest-counter">
+    <div id="m_container">
+        <!-- <div class="guest-counter">
         <span>Adults:</span>
         <button id="adult-minus">-</button>
         <span id="adult-count">0</span>
@@ -227,23 +120,317 @@ display:none;
         <span id="pet-count">0</span>
         <button id="pet-plus">+</button>
       </div> -->
-</div>
-<!-- Manas end -->
+    </div>
+    <!-- Manas end -->
+
+    <!-- Rakesh start -->
+    <div id="filter">
+        <section id="head">
+            <span class="material-symbols-outlined">
+                close
+            </span>
+            <p>Filter</p>
+        </section>
+        <div class="middle" style="overflow-y: scroll;">
+            <section class="place_type">
+                <div>
+                    <h3>Type of place</h3>
+                    <p>Search rooms, entire homes or any type of place</p>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example"
+                    style="width: 80%; margin-left:100px;margin-right:auto">
+                    <button type="button" class="btn btn-primary" fdprocessedid="1e0nah"
+                        style="background-color:white;color:black; height:50px">Any type</button>
+                    <button type="button" class="btn btn-primary" fdprocessedid="sz95fd"
+                        style="background-color:white;color:black; height:50px">Room</button>
+                    <button type="button" class="btn btn-primary" fdprocessedid="34fiva"
+                        style="background-color:white;color:black; height:50px">Entire House</button>
+                </div>
+            </section>
+            <div id="pricerange_container">
+                <div>
+                    <h3>Price Range</h3>
+                    <p>Nightly prices before fees and taxes</p>
+                </div>
+                <div id="graph">
+
+                </div>
+                <section id="price_range">
+                    <button id="min"> </button>
+                    <div id="range"></div>
+                    <button id="max"></button>
+                </section>
+                <div>
+                    <div>
+                        <p>Minimum</p>
+                        <input type="text" style="width: 100%; border:none " id="mininput">
+                    </div>
+                    <div></div>
+                    <div>
+                        <p>Maximum</p>
+                        <input type="text" style="width: 100%; border:none;" id="maxinput">
+                    </div>
+                </div>
+            </div>
+            <section class="rooms_container">
+                <h3>Rooms and Beds</h3>
+                <p>BedRooms</p>
+                <div>
+                    <button>Any</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>7</button>
+                    <button>8+</button>
+                </div>
+                <p>Beds</p>
+                <div>
+                    <button>Any</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>7</button>
+                    <button>8+</button>
+                </div>
+                <p>BathRooms</p>
+                <div>
+                    <button>Any</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>7</button>
+                    <button>8+</button>
+                </div>
+            </section>
+            <section class="Toptier_container">
+                <h3>Top-tier stays</h3>
+                <div id="rating">
+                    <span class="material-symbols-outlined">
+                        local_florist
+                    </span>
+                    <h5 style="margin-left:10px">Guest favourites</h5>
+                    <p style="margin-top: 10px;">The most loved homes on Airbnb,<br> according to guests</p>
+                </div>
+            </section>
+            <section style="border-top: 1px solid rgb(219,219,219);">
+                <h3>Prototype</h3>
+                <div id="prototype">
+                    <div>
+                        <span class="material-symbols-outlined">
+                            house
+                        </span>
+                        <p>House</p>
+                    </div>
+                    <div>
+                        <span class="material-symbols-outlined">
+                            apartment
+                        </span>
+                        <p>Apartment</p>
+                    </div>
+                    <div>
+                        <span class="material-symbols-outlined">
+                            house_siding
+                        </span>
+                        <p>Guest House</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-hotel"></i>
+                        <p>Hotel</p>
+                    </div>
+                </div>
+            </section>
+            <section class="Amenities_container">
+                <h3>Amenities</h3>
+                <h5>Essentials</h5>
+                <div id="Amenities">
+                    <div>
+                        <input title="Rakesh" type="checkbox" name="Essentials" value="Wifi">
+                        <label for="wifi">Wifi</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Kitchen">
+                        <label for="kitchen">Kitchen</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Washing machine">
+                        <label for="washing">Washing machine</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Dryer">
+                        <label for="dryer">Dryer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Air conditioning">
+                        <label for="air">Air Condition</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Heating">
+                        <label for="Heating">Heating</label>
+                    </div>
+                </div>
+            </section>
+            <section id="features_container">
+                <h5>Features</h5>
+                <div id="features">
+                    <div>
+                        <input type="checkbox" name="features" values="pool">
+                        <label for="pool">Pool</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="hothub">
+                        <label for="hothub">Hot hub</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="freeparking">
+                        <label for="freeparking">Free Parking</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="evcharge">
+                        <label for="evcharge">EV Charge</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="cot">
+                        <label for="cot">Cot</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="kingbed">
+                        <label for="kingbed">King Bed</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="gym">
+                        <label for="gym">GYM</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="bbq">
+                        <label for="bbq">BBQ Grill</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="breakfast">
+                        <label for="breakfast">Break Fast</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="indoorfire">
+                        <label for="indoorfire">Indoor fire</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="smoking">
+                        <label for="smoking">Smoking Allowed</label>
+                    </div>
+                </div>
+            </section>
+            <section id="booking_container">
+                <h5>Booking options</h5>
+                <div>
+                    <div>
+                        <p>Instant Book</p>
+                        <p>Listings you can book without waiting for host approval</p>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="booking" value="Instant Book">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>Self check-in</p>
+                        <p>Easy access to the property once you arrive</p>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="booking" value="Self check-in">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>Allows pets</p>
+                        <p>Bringing a service animal?</p>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="booking" value="Allows pets">
+                    </div>
+                </div>
+            </section>
+            <section id="extra_features">
+                <h3>Accessibility features</h3>
+                <h5>Guest entrance and parking</h5>
+                <div>
+                    <div>
+                        <input type="checkbox" name="extra" value="Step-free guest entrance" />
+                        <label for="Step-free guest entrance">Step-free guest entrance</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="extra"
+                            value="Guest entrance wider than 32 inches (81 centimetres)" />
+                        <label for="Guest entrance wider than 32 inches (81 centimetres)">Guest entrance wider than
+                            32
+                            inches (81 centimetres)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="extra" value="Accessible parking spot" />
+                        <label for="Accessible parking spot">Accessible parking spot</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="extra" value="Step-free path to the guest entrance" />
+                        <label for="Step-free path to the guest entrance">Step-free path to the guest
+                            entrance</label>
+                    </div>
+                </div>
+                <section id="addmore"></section>
+                <a href="#">Show More</a>
+            </section>
+            <section id="languages_container">
+                <h3>Host language</h3>
+                <div id="languages"></div>
+                <a href="#">Show All</a>
+            </section>
+        </div>
+        <div class="lower">
+            <button> Clear All</button>
+            <button id="mymainbutton">Show All</button>
+        </div>
+    </div>
+    <div id="main_container"></div>
+    <div id="Empty"></div>
+    <div id="carding_container">
+    </div>
+    <!-- Rakesh end -->
     <!-- MBabakhalil start -->
     <br>
-    
-    <div class="carousel-container">
-        <div class="carousel-slider">
+    <div class="B_uupercourosel">
+        <div class="posi">
+            <div class="carousel-container">
+                <div class="carousel-slider">
+
+                </div>
+                <button class="prev-btn"><span class="material-symbols-outlined">
+                        chevron_left
+                    </span></button>
+                <button class="next-btn"><span class="material-symbols-outlined">
+                        chevron_right
+                    </span></button>
+            </div>
+        </div>
+        <div class="buttonfilter"><span class="material-symbols-outlined">
+                tune
+            </span>filter</div>
+
+        <div class="form-check form-switch">
+
+            <label class="form-check-label" for="flexSwitchCheckDefault">Display total before taxes</label>
+
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
 
         </div>
-        <button class="prev-btn"><span class="material-symbols-outlined">
-                chevron_left
-            </span></button>
-        <button class="next-btn"><span class="material-symbols-outlined">
-                chevron_right
-            </span></button>
+
+        <div></div>
     </div>
-    <!-- <br> -->
     <div class="cont">
         <div class="carousel-container1">
             <div class="carousel-slider1">
@@ -262,15 +449,14 @@ display:none;
 
         </div>
     </div>
-    
     <!-- MBabakhalil end -->
     <!-- Aditya start -->
-  
+
     <!-- Aditya end -->
 </body>
+
 </html>
-<script src="./Aditya/Aindex.js"></script>
-<script src="./Omkar/Oindex.js"></script>
+<!-- <script src="./MBabakhalil/BIndex.js"></script>
 <script src="./Rakesh/Rindex.js"></script>
-<script src="./Manas/Mindex.js"></script>
-<script src="./MBabakhalil/BIndex.js"></script>
+<script src="./Manas/Mindex.js"></script> -->
+<script src="./index.js"></script>

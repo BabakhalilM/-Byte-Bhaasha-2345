@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
       img.alt ="loading";
       k++;
       btn.addEventListener("click", (ele) => {
-        console.log(categories[i]);
+        // console.log(categories[i]);
         async function fetchDataAndProcess() {
           try {
             let mydata = await fetchcardData();
@@ -120,7 +120,7 @@ async function fetchcardData() {
     let mydata = await fetchcartdata("https://airbnbproject-id6p.onrender.com/categories");
     return mydata;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -134,7 +134,7 @@ async function fetchDataAndProcess() {
       console.log("Data is undefined or empty.");
     }
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 fetchDataAndProcess();
@@ -145,9 +145,9 @@ function findCategoryByName(name, mydata) {
   let islandsCategory = mydata.find(category => category.name === name);
   if (islandsCategory) {
     const islandsCards = islandsCategory.cards;
-    console.log(islandsCards);
+    // console.log(islandsCards);
     islandsCards.forEach(element => {
-      createCard(element);
+      createCard1(element);
     });
     createmorebtn(name);
   } else {
@@ -165,11 +165,12 @@ function createmorebtn(name) {
   showdiv.append(showmorebtn);
   showmorebtn.className = "showbtn";
   showmorebtn.innerText = "Show More";
+  showmorebtn.style.borderRadius="10px";
 
   showmorebtn.addEventListener("click", () => {
     const showmoredata = generateCardData(name, z);
     showmoredata.cards.forEach(element => {
-      createCard(element);
+      createCard1(element);
     });
     z += 20;
     createmorebtn(name);
@@ -217,7 +218,7 @@ function randomDateRange() {
   return `${startDay} ${startMonthName} - ${endDay} ${endMonthName}`;
 }
 
-function createCard(data) {
+function createCard1(data) {
   let div = document.createElement("div");
   let fav = document.createElement("button");
   fav.innerText = `\u2661`;
@@ -226,7 +227,7 @@ function createCard(data) {
   divhead.className="divhead";
   let divbody = document.createElement("div");
   let placename = document.createElement("p");
-  let rating = document.createElement("h3");
+  let rating = document.createElement("h5");
   let distance = document.createElement("p");
   let dateavailable = document.createElement("p");
   let price = document.createElement("p");
@@ -247,19 +248,20 @@ function createCard(data) {
       a.click();
 
     });
-    console.log("len",data.images.length-1);
+    // console.log("len",data.images.length-1);
     // div.style.backgroundColor="red";
     let index=i;
     if(i>=data.images.length){
       index=i-data.images.length;
     }
-    console.log(index);
+    // console.log(index);
     let backimg=data.images[index];
+    // console.log(backimg);
     div.style.backgroundImage=`url(${backimg})`;
     // let img = document.createElement("img");
     // img.src = data.images[i];
     carouselDiv.appendChild(div);
-    // carouselDiv.style.backgroundColor="yellow"
+    // carouselDiv.style.backgroundColor="yellow";
   }
 
   divhead.appendChild(carouselDiv);
@@ -282,40 +284,6 @@ function createCard(data) {
 
 
 }
-
-// function updateSlider1() {
-// slider1.style.transform = `translateX(${currentIndex1 * -100}%)`;
-// if (currentIndex1 === 0) {
-//   prevBtn1.style.display = "none";
-// } else {
-//   prevBtn1.style.display = "block";
-// }
-// if (currentIndex1 >= slider1.children.length - 1) {
-//   nextBtn1.style.display = "none";
-// } else {
-//   nextBtn1.style.display = "block";
-// }
-// }
-
-// prevBtn1.addEventListener('click', function () {
-//   if (currentIndex1 > 0) {
-//     currentIndex1--;
-//     updateSlider1();
-//   }
-// });
-
-// nextBtn1.addEventListener('click', function () {
-//   if (currentIndex1 < slider1.children.length - 1) {
-//     currentIndex1++;
-//     updateSlider1();
-//   }
-// });
-// function updateSlider1() {
-//   // Implement your logic for updating slider1 here
-// }
-
-
-
 async function fetchfooterdata(url) {
   try {
     let ans = await fetch(url);

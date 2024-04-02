@@ -1,0 +1,539 @@
+#carding_container {
+    display: flex;
+    ;
+    flex-wrap: wrap;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    gap: 10px;
+}
+
+.Rakesh_card {
+    position: relative;
+    width: 300px;
+    height: auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.Rakesh_card img {
+    width: 100%;
+    height: 300px;
+}
+
+#carding_container h5 {
+    margin-left: 100px;
+    margin-right: auto;
+}
+
+#carding_container p {
+    margin-left: 100px;
+    margin-right: auto;
+}
+
+.carousel-container>span:nth-of-type(1) {
+    position: absolute;
+    bottom: 250px;
+
+}
+
+.carousel-container>span:nth-of-type(2) {
+    position: absolute;
+    bottom: 250px;
+    left: 250px;
+
+}
+
+#filter {
+    z-index: 8;
+    display: none;
+    background: white;
+    width: 60%;
+    height: 83vh;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    position: fixed !important;
+    top: -100px;
+    border-radius: 10px;
+    border: .5px solid rgb(232, 226, 226);
+}
+
+#filter h3,
+h5,
+a {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+#filter a {
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#head {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+}
+
+#head p {
+    display: flex !important;
+    margin-left: 40%;
+    margin-right: 50%;
+    margin-top: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+
+
+}
+
+.middle {
+    width: 100%;
+    height: 450px;
+    overflow-y: scroll !important;
+}
+
+.material-symbols-outlined {
+    margin-left: 5%;
+}
+
+.material-symbols-outlined:hover {
+    cursor: pointer;
+}
+
+#pricerange_container {
+    width: 100%;
+    height: 250px;
+    margin-top: 20px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+#min {
+    position: absolute;
+    padding: 10px 10px 10px 10px;
+    background-color: white;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    margin-top: 12px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#max {
+    position: absolute;
+    padding: 10px 10px 10px 10px;
+    background-color: white;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    left: 100%;
+    margin-top: 12px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+
+#range {
+    height: 2px;
+    width: 100%;
+    margin-top: 20px;
+    background-color: black;
+}
+
+#price_range {
+    display: flex;
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#graph {
+    height: 70px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: bisque;
+}
+
+#pricerange_container>div:nth-of-type(1) h3,
+p {
+    margin-left: 15px;
+}
+
+#pricerange_container>div:nth-of-type(3)>div:nth-of-type(1) {
+    width: 320px;
+    height: 50px;
+    margin-top: 15px;
+    border: 1px solid rgb(219, 219, 219);
+    margin-left: 100px;
+    border-radius: 5px;
+}
+
+#pricerange_container>div:nth-of-type(3) {
+    display: flex;
+    align-items: center;
+}
+
+#pricerange_container>div:nth-of-type(3)>div:nth-of-type(2) {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#pricerange_container>div:nth-of-type(3)>div:nth-of-type(3) {
+    width: 320px;
+    height: 50px;
+    margin-top: 15px;
+    border: 1px solid rgb(219, 219, 219);
+    margin-left: 80px;
+    margin-left: 15px;
+    border-radius: 5px;
+}
+
+#pricerange_container>div:nth-of-type(3)>div:nth-of-type(3)>p:nth-of-type(1) {
+    font-size: 12px;
+    margin: 0px;
+}
+
+#pricerange_container>div:nth-of-type(3)>div:nth-of-type(3)>input:nth-of-type(1):focus {
+    outline: none;
+}
+
+#pricerange_container>div:nth-of-type(3)>div:nth-of-type(1)>p:nth-of-type(1) {
+    font-size: 12px;
+    margin: 0px;
+}
+
+#pricerange_container>div:nth-of-type(3)>div:nth-of-type(1)>input:nth-of-type(1):focus {
+    outline: none;
+}
+
+.place_type {
+    width: 100% !important;
+    margin-top: 20px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    height: 150px;
+}
+
+.place_type h3 {
+    margin-left: 15px !important;
+}
+
+.btn-group>button:nth-of-type(1):focus {
+    background-color: rgb(54, 54, 54) !important;
+    color: white !important;
+    border: 1px solid rgb(175, 174, 174) !important;
+}
+
+.btn-group>button:nth-of-type(2):focus {
+    background-color: rgb(54, 54, 54) !important;
+    color: white !important;
+    border: 1px solid rgb(175, 174, 174) !important;
+}
+
+.btn-group>button:nth-of-type(3):focus {
+    background-color: rgb(54, 54, 54) !important;
+    color: white !important;
+    border: 1px solid rgb(175, 174, 174) !important;
+}
+
+.btn-group>button:nth-of-type(1) {
+    border: 1px solid rgb(175, 174, 174) !important;
+}
+
+.btn-group>button:nth-of-type(2) {
+    border: 1px solid rgb(175, 174, 174) !important;
+}
+
+.btn-group>button:nth-of-type(3) {
+    border: 1px solid rgb(175, 174, 174) !important;
+}
+
+.btn-group>button:nth-of-type(1):hover {
+    border: 1px solid black !important;
+}
+
+.btn-group>button:nth-of-type(2):hover {
+    border: 1px solid black !important;
+}
+
+.btn-group>button:nth-of-type(3):hover {
+    border: 1px solid black !important;
+}
+
+.lower {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lower>button:nth-of-type(1) {
+    background-color: azure;
+    color: black;
+    text-align: center;
+    border: none;
+    margin-top: 20px;
+    margin-left: 15px;
+
+}
+
+.lower>button:nth-of-type(2) {
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 20px;
+    width: 170px;
+    height: 40px;
+    margin-right: 15px;
+
+}
+
+#rooms_container {
+    width: 100%;
+
+}
+
+.rooms_container>div:nth-of-type(1) {
+    display: flex;
+    gap: 20px;
+    margin-left: 15px;
+}
+
+.rooms_container>div:nth-of-type(2) {
+    display: flex;
+    gap: 20px;
+    margin-left: 15px;
+}
+
+.rooms_container>div:nth-of-type(3) {
+    display: flex;
+    gap: 20px;
+    margin-left: 15px;
+}
+
+.rooms_container button {
+    padding: 10px 35px 10px 25px !important;
+    box-sizing: border-box;
+    background-color: white;
+    border: .5px solid rgb(147, 145, 145);
+    border-radius: 40%;
+    color: black;
+}
+
+
+
+.toptier_container {
+    margin-top: 10px;
+    border-top: 1px solid rgb(219, 219, 219);
+    width: 100%;
+    height: 300px;
+}
+
+.toptier_container h3 {
+    margin-top: 10px;
+}
+
+.toptier_container>div:nth-of-type(1) {
+    width: 400px;
+    height: 200px;
+    margin-left: 15px;
+    border: 1px solid rgb(190, 188, 188);
+    transition: transform 0.25s ease;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.toptier_container>div:nth-of-type(1):hover {
+    border: 1px solid black;
+}
+
+.toptier_container>div:nth-of-type(1):active {
+    transform: scale(0.8);
+}
+
+.selected {
+    background-color: dimgray !important;
+    color: white !important;
+}
+
+#prototype {
+    display: flex;
+    margin-left: 15px;
+    margin-right: 15px;
+    justify-content: space-between;
+}
+
+#prototype div {
+    padding: 10px;
+    height: 100px;
+    width: 200px;
+    border: 1px solid rgb(195, 190, 190);
+    transition: transform 0.25s ease;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#prototype div:active {
+    transform: scale(0.8);
+}
+
+#prototype div:hover {
+    border: 1px solid black;
+}
+
+#prototype div p {
+    margin-top: 15px;
+}
+
+.Amenities_container {
+    margin-top: 10px;
+    border-top: 1px solid rgb(219, 219, 219);
+}
+
+#Amenities {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#Amenities>div {
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+
+#Amenities>div>input {
+    height: 30px;
+    width: 30px;
+}
+
+label {
+    margin-left: 5px;
+    font-size: 22px;
+    font-family: 'Times, serif';
+    font-weight: lighter;
+}
+
+#features {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#features>div {
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+
+#features>div>input {
+    height: 30px;
+    width: 30px;
+}
+
+#booking_container>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#booking_container p:nth-of-type(1) {
+    margin-bottom: 0px !important;
+}
+
+#booking_container input {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+#booking_container {
+    margin-top: 10px;
+    border-top: 1px solid rgb(219, 219, 219);
+}
+
+#extra_features>div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#extra_features>div>div {
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 45%;
+    display: flex;
+
+}
+
+#extra_features>div>div>input {
+    width: 15px;
+    height: 15px;
+}
+
+#extra_features>div label {
+
+    font-size: 15px;
+    font-family: sans-serif;
+    margin-left: 7px;
+}
+
+#extra_features {
+    margin-top: 10px;
+    border-top: 1px solid rgb(219, 219, 219);
+}
+
+#addmore>div>div>div {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    width: 45%;
+}
+
+#addmore>div>div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#addmore>div>div>div>input {
+    width: 15px;
+    height: 15px;
+}
+
+#addmore>div>div>div>p {
+    margin-top: 15px;
+}
+
+#languages>div {
+    display: flex;
+    width: 45%;
+    align-items: center;
+    margin-left: 15px;
+}
+
+#languages {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#languages input {
+    width: 15px;
+    height: 15px;
+}
+
+#languages p {
+    margin-top: 17px;
+}
