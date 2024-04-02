@@ -127,7 +127,7 @@ async function fetchcardData() {
 async function fetchDataAndProcess() {
   try {
     let mydata = await fetchcardData();
-    // console.log(mydata);
+    // console.log(mydata);        
     if (mydata) {
       findCategoryByName("Islands", mydata);
     } else {
@@ -217,13 +217,13 @@ function randomDateRange() {
   return `${startDay} ${startMonthName} - ${endDay} ${endMonthName}`;
 }
 
-
 function createCard(data) {
   let div = document.createElement("div");
   let fav = document.createElement("button");
   fav.innerText = `\u2661`;
   div.className = "slide1"; // Add the .slide class to the div
   let divhead = document.createElement("div");
+  divhead.className="divhead";
   let divbody = document.createElement("div");
   let placename = document.createElement("p");
   let rating = document.createElement("h3");
@@ -234,17 +234,37 @@ function createCard(data) {
   let carouselDiv = document.createElement("div");
   carouselDiv.className = "carousel";
   fav.className = "b_favorate";
-  carouselDiv.append(fav);
+  // divhead.append(fav);
   fav.addEventListener("click", (e) => {
   });
-  for (let i = 0; i < data.images.length - 1; i++) {
-    let img = document.createElement("img");
-    img.src = data.images[i];
-    carouselDiv.appendChild(img);
+  let k=Math.floor(Math.random() * data.images.length);
+  
+  for (let i = k; i < k+data.images.length ; i++) {
+    let div=document.createElement("div");
+    div.addEventListener("click",()=>{
+      createnewpage(data);
+      let a=document.querySelector(".newtab");
+      a.click();
+
+    });
+    console.log("len",data.images.length-1);
+    // div.style.backgroundColor="red";
+    let index=i;
+    if(i>=data.images.length){
+      index=i-data.images.length;
+    }
+    console.log(index);
+    let backimg=data.images[index];
+    div.style.backgroundImage=`url(${backimg})`;
+    // let img = document.createElement("img");
+    // img.src = data.images[i];
+    carouselDiv.appendChild(div);
+    // carouselDiv.style.backgroundColor="yellow"
   }
 
   divhead.appendChild(carouselDiv);
-
+  divhead.appendChild(fav);
+  // divhead.style.border="solid red";
   placename.innerText = data.place_name;
   placename.style.fontWeight = "700";
   rating.innerText = `\u2605 ${data.Ratting}`;
@@ -257,6 +277,7 @@ function createCard(data) {
 
   divbody.append(rating, placename, distance, dateavailable, price);
   div.append(divhead, divbody);
+  // div.style.border="solid red";
   cont.appendChild(div);
 
 
@@ -330,7 +351,6 @@ function createheadinspiration(footer) {
     let p = document.createElement("button");
     p.innerText = key;
     p.addEventListener("click", () => {
-      // p.style="bolder";
       createbodyinspiration(key, footer[key]);
     });
     headinspiration.append(p);
@@ -355,7 +375,6 @@ function createbodyinspiration(key, arr) {
         p1.innerText = arr[i][0] || arr[i];
         p2.innerText = arr[i][1] || arr[i];
       }
-      // console.log(element[0]);
       div.append(p1, p2);
       bodyinspiration.append(div);
     }
