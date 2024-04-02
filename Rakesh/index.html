@@ -1,0 +1,815 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/38d3418c06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-TqI5aFZ5Xdqi2bU6V+xVL0pMDHEZGAgpJjS7lWG7haXg1jF7dpgEmEcXmch0jZ4e" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-lJyOgBqLPgPswg3WStAp0OskY3Cs1tFP0B3lCvJk6E4MWi/H2Q1WSWsJtnJX1aai"
+        crossorigin="anonymous"></script>
+
+    <style>
+        #carding_container{
+            display: flex;;
+            flex-wrap: wrap;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            gap:10px;
+        }
+        .Rakesh_card{
+            position: relative;
+            width:300px;
+            height: auto;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        }
+        .Rakesh_card img{
+            width:100%;
+            height: 300px;
+        }
+        #carding_container h5{
+          margin-left: 100px;
+          margin-right: auto;
+        }
+        #carding_container p{
+            margin-left: 100px;
+            margin-right: auto;
+          }
+        .carousel-container>span:nth-of-type(1){
+            position: absolute;
+            bottom: 250px;
+            
+          }
+          .carousel-container>span:nth-of-type(2){
+            position: absolute;
+            bottom: 250px;
+            left: 250px;
+            
+          }
+        #filter {
+            width: 60%;
+            height: 83vh;
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-top: 10%;
+            margin-bottom: 10%;
+            position: fixed !important;
+            top: -100px;
+            border-radius: 10px;
+            border: .5px solid rgb(232, 226, 226);
+        }
+
+        #filter h3,h5,a {
+            margin-left: 15px;
+            margin-top: 10px;
+        }
+        #filter a{
+            color:black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        #head {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-top-right-radius:10px ;
+            border-top-left-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+        }
+
+        #head p {
+            display: flex !important;
+            margin-left: 40%;
+            margin-right: 50%;
+            margin-top: 10px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+          
+
+        }
+
+        .middle {
+            width: 100%;
+            height: 450px;
+            overflow-y: scroll !important;
+        }
+
+        .material-symbols-outlined {
+            margin-left: 5%;
+        }
+        .material-symbols-outlined:hover{
+            cursor: pointer;
+        }
+
+        #pricerange_container {
+            width: 100%;
+            height: 250px;
+            margin-top: 20px;
+            border-bottom: 1px solid rgb(219,219,219);
+        }
+
+        #min {
+            position: absolute;
+            padding: 10px 10px 10px 10px;
+            background-color: white;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            margin-top: 12px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+        #max {
+            position: absolute;
+            padding: 10px 10px 10px 10px;
+            background-color: white;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            left: 100%;
+            margin-top: 12px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        }
+
+        #range {
+            height: 2px;
+            width: 100%;
+            margin-top: 20px;
+            background-color: black;
+        }
+
+        #price_range {
+            display: flex;
+            position: relative;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        #graph {
+            height: 70px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: bisque;
+        }
+
+        #pricerange_container>div:nth-of-type(1) h3,
+        p {
+            margin-left: 15px;
+        }
+
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(1) {
+            width: 320px;
+            height: 50px;
+            margin-top: 15px;
+            border: 1px solid rgb(219,219,219);
+            margin-left: 100px;
+            border-radius: 5px;
+        }
+
+        #pricerange_container>div:nth-of-type(3) {
+            display: flex;
+            align-items: center;
+        }
+
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(2) {
+            width: 30px;
+            height: 3px;
+            background-color: black;
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(3) {
+            width: 320px;
+            height: 50px;
+            margin-top: 15px;
+            border: 1px solid rgb(219,219,219);
+            margin-left: 80px;
+            margin-left: 15px;
+            border-radius: 5px;
+        }
+
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(3)>p:nth-of-type(1) {
+            font-size: 12px;
+            margin: 0px;
+        }
+
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(3)>input:nth-of-type(1):focus {
+           outline: none;
+        }
+
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(1)>p:nth-of-type(1) {
+            font-size: 12px;
+            margin: 0px;
+        }
+
+        #pricerange_container>div:nth-of-type(3)>div:nth-of-type(1)>input:nth-of-type(1):focus {
+            outline: none;
+        } 
+         
+        .place_type {
+            width: 100% !important;
+            margin-top: 20px;
+            border-bottom: 1px solid rgb(219,219,219);
+            height: 150px;
+        }
+
+        .place_type h3 {
+            margin-left: 15px !important;
+        }
+
+        .btn-group>button:nth-of-type(1):focus {
+            background-color:rgb(54,54,54) !important;
+            color: white !important;
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+
+        .btn-group>button:nth-of-type(2):focus {
+            background-color:rgb(54,54,54) !important;
+            color: white !important;
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+
+        .btn-group>button:nth-of-type(3):focus {
+            background-color:rgb(54,54,54) !important;
+            color: white !important;
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+        .btn-group>button:nth-of-type(1){
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+        .btn-group>button:nth-of-type(2){
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+        .btn-group>button:nth-of-type(3){
+            border: 1px solid rgb(175, 174, 174) !important;
+        }
+
+        .btn-group>button:nth-of-type(1):hover{
+           border: 1px solid black !important;
+        }
+        .btn-group>button:nth-of-type(2):hover{
+            border: 1px solid black !important;
+        }
+        .btn-group>button:nth-of-type(3):hover{
+            border: 1px solid black !important;
+        }
+
+        .lower {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .lower>button:nth-of-type(1) {
+            background-color: azure;
+            color: black;
+            text-align: center;
+            border: none;
+            margin-top: 20px;
+            margin-left: 15px;
+
+        }
+
+        .lower>button:nth-of-type(2) {
+            background-color:rgb(54,54,54);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            margin-top: 20px;
+            width: 170px;
+            height: 40px;
+            margin-right: 15px;
+
+        }
+
+        #rooms_container {
+            width: 100%;
+
+        }
+
+        .rooms_container>div:nth-of-type(1) {
+            display: flex;
+            gap: 20px;
+            margin-left: 15px;
+        }
+
+        .rooms_container>div:nth-of-type(2) {
+            display: flex;
+            gap: 20px;
+            margin-left: 15px;
+        }
+
+        .rooms_container>div:nth-of-type(3) {
+            display: flex;
+            gap: 20px;
+            margin-left: 15px;
+        }
+
+        .rooms_container button {
+            padding: 10px 35px 10px 25px !important;
+            box-sizing: border-box;
+            background-color:white;
+            border: .5px solid rgb(147, 145, 145);
+            border-radius: 40%;
+            color: black;
+        }
+
+       
+
+        .toptier_container {
+            margin-top: 10px;
+            border-top: 1px solid rgb(219,219,219);
+            width: 100%;
+            height: 300px;
+        }
+
+        .toptier_container h3 {
+            margin-top: 10px;
+        }
+
+        .toptier_container>div:nth-of-type(1) {
+            width: 400px;
+            height: 200px;
+            margin-left: 15px;
+            border: 1px solid rgb(190, 188, 188);
+            transition: transform 0.25s ease;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .toptier_container>div:nth-of-type(1):hover {
+            border: 1px solid black;
+        }
+
+        .toptier_container>div:nth-of-type(1):active {
+            transform: scale(0.8);
+        }
+
+        .selected{
+            background-color: dimgray !important;
+            color: white !important;
+        }
+
+        #prototype {
+            display: flex;
+            margin-left: 15px;
+            margin-right: 15px;
+            justify-content: space-between;
+        }
+
+        #prototype div {
+            padding: 10px;
+            height: 100px;
+            width: 200px;
+            border: 1px solid rgb(195, 190, 190);
+            transition: transform 0.25s ease;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        #prototype div:active {
+            transform: scale(0.8);
+        }
+
+        #prototype div:hover {
+            border: 1px solid black;
+        }
+
+        #prototype div p {
+            margin-top: 15px;
+        }
+
+        .Amenities_container {
+            margin-top: 10px;
+            border-top: 1px solid rgb(219,219,219);
+        }
+
+        #Amenities {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #Amenities>div {
+            margin-left: 15px;
+            margin-top: 10px;
+            width: 45%;
+            display: flex;
+            align-items: center;
+        }
+
+        #Amenities>div>input {
+            height: 30px;
+            width: 30px;
+        }
+
+        label {
+            margin-left: 5px;
+            font-size: 22px;
+            font-family: 'Times, serif';
+            font-weight: lighter;
+        }
+
+        #features {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #features>div {
+            margin-left: 15px;
+            margin-top: 10px;
+            width: 45%;
+            display: flex;
+            align-items: center;
+        }
+
+        #features>div>input {
+            height: 30px;
+            width: 30px;
+        }
+
+        #booking_container>div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #booking_container p:nth-of-type(1) {
+            margin-bottom: 0px !important;
+        }
+
+        #booking_container input {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+        }
+
+        #booking_container {
+            margin-top: 10px;
+            border-top: 1px solid rgb(219,219,219);
+        }
+
+        #extra_features>div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #extra_features>div>div {
+            margin-left: 15px;
+            margin-top: 10px;
+            width: 45%;
+            display: flex;
+            
+        }
+        #extra_features>div>div>input{
+            width: 15px;
+            height: 15px;
+        }
+        #extra_features>div label {
+            
+            font-size: 15px;
+            font-family: sans-serif;
+            margin-left: 7px;
+        }
+        #extra_features{
+            margin-top: 10px;
+            border-top: 1px solid rgb(219,219,219);
+        }
+        #addmore>div>div>div{
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            width:45%;
+        }
+        #addmore>div>div{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #addmore>div>div>div>input{
+            width:15px;
+            height: 15px;
+        }
+        #addmore>div>div>div>p{
+          margin-top: 15px;
+        }
+        #languages>div{
+            display: flex;
+            width:45%;
+            align-items: center;
+            margin-left: 15px;
+        }
+        #languages{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #languages input{
+            width:15px;
+            height:15px;
+        }
+        #languages p{
+            margin-top: 17px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="filter">
+        <section id="head">
+            <span class="material-symbols-outlined">
+                close
+            </span>
+            <p>Filter</p>
+        </section>
+        <div class="middle" style="overflow-y: scroll;">
+            <section class="place_type">
+                <div>
+                    <h3>Type of place</h3>
+                    <p>Search rooms, entire homes or any type of place</p>
+                </div>
+                    <div class="btn-group" role="group" aria-label="Basic example"
+                    style="width: 80%; margin-left:100px;margin-right:auto">
+                    <button type="button" class="btn btn-primary" fdprocessedid="1e0nah"
+                        style="background-color:white;color:black; height:50px">Any type</button>
+                    <button type="button" class="btn btn-primary" fdprocessedid="sz95fd"
+                        style="background-color:white;color:black; height:50px">Room</button>
+                    <button type="button" class="btn btn-primary" fdprocessedid="34fiva"
+                        style="background-color:white;color:black; height:50px">Entire House</button>
+                </div>
+            </section>
+            <div id="pricerange_container">
+                <div>
+                    <h3>Price Range</h3>
+                    <p>Nightly prices before fees and taxes</p>
+                </div>
+                <div id="graph">
+
+                </div>
+                <section id="price_range">
+                    <button id="min"> </button>
+                    <div id="range"></div>
+                    <button id="max"></button>
+                </section>
+                <div>
+                    <div>
+                        <p>Minimum</p>
+                        <input type="text" style="width: 100%; border:none " id="mininput">
+                    </div>
+                    <div></div>
+                    <div>
+                        <p>Maximum</p>
+                        <input type="text" style="width: 100%; border:none;" id="maxinput">
+                    </div>
+                </div>
+            </div>
+            <section class="rooms_container">
+                <h3>Rooms and Beds</h3>
+                <p>BedRooms</p>
+                <div>
+                    <button>Any</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>7</button>
+                    <button>8+</button>
+                </div>
+                <p>Beds</p>
+                <div>
+                    <button>Any</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>7</button>
+                    <button>8+</button>
+                </div>
+                <p>BathRooms</p>
+                <div>
+                    <button>Any</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>7</button>
+                    <button>8+</button>
+                </div>
+            </section>
+            <section class="Toptier_container">
+                <h3>Top-tier stays</h3>
+                <div id="rating">
+                    <span class="material-symbols-outlined">
+                        local_florist
+                    </span>
+                    <h5 style="margin-left:10px">Guest favourites</h5>
+                    <p style="margin-top: 10px;">The most loved homes on Airbnb,<br> according to guests</p>
+                </div>
+            </section>
+            <section style="border-top: 1px solid rgb(219,219,219);">
+                <h3>Prototype</h3>
+                <div id="prototype">
+                    <div>
+                        <span class="material-symbols-outlined">
+                            house
+                        </span>
+                        <p>House</p>
+                    </div>
+                    <div>
+                        <span class="material-symbols-outlined">
+                            apartment
+                        </span>
+                        <p>Apartment</p>
+                    </div>
+                    <div>
+                        <span class="material-symbols-outlined">
+                            house_siding
+                        </span>
+                        <p>Guest House</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-hotel"></i>
+                        <p>Hotel</p>
+                    </div>
+                </div>
+            </section>
+            <section class="Amenities_container">
+                <h3>Amenities</h3>
+                <h5>Essentials</h5>
+                <div id="Amenities">
+                    <div>
+                        <input title="Rakesh" type="checkbox" name="Essentials" value="Wifi">
+                        <label for="wifi">Wifi</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Kitchen">
+                        <label for="kitchen">Kitchen</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Washing machine">
+                        <label for="washing">Washing machine</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Dryer">
+                        <label for="dryer">Dryer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Air conditioning">
+                        <label for="air">Air Condition</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="Essentials" value="Heating">
+                        <label for="Heating">Heating</label>
+                    </div>
+                </div>
+            </section>
+            <section id="features_container">
+                <h5>Features</h5>
+                <div id="features">
+                    <div>
+                        <input type="checkbox" name="features" values="pool">
+                        <label for="pool">Pool</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="hothub">
+                        <label for="hothub">Hot hub</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="freeparking">
+                        <label for="freeparking">Free Parking</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="evcharge">
+                        <label for="evcharge">EV Charge</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="cot">
+                        <label for="cot">Cot</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="kingbed">
+                        <label for="kingbed">King Bed</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="gym">
+                        <label for="gym">GYM</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="bbq">
+                        <label for="bbq">BBQ Grill</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="breakfast">
+                        <label for="breakfast">Break Fast</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="indoorfire">
+                        <label for="indoorfire">Indoor fire</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="features" values="smoking">
+                        <label for="smoking">Smoking Allowed</label>
+                    </div>
+                </div>
+            </section>
+            <section id="booking_container">
+                <h5>Booking options</h5>
+                <div>
+                    <div>
+                        <p>Instant Book</p>
+                        <p>Listings you can book without waiting for host approval</p>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="booking" value="Instant Book">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>Self check-in</p>
+                        <p>Easy access to the property once you arrive</p>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="booking" value="Self check-in">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>Allows pets</p>
+                        <p>Bringing a service animal?</p>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="booking" value="Allows pets">
+                    </div>
+                </div>
+            </section>
+            <section id="extra_features">
+                <h3>Accessibility features</h3>
+                <h5>Guest entrance and parking</h5>
+                <div>
+                    <div>
+                        <input type="checkbox" name="extra" value="Step-free guest entrance" />
+                        <label for="Step-free guest entrance">Step-free guest entrance</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="extra"
+                            value="Guest entrance wider than 32 inches (81 centimetres)" />
+                        <label for="Guest entrance wider than 32 inches (81 centimetres)">Guest entrance wider than 32
+                            inches (81 centimetres)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="extra" value="Accessible parking spot" />
+                        <label for="Accessible parking spot">Accessible parking spot</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="extra" value="Step-free path to the guest entrance" />
+                        <label for="Step-free path to the guest entrance">Step-free path to the guest entrance</label>
+                    </div>
+                </div>
+                <section id="addmore"></section>
+                <a href="#">Show More</a>
+            </section>
+            <section id="languages_container">
+               <h3>Host language</h3>
+               <div id="languages"></div>
+               <a href="#">Show All</a>
+            </section>
+        </div>
+        <div class="lower">
+            <button> Clear All</button>
+            <button id="mymainbutton">Show All</button>
+        </div>
+    </div>
+    <div id="main_container"></div>
+    <div id="Empty"></div>
+    <div id="carding_container">
+
+    </div>
+</body>
+<script src="./Rindex.js"></script>
+
+</html>
