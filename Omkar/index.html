@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        #co {
+            width: 100vw;
+            height: 20vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #co img {
+            width: 90px;
+        }
+
+        #cv span {
+            margin: 20px;
+        }
+
+        .first {
+            width: 1200px;
+            margin: auto;
+            display: flex;
+            border-radius: 50px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            padding: 30px; 
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #i {
+            font-size: 30px;
+            background-color: red;
+            padding: 10px;
+            border-radius: 50%;
+            color: white;
+            margin-left: 20px;
+        }
+
+        hr {
+            opacity: 0.6;
+            margin: 0;
+        }
+
+        h4, a {
+            margin: 0;
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            color: blue;
+        }
+
+        h4:hover {
+            background-color: gray;
+            border-radius: 40px;
+            width: 250px;
+            height: 50px;
+        }
+
+        .secondIcon {
+            display: flex;
+            align-items: center; 
+        }
+
+        .iconContainer {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            padding: 20px;
+            border-radius: 14px;
+            margin-left: 20px; 
+        }
+
+        .iconContainer i {
+            font-size: 25px; /* Adjusted font size */
+            margin-right: 10px; /* Added margin */
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="co">
+        <img src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png" alt="air bnb">
+        <div id="cv">
+            <span>Stays</span>
+            <span>Experience</span>
+            <span>Online Experience</span>
+        </div>
+        <div class="secondIcon"> 
+            <span>Airbnb Your Home</span>
+            <i class="fas fa-globe" style="margin-left: 9px;"></i>
+            <div class="iconContainer"> 
+                <i class="fas fa-list"></i> 
+                <i class="fas fa-user"></i> 
+            </div>
+        </div>
+    </div>
+
+    <div class="first">
+        <h4 class="f">Where <br><a href="">Search destination</a></h4><hr>
+        <h4>Check in <br><a href="">Search destination</a></h4><hr>
+        <h4>Check out <br><a href="">Search destination</a></h4><hr>
+        <h4>Who <br><a href="">Search destination</a></h4>
+        <div>
+            <i class="fas fa-search" id="i"></i>
+        </div>
+    </div>
+
+</body>
+</html>
