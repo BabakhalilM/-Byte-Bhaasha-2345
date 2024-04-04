@@ -11,8 +11,9 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 40vw;
-  font-size: 20px;
+  width: 40vw;
+  height: 40vh;
+  font-size: 30px;
   padding: 20px;
   position: absolute;
   top: 20%;
@@ -78,16 +79,7 @@ display:none;
             color: black;
         }
 
-        /* a:hover {
-            color: blue;
-        } */
-
-        /* h4:hover {
-            background-color: gray;
-            border-radius: 40px;
-            width: 250px;
-            height: 50px;
-        } */
+       
 
         .secondIcon {
             display: flex;
@@ -131,16 +123,13 @@ display:none;
     </style>
 </head>
 <body>
-    <button id="button">SIGN IN</button>
 
     <div id="signInCard" class="card hidden">
         <div class="card-content">
             <h4 style="text-align: center;">Log In Or Sign Up</h4>
           <h2>Welcome to Airbnb</h2>
           <form>
-            <!-- <label for="username">Country/Region:</label> -->
-            <!-- <input type="text" id="username" name="username" value="Country/Region" required> -->
-            <!-- <label for="password">Password:</label> -->
+            
             <select class="form-control" id="country-code" placeholder="Country/Region">
                 <option value="" disabled selected hidden>Please select an option</option>
                 <option value="+91" >India (+91)</option>
@@ -152,7 +141,10 @@ display:none;
             <div>
             <input type="text" id="PHONE-NO" name="PHONE-NO" placeholder="Phone"  required>
             </div>
-            <button type="submit" style="background-color: red;color: white;width: 200px;">Continue</button>
+            <div>
+                <input type="password" id="password" name="password" placeholder="password"  required>
+                </div>
+            <button type="submit" id="submit" style="background-color: red;color: white;width: 200px;">Continue</button>
           </form>
         </div>
       </div>
@@ -168,14 +160,14 @@ display:none;
         <div class="secondIcon"> 
             <span>Airbnb Your Home</span>
             <i class="fas fa-globe" style="margin-left: 9px;"></i>
-            <div class="iconContainer"> 
+            <div class="iconContainer" id="s"> 
                 <i class="fas fa-list"></i> 
                 <i class="fas fa-user"></i> 
             </div>
         </div>
     </div>
 
-    <div class="first">
+    <div class="first" id="first">
         <h4 class="f">Where <br><input type="text" id="d_name" name="name" style="border:#ffffff;border-radius: 25px;" placeholder="search destinations"  required  /><button id="d_search">search</button></h4><hr>
         <h4 class="f">Check in <br><input
             type="date"
@@ -190,7 +182,7 @@ display:none;
         <!-- <button class="f" style="background-color: red;border-radius: 20px;">SEARCH</button> -->
         <h4 class="f">Who<br><button style="text-decoration: none;border: #ffffff;" id="addguest">Add Guests</button>
         </h4>
-        <div>
+        <div id="nav_search">
             <i class="fas fa-search" id="i"></i>
         </div>
     </div>
@@ -224,6 +216,7 @@ display:none;
         <button id="pet-plus">+</button>
       </div> -->
 </div>
-      <script src="index.js"></script>
+
+      <script src="Mindex.js"></script>
 </body>
 </html>
