@@ -256,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = k; i < k + data.images.length; i++) {
         let div = document.createElement("div");
         div.addEventListener("click", () => {
-            createnewpage(data);
             let a = document.querySelector(".newtab");
             a.click();
   
