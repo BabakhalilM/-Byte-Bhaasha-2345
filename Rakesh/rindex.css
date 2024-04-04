@@ -44,11 +44,15 @@
 
 #filter {
     z-index: -1;
+<<<<<<< HEAD
     visibility: hidden;
     /* display: none; */
     
     /* opacity: 0; */
     /* transition: opacity 0.3s ease-in-out; */
+=======
+     visibility: hidden;
+>>>>>>> f77a7fc4fe40767096f03cbca2bab6d8be1c9ae9
     background: white;
     width: 60%;
     height: 83vh;
@@ -65,8 +69,8 @@
 #filter h3,
 h5,
 a {
-    margin-left: 15px;
-    margin-top: 10px;
+    margin-left: 15px !important ;
+    margin-top: 10px !important;
 }
 
 #filter a {
@@ -337,33 +341,37 @@ p {
 
 
 
-.toptier_container {
+#Toptier_container {
     margin-top: 10px;
     border-top: 1px solid rgb(219, 219, 219);
     width: 100%;
     height: 300px;
 }
 
-.toptier_container h3 {
+#Toptier_container h3 {
     margin-top: 10px;
 }
 
-.toptier_container>div:nth-of-type(1) {
-    width: 400px;
-    height: 200px;
+.button_selected{
+   border: 1px solid black !important;
+}
+#Toptier_container>div:nth-of-type(1) {
+    width: 400px !important;
+    height: 200px !important;
     margin-left: 15px;
-    border: 1px solid rgb(190, 188, 188);
-    transition: transform 0.25s ease;
+    border: 1px solid rgb(190, 188, 188) ;
+    transition: transform 0.25s ease ;
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px ;
 }
 
-.toptier_container>div:nth-of-type(1):hover {
-    border: 1px solid black;
+#Toptier_container>div:nth-of-type(1):hover {
+    border: 1px solid black !important;
 }
 
-.toptier_container>div:nth-of-type(1):active {
-    transform: scale(0.8);
+#Toptier_container>div:nth-of-type(1):active {
+    transform: scale(0.8) ;
+    border: 1px solid black !important;
 }
 
 .selected {
