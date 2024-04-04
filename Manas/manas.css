@@ -27,6 +27,7 @@
 #co {
     width: 100vw;
     height: 15vh;
+    /* border: 1px solid ; */
     /* z-index: 5; */
     /* position: fixed; */
     display: flex;
@@ -41,6 +42,7 @@
 #cv span {
     margin: 20px;
 }
+
 .first {
     width: 70%;
     height: 13vh;
@@ -72,7 +74,6 @@
     color: white;
     margin-left: 20px;
 }
-
 hr {
     opacity: 0.6;
     margin: 0;
@@ -117,13 +118,14 @@ a {
     font-size: 20px;
     padding: 20px;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 80%;
     transform: translate(-50%, -50%);
 }
 
 #m_container {
     display: none;
+    border: 1px solid;
 }
 
 .guest-counter button {

@@ -7,7 +7,7 @@ function logScrollHeight() {
 
     if (scrollTop > lastScrollTop) {
         // Scrolling down
-        
+
         first.style.visibility = "hidden";
         first.style.position = "absolute";
     } else {
@@ -16,93 +16,98 @@ function logScrollHeight() {
         first.style.position = "static";
     }
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrollin
 }
 
 window.addEventListener("scroll", logScrollHeight);
 
 // manasjs start
 
-// let button = document.getElementById("button");
 let signInCard = document.getElementById("signInCard");
 let addguest = document.getElementById("addguest");
 let m_container = document.getElementById("m_container");
-let d_name=document.getElementById("d_name");
-let s=document.getElementById("s");
+let d_name = document.getElementById("d_name");
+let s = document.getElementById("s");
 
-let nav_search=document.getElementById("nav_search");
-let submit=document.getElementById("submit");
+let nav_search = document.getElementById("nav_search");
+let submit = document.getElementById("submit");
 
 s.addEventListener('click', function () {
     signInCard.classList.toggle("hidden");
-    signInCard.style.visibility="visible";
-    signInCard.style.zIndex=10;
-  });
+    signInCard.style.visibility = "visible";
+    signInCard.style.zIndex = 10;
+});
 
 const counters = {
-  adult: {
-    count: 0
-  },
-  child: {
-    count: 0
-  },
-  infant: {
-    count: 0
-  },
-  pet: {
-    count: 0
-  }
+    adult: {
+        count: 0
+    },
+    child: {
+        count: 0
+    },
+    infant: {
+        count: 0
+    },
+    pet: {
+        count: 0
+    }
 };
 
 function updateCounter(type, operation) {
-  let countElement = document.getElementById(type + '-count');
-  let count = parseInt(countElement.textContent);
-  if (operation === 'increment') {
-    countElement.textContent = count + 1;
-  } else if (operation === 'decrement' && count > 0) {
-    countElement.textContent = count - 1;
-  }
+    let countElement = document.getElementById(type + '-count');
+    let count = parseInt(countElement.textContent);
+    if (operation === 'increment') {
+        countElement.textContent = count + 1;
+    } else if (operation === 'decrement' && count > 0) {
+        countElement.textContent = count - 1;
+    }
 }
 let guestCard;
-
+// addguest.click();
 addguest.addEventListener('click', () => {
-  guestCard = document.createElement("div");
-  guestCard.classList.add( "guest-card", "hidden");
-  guestCard.style.zindex=12;
-  
-  for (let key in counters) {
-    let counterDiv = document.createElement("div");
-    counterDiv.classList.add("guest-counter");
+    // Create a new div element to contain the guest counters
+    guestCard = document.createElement("div");
+    guestCard.classList.add("guest-card", "hidden");
+    guestCard.style.zindex = 15;
+
+    // Append each guest counter to the guest card
+    for (let key in counters) {
+        let counterDiv = document.createElement("div");
+        // counterDiv.style.width="250px";
+        counterDiv.classList.add("guest-counter");
+
+        let span = document.createElement("span");
+        span.textContent = key.charAt(0).toUpperCase() + key.slice(1) + ':';
+        counterDiv.appendChild(span);
+        counterDiv.style.width = "250px";
+        let buttonMinus = document.createElement("button");
+        buttonMinus.style.margin = "10px";
+        buttonMinus.textContent = '-';
+        buttonMinus.addEventListener('click', () => {
+            updateCounter(key, 'decrement');
+        });
+        counterDiv.appendChild(buttonMinus);
+
+        let countSpan = document.createElement("span");
+        countSpan.id = key + '-count';
+        countSpan.textContent = counters[key].count;
+        counterDiv.appendChild(countSpan);
+
+        let buttonPlus = document.createElement("button");
+        buttonPlus.style.margin = "10px";
+        buttonPlus.textContent = '+';
+        buttonPlus.addEventListener('click', () => {
+            updateCounter(key, 'increment');
+        });
+        counterDiv.appendChild(buttonPlus);
+
+        guestCard.appendChild(counterDiv);
+    }
+
+    guestCard.classList.toggle("hidden");
+    m_container.appendChild(guestCard);
     
-    let span = document.createElement("span");
-    span.textContent = key.charAt(0).toUpperCase() + key.slice(1) + ':';
-    counterDiv.appendChild(span);
-    
-    let buttonMinus = document.createElement("button");
-    buttonMinus.textContent = '-';
-    buttonMinus.addEventListener('click', () => {
-      updateCounter(key, 'decrement');
-    });
-    counterDiv.appendChild(buttonMinus);
-    
-    let countSpan = document.createElement("span");
-    countSpan.id = key + '-count';
-    countSpan.textContent = counters[key].count;
-    counterDiv.appendChild(countSpan);
-    
-    let buttonPlus = document.createElement("button");
-    buttonPlus.textContent = '+';
-    buttonPlus.addEventListener('click', () => {
-      updateCounter(key, 'increment');
-    });
-    counterDiv.appendChild(buttonPlus);
-    
-    guestCard.appendChild(counterDiv);
-  }
-  
-  guestCard.classList.toggle("hidden");
-  m_container.appendChild(guestCard);
-  m_container.style.display = "flex";
+    m_container.style.display = "flex";
 });
 
 
@@ -134,6 +139,8 @@ d_name.addEventListener('change', async () => {
         let data = await fetchdata(d_name.value);
         console.log(data);
         if (data[1]) {
+            // findCategoryByName(data[0], data[1]);
+            // auto=false;
             createCard1(data[0], data[1]);
 
             console.log(data[0], data[1]);
@@ -146,10 +153,10 @@ d_name.addEventListener('change', async () => {
 
 window.addEventListener('click', (event) => {
     if (guestCard && !guestCard.classList.contains("hidden") && !guestCard.contains(event.target) && event.target !== addguest && event.target !== s && !signInCard.contains(event.target)) {
-      guestCard.classList.add("hidden"); // Hide guestCard
-      console.log("Guest card hidden");
+        guestCard.classList.add("hidden"); // Hide guestCard
+        console.log("Guest card hidden");
     }
-  });
+});
 
 
 
@@ -164,25 +171,19 @@ submit.addEventListener('click', () => {
         password: passwordValue
     };
 
-    // Access cart from local storage
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Check if the user is already signed up
     let alreadySignedUp = cart.some(item => item.username === usernameValue);
 
     if (alreadySignedUp) {
         alert("You are already signed up.");
     } else {
-        // Add countofitem property to data object
         data.countofitem = 1;
 
-        // Push data object to cart array
         cart.push(data);
 
-        // Store updated cart in local storage
         localStorage.setItem("cart", JSON.stringify(cart));
 
-        // Log the added data
         console.log(data);
     }
 });
@@ -227,7 +228,6 @@ document.addEventListener('DOMContentLoaded', function () {
             img.alt = "loading";
             k++;
             btn.addEventListener("click", (ele) => {
-                // console.log(categories[i]);
                 async function fetchDataAndProcess() {
                     try {
                         let mydata = await fetchcardData();
@@ -340,7 +340,6 @@ function findCategoryByName(name, mydata) {
     let islandsCategory = mydata.find(category => category.name === name);
     if (islandsCategory) {
         const islandsCards = islandsCategory.cards;
-        // console.log(islandsCards);
         islandsCards.forEach(element => {
             createCard1(element, false);
         });
@@ -391,11 +390,11 @@ function generateCardData(category, z) {
             Ratting: ((Math.random() * 4) + 1).toFixed(2),
             distance_away_km: Math.floor(Math.random() * 5000) + 1,
             date_available: randomDateRange(),
-            price_per_night: Math.floor(Math.random() * 9001) + 1000 
+            price_per_night: Math.floor(Math.random() * 9001) + 1000 // Random price between 1000 and 10000
         };
         data.cards.push(card);
     }
-    return data; 
+    return data; // Return the generated data
 }
 
 function randomDateRange() {
@@ -417,15 +416,13 @@ function randomDateRange() {
 function createCard1(data, check) {
 
     let div = document.createElement("div");
-    // div.style.border="solid";
     if (check) {
         cont.innerHTML = "";
-        // div.style.width="300px";
         div.style.flexGrow = "0";
     }
     let fav = document.createElement("button");
     fav.innerText = `\u2661`;
-    div.className = "slide1"; 
+    div.className = "slide1";
     let divhead = document.createElement("div");
     divhead.className = "divhead";
     let divbody = document.createElement("div");
@@ -437,7 +434,7 @@ function createCard1(data, check) {
     let carouselDiv = document.createElement("div");
     carouselDiv.className = "carousel";
     fav.className = "b_favorate";
-    
+    // divhead.append(fav);
     fav.addEventListener("click", (e) => {
     });
     let k = Math.floor(Math.random() * data.images.length);
@@ -476,6 +473,7 @@ function createCard1(data, check) {
 
     divbody.append(rating, placename, distance, dateavailable, price);
     div.append(divhead, divbody);
+    // div.style.border="solid red";
     cont.appendChild(div);
 
 }
@@ -484,6 +482,7 @@ async function fetchfooterdata(url) {
     try {
         let ans = await fetch(url);
         let data = await ans.json();
+        // console.log(data);
         return data;
     }
     catch (err) {
@@ -573,14 +572,13 @@ function createbodyinspiration(key, arr) {
 // Rakesh js start
 let buttonfilter = document.querySelector(".buttonfilter");
 let filter_container = document.getElementById("filter");
-
-function btnfilter(){
-    filter_container.style.zIndex=5;
-    filter_container.style.visibility="visible";
+function btnfilter() {
+    filter_container.style.zIndex = 5;
+    filter_container.style.visibility = "visible";
     console.log("hi");
 };
 
-
+// function filtershow() {
 
 let main_conatiner = document.getElementById("main_container");
 
@@ -949,13 +947,15 @@ document.addEventListener('DOMContentLoaded', function () {
             ans = 836;
         }
         if (event.pageX >= 1100 && !reachedMax) {
-            ans = 27776; 
-            reachedMax = true; 
+            ans = 27776; // Limit the value to 27776 only if it hasn't reached yet
+            reachedMax = true; // Set reachedMax to true once the limit is reached
         }
         if (event.pageX >= 700 && event.pageX <= 710) {
             ans = 13333;
         }
+        // ans += direction * 100; // Increase or decrease ans based on direction
         mininput.value = `₹${Math.ceil(ans)}`
+        //startX = event.clientX; // Update startX for the next movement
     }
 
     function onMouseUps() {
@@ -983,10 +983,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Limit the value to 27776 only if it hasn't reached yet
-        if (newY >= 722 ) {
+        if (newY >= 722) {
             ans2 = 27776;
         }
-        if (newY> 300 && newY <305) {
+        if (newY > 300 && newY < 305) {
             ans2 = 13336;
         }
         // Update max input value

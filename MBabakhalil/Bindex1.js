@@ -1,20 +1,20 @@
-let scale = 1; 
+let scale = 1; // Initial scale
   
   function zoomIn() {
-    scale += 0.1; 
+    scale += 0.1; // Increase scale by 0.1
     updateZoom();
   }
 
   function zoomOut() {
-    if (scale > 0.1) { 
-      scale -= 0.1; 
+    if (scale > 0.1) { // Prevent zooming out beyond original size
+      scale -= 0.1; // Decrease scale by 0.1
       updateZoom();
     }
   }
 
   function updateZoom() {
     const img = document.getElementById('zoomImg');
-    img.style.transform = `scale(${scale})`; 
+    img.style.transform = `scale(${scale})`; // Apply scale transformation
   }
 
   const data = {
@@ -53,6 +53,11 @@ placeoffers.append(seem);
 
 
 var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+// var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 let modalcontent=document.querySelector(".modal-content");
 
@@ -73,14 +78,21 @@ for(let van in data){
     modalcontent.appendChild(hr);
     modalcontent.appendChild(div);
 }
+// When the user clicks the button, open the modal 
 seem.onclick = function() {
   modal.style.display = "block";
 }
+// seem.click();
+// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
+
+// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
+
+
