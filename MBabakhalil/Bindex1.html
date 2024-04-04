@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<link rel="stylesheet" href="./style.css">
+<style>
+
+    .nav {
+        display: flex;
+        justify-content: space-around;
+        font-size: 24px;
+        vertical-align: middle;
+        
+    }
+
+    .img {
+        width: 100px;
+    }
+
+    .nav hr {
+        height: 50px;
+    }
+
+    .nav>div:nth-of-type(2)>p {
+        padding: 0px 10px 0px 10px;
+    }
+
+    .nav>div:nth-of-type(2)>p:nth-of-type(3) span {
+        font-size: 24px;
+        border: 1px solid;
+        margin-left: 10px;
+        border-radius: 50%;
+        padding: 5px;
+        vertical-align: middle;
+    }
+
+    .nav>div:nth-of-type(2) {
+        width: 35%;
+        height: 80px;
+        display: flex;
+        border: 1px solid;
+        padding: 0px 20px 0px 20px;
+
+        border-radius: 40px;
+    }
+
+    .nav>div:nth-of-type(3) {
+        display: flex;
+    }
+
+    .nav>div:nth-of-type(3)>p {
+        padding: 10px;
+    }
+
+    .nav>div:nth-of-type(3)>p:nth-of-type(2)>span {
+        font-size: 28px;
+        vertical-align: middle;
+
+    }
+
+    .nav>div:nth-of-type(3)>p:nth-of-type(2) {
+        border: 1px solid;
+        border-radius: 30px;
+        /* font-size: 32px; */
+    }
+
+    .imghead {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .imghead>div>p {
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    .imghead>div {
+        display: flex;
+    }
+
+    .img1 {
+        display: flex;
+    }
+
+    .img1>img {
+        width: 50%;
+        margin: 10px 0px 10px 10px;
+        display: inline-flex;
+    }
+
+    .img1>div:nth-of-type(1) {
+        width: 48%;
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .img1>div:nth-of-type(1)>img {
+        width: 47%;
+        margin: 10px;
+        /* display: flex; */
+    }
+    .said{
+        width: 55%;
+        font-size: 22px;
+    }
+    
+    .in{
+        top: 40px;
+        right: 20px;
+    }
+    .out{
+        top:100px;
+        right: 20px;
+    }
+    .said>div{
+        display: flex;
+        align-items: center;
+    }
+    #placeoffers>h1{
+        width: 100%;
+
+    }
+    #placeoffers{
+        flex-wrap: wrap;
+    }
+    .said>div>div{
+        margin: 10px;
+    }
+    .said>div>div>h4{
+        margin: 0;
+    }
+    .said>div>div>p{
+        margin: 8px 0px 0px 0px;
+    }
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 4; 
+  padding-left: 100px;
+  padding-top: 100px; /* Location of the box */
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+  padding: 20px;
+  width: 80%;
+  height: 500px; /* Set a fixed height */
+  overflow-y: auto;
+  
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#price_card_container{
+    width: 400px;
+    float: right;
+    margin-right: 40px;
+    /* position: fixed; */
+    margin-top: 170px;
+    height: 600px;
+    border: 1px solid gray;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: sans-serif;
+    gap: 15px;
+}
+
+#price_card_container>div:nth-of-type(1){
+   display: flex;
+  
+   margin-left: 10%;
+   
+   
+}
+#price_card_container>div:nth-of-type(1)>p{
+    margin-top: 26px;
+    margin-left: 10px;
+}
+
+
+
+#price_card_container>div:nth-of-type(2){
+    margin-left: 5%;
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 24px;
+}
+#check-in-container{
+    display: flex;
+    justify-content: space-around;
+
+}
+#check-in-container>div{
+  
+   border-bottom: 1px solid gray;
+   width: 50%;
+  
+}
+#check-in-container>div:nth-of-type(1){
+    border-right: 1px solid gray; 
+}
+
+#price_card_container>div:nth-of-type(2) p{
+    margin-left: 7%;
+    
+}
+
+
+#price_card_container button,#placeoffers>button{
+    width: 90%;
+    margin-left: 5%;
+height: 45px;
+border-radius: 15px;
+background-color: #dc0d64;
+}
+button:hover{
+    background-color: #e51e55;
+}
+
+
+#price_card_container>div:nth-of-type(4){
+    text-align: center;
+}
+
+#card_price{
+   
+    display: flex;
+    justify-content: space-around;
+}
+#card_price>div{
+    display: flex;
+    flex-direction: column;
+    
+}
+#card_price>div:nth-of-type(1){
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    width: 50%;
+    
+}
+#card_price>div:nth-of-type(2){
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    width: 30%;
+    
+    
+}
+
+#card_price a{
+    color: black;
+}
+#card_totalprice{
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+   
+}
+#card_totalprice>h3:nth-of-type(2){
+   margin-left: 5%;
+}
+
+</style>
+
+<body>
+    <div class="nav">
+        <div class="img">
+            <img style="width: 100px;" src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png" alt="air bnb">
+        </div>
+        <div class="div">
+            <p>AnyWhere</p>
+            <hr>
+            <p>Any week</p>
+            <hr>
+            <p>Add guests <span class="material-symbols-outlined">
+                    search
+                </span></p>
+        </div>
+        <div>
+            <h5>Airbnb your home</h5>
+            <p><span class="material-symbols-outlined">
+                    language
+                </span></p>
+            <p><span class="material-symbols-outlined">
+                    menu
+                </span><span class="material-symbols-outlined">
+                    account_circle
+                </span></p>
+        </div>
+    </div>
+    <div class="imghead">
+        <h1>Over Water Suite with Hammock</h1>
+        <div>
+            <p><span class="material-symbols-outlined">
+                    ios_share
+                </span> <a href=""> Share</a></p>
+            <p><span class="material-symbols-outlined">
+                    favorite
+                </span>Save</p>
+        </div>
+    </div>
+    <div class="img1">
+        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-852899544635683289/original/c627f47e-8ca9-4471-90d4-1fd987dd2362.jpeg?im_w=960"
+            alt="">
+        <div>
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-852929652016621394/original/49a9a199-6d71-4504-87fa-a95fe818e44f.jpeg?im_w=720"
+                alt="">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-852929652016621394/original/e9c6f8d0-83f3-46d7-b2e2-b9d66bf079ce.jpeg?im_w=720"
+                alt="">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-852929652016621394/original/49610013-776d-4061-9c58-8e5a3c1e9314.jpeg?im_w=720"
+                alt="">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-852929652016621394/original/24a79284-6ec5-4e3b-b8e2-ffba166891b5.jpeg?im_w=720"
+                alt="">
+        </div>
+    </div>
+    <div id="price_card_container">
+        <div>
+           <h2>&#8377; 2,410</h2><p>night</p>
+        </div>
+        <div>
+           <div id="check-in-container">
+           <div >
+              <p>CHECK-IN</p>
+              <P>4/5/2024</P>
+           </div>
+           <div>
+              <p>CHECK-IN</p>
+              <P>4/5/2024</P>
+           </div>
+          </div>
+          <div id="expand"> 
+              <p>GUESTS</p>
+              <p>1 guest</p>
+          </div>
+        </div>
+        <div>
+          <button>Reserve</button>
+        </div>
+        <div>
+            <p>You won't be charged yet !</p>
+        </div>
+        <div id="card_price">
+            <div>
+               <p><a href="">₹49,363 x 5 nights
+                  
+                  </a>
+                </p> <p><a href="">Airbnb service fee
+                     </a></p>
+               </div>
+            <div>
+              <p>&#8377; 2,46,817</p>
+              <p>&#8377; 34,845</p>
+            </div>
+        </div>
+        <div id="card_totalprice">
+               <h3>Total before takes</h3>              
+               <h3>&#8377; 2,81,662</h3>
+        </div>
+  </div>
+    <div class="said">
+        <h1>Private room in resort in Male, Maldives</h1>
+        <p>3 gueats - 1 bedroom - ibed - 1 shared bathroom</p>
+        <p>&#9733; 4.5 - 6.reviews</p>
+        <hr>
+        <div>
+            <div><span class="material-symbols-outlined">
+                    account_circle
+                </span></div>
+            <div>
+                <h4>Hosted by Sajjad</h4>
+                <p>Superhost. 7years hosting</p>
+
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div><span class="material-symbols-outlined">
+                    account_circle
+                </span></div>
+            <div>
+                <h4>Sajjad is a Superhost</h4>
+                <p>Superhosts are experienced, highly rated Host.</p>
+
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div><span class="material-symbols-outlined">
+                    account_circle
+                </span>
+            </div>
+            <div>
+                <h4>Dive right in</h4>
+                <p>This is one of the places in the are with a pool</p>
+            </div>
+        </div>
+        <hr>
+        <p>A modern Maldivian resort escape for world-class travellers in search of adventure, adrenaline and a truly
+            remarkable holiday
+            experience.</p>
+        <p>> Water Bungalow at 4 star private Island Resort</p>
+        <p>> Entire Place</p>
+        <h3><a href=""> show more ></a></h3>
+
+        <hr>
+        <div id="placeoffers">
+            <h1>What this place offers</h1>
+
+        </div>
+        <!-- <div class="container">
+            <img id="zoomImg"
+                src="https://th.bing.com/th/id/R.d7548bed714f66c6fd0dba0f20b0b005?rik=jNWqUQH0y23%2fzA&riu=http%3a%2f%2f1.bp.blogspot.com%2f_dCTYHcfo86M%2fSDbBbbdXMZI%2fAAAAAAAAAAs%2f2wa2KyjZ4r8%2fS1600-R%2fworld-map.gif&ehk=kameSq6syM53nGMrB3fFBOhiF3tklPpfmTkW64PXyNw%3d&risl=&pid=ImgRaw&r=0"
+                alt="Image">
+                
+        <div class="zoom-buttons">
+            <button class="in" onclick="zoomIn()">+</button>
+            <button class="out" onclick="zoomOut()">-</button>
+        </div>
+        </div> -->
+
+    </div>
+<br><br>
+<!-- <hr> -->
+    <div class="container">
+        <div>
+          <h1>Where you’ll be</h1>
+        </div>
+        <div>
+          <h3>Thrissur, Kerala, India</h3>
+        </div>
+        <div id="maps">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.8032917586797!2d76.03679771103123!3d10.59454736247777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba79461d5c8d24b%3A0x6f7a8d815f48709e!2sGuruvayur%20Temple!5e0!3m2!1sen!2sin!4v1712152277627!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <section>
+          <h1 style="margin-top: 75px;">Meet your Host</h1>
+          <!-- <div>
+            <div id="host"> -->
+  
+            </div>
+          </div>
+          <div class="container1">
+            <div>
+                <hr><br><br>
+            </div>
+            <div class="first">
+                <img src="https://a0.muscache.com/im/pictures/user/ade51fb9-5bbc-495d-ba2c-d033179f781d.jpg?im_w=240" alt="">
+                <div>
+                    <a href="">Hosted by Titus</a><br>
+                    <span>Joined in January 2023</span>
+                </div>
+            </div>
+        </section>
+        <div class="second">
+          <i class="fab fa-star"></i>
+          <a href="">6 Reviews</a>
+          <i class="fab fa-star"></i>
+          <a href="">Identity verified</a><br><br>
+          <p>Response rate: 91%</p><br>
+          <p>Response time: within an hour</p><br><br>
+          <button id="hostbutton">Contact host</button><br><br>
+  
+          <p style="font-size: 1rem;">To protect your payment, <br> never transfer money or communicate outside of the Airbnb <br> website or app.</p>
+          <br>
+          <br><hr>
+      </div>
+      
+      </div>
+      <div class="footer">
+        <div class="main-boxF">
+          <div class="boxF">
+            <div class="ul">
+              <ul>
+                <br />
+                <li>
+                  <b>Support</b>
+                </li>
+                <br />
+                <li>Help Center</li>
+                <br />
+                <li>AirCover</li>
+                <br />
+                <li>Anti-discrimination</li>
+                <br />
+                <li>Disability support</li>
+                <br />
+                <li>Cancellation option</li>
+              </ul>
+            </div>
+          </div>
+          <div class="boxF">
+            <div class="ul">
+              <ul>
+                <br />
+                <li>
+                  <b>Hosting</b>
+                </li>
+                <br />
+                <li>Airbnb your home</li>
+                <br />
+                <li>AirCover for Hosts</li>
+                <br />
+                <li>Hosting resource</li>
+                <br />
+                <li>Community forum</li>
+                <br />
+                <li>Hosting responsibly</li>
+              </ul>
+            </div>
+          </div>
+          <div class="boxF airbnbDiv">
+            <div class="ul">
+              <ul>
+                <br />
+                <li>
+                  <b>Airbnb</b>
+                </li>
+                <br />
+                <li>Newsroom</li>
+                <br />
+                <li>New features</li>
+                <br />
+                <li>Careers</li>
+                <br />
+                <li>Investors</li>
+                <br />
+                <li>Airbnb.org emergency stays</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div
+          class="hr"
+          style="
+            height: 4px;
+            width: 90%;
+            margin: auto;
+            background-color: rgb(229, 229, 229);
+          "
+        ></div>
+        <br />
+        <div class="footer1">
+          <div class="left">
+            © 2024 Airbnb, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a> ·
+            <a href="#">Sitemap</a> · <a href="#">Company details</a>
+          </div>
+          <div class="right">
+            🌐 English (IN) 💵 INR
+            <div class="media">
+              <span>
+                follow us on
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+    
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <!-- <p>Some text in the Modal..</p> -->
+        </div>
+      
+      </div>
+</body>
+
+</html>
+<script src="./Bindex1.js"></script>

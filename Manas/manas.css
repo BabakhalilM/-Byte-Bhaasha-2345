@@ -1,10 +1,14 @@
 .card {
     background-color: #ffffff;
+    z-index: -1;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 40vw;
-    font-size: 20px;
+    visibility: hidden;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    width: 40vw;
+    height: 40vh;
+    font-size: 30px;
     padding: 20px;
     position: absolute;
     top: 20%;
@@ -15,10 +19,16 @@
 .hidden {
     display: none;
 }
-
+#fixit{
+    position: fixed;
+    z-index: 3;
+    background-color: white;
+}
 #co {
     width: 100vw;
-    height: 10vh;
+    height: 15vh;
+    /* z-index: 5; */
+    /* position: fixed; */
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -31,15 +41,15 @@
 #cv span {
     margin: 20px;
 }
-
 .first {
-    width: 80%;
-    height: 10vh;
+    width: 70%;
+    height: 13vh;
     margin: auto;
     display: flex;
+    font-size: 20px;
     border-radius: 50px;
     /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 30px;
     justify-content: space-between;
     align-items: center;
@@ -47,14 +57,15 @@
 
 .f {
     /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 10px;
-    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    font-size: 18px;
     box-sizing: border-box;
     border-radius: 25px;
 }
 
 #i {
-    font-size: 28px;
+    font-size: 24px;
     background-color: red;
     padding: 10px;
     border-radius: 50%;
@@ -74,16 +85,7 @@ a {
     color: black;
 }
 
-/* a:hover {
-            color: blue;
-        } */
 
-/* h4:hover {
-            background-color: gray;
-            border-radius: 40px;
-            width: 250px;
-            height: 50px;
-        } */
 
 .secondIcon {
     display: flex;
@@ -91,7 +93,8 @@ a {
 }
 
 .iconContainer {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 20px;
     border-radius: 14px;
     margin-left: 20px;
@@ -99,16 +102,17 @@ a {
 
 .iconContainer i {
     font-size: 25px;
-    /* Adjusted font size */
     margin-right: 10px;
-    /* Added margin */
+    
 }
 
 .guest-card {
     background-color: #ffffff;
     border: 1px solid #ccc;
+    z-index: 1;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     max-width: 40vw;
     font-size: 20px;
     padding: 20px;

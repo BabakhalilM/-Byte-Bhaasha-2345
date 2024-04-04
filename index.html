@@ -8,7 +8,6 @@
     <script src="https://kit.fontawesome.com/e913741245.js" crossorigin="anonymous"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
     <script src="https://kit.fontawesome.com/38d3418c06.js" crossorigin="anonymous"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -16,32 +15,31 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- <title>Bootstrap Example</title> -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    
-
-
+        
     <link rel="stylesheet" href="./Rakesh/rindex.css">
     <link rel="stylesheet" href="./MBabakhalil/bstyles.css">
     <link rel="stylesheet" href="./Manas/manas.css">
     <link rel="stylesheet" href="./Aditya/footer/style.css">
+    <style>
+        .newtab {
+            display: none;
+        }
+    </style>
 
 </head>
 
 <body>
     <!-- Manas Start -->
-    <button id="button">SIGN IN</button>
-
     <div id="signInCard" class="card hidden">
         <div class="card-content">
             <h4 style="text-align: center;">Log In Or Sign Up</h4>
             <h2>Welcome to Airbnb</h2>
             <form>
-                <!-- <label for="username">Country/Region:</label> -->
-                <!-- <input type="text" id="username" name="username" value="Country/Region" required> -->
-                <!-- <label for="password">Password:</label> -->
+
                 <select class="form-control" id="country-code" placeholder="Country/Region">
                     <option value="" disabled selected hidden>Please select an option</option>
                     <option value="+91">India (+91)</option>
@@ -53,74 +51,58 @@
                 <div>
                     <input type="text" id="PHONE-NO" name="PHONE-NO" placeholder="Phone" required>
                 </div>
-                <button type="submit" style="background-color: red;color: white;width: 200px;">Continue</button>
+                <div>
+                    <input type="password" id="password" name="password" placeholder="password" required>
+                </div>
+                <button type="submit" id="submit"
+                    style="background-color: red;color: white;width: 200px;">Continue</button>
             </form>
         </div>
     </div>
-    <div id="co">
-        <img src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png" alt="air bnb">
-        <div id="cv">
-            <span>Stays</span>
-            <span>Experience</span>
-            <span>Online Experience</span>
-        </div>
-        <div class="secondIcon">
-            <span>Airbnb Your Home</span>
-            <i class="fas fa-globe" style="margin-left: 9px;"></i>
-            <div class="iconContainer">
-                <i class="fas fa-list"></i>
-                <i class="fas fa-user"></i>
+
+    <div id="fixit">
+        <div id="co">
+            <img src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png" alt="air bnb">
+            <div id="cv">
+                <span>Stays</span>
+                <span>Experience</span>
+                <span>Online Experience</span>
+            </div>
+            <div class="secondIcon">
+                <span>Airbnb Your Home</span>
+                <i class="fas fa-globe" style="margin-left: 9px;"></i>
+                <div class="iconContainer" id="s">
+                    <i class="fas fa-list"></i>
+                    <i class="fas fa-user"></i>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="first">
-        <h4 class="f">Where <br><input type="text" id="d_name" name="name" style="border:#ffffff;border-radius: 25px;"
-                placeholder="search destinations" required /><button id="d_search">search</button></h4>
-        <hr>
-        <h4 class="f">Check in <br><input type="date" id="check-in" name="check-in"
-                style="border:#ffffff;border-radius: 25px;" placeholder="Add Dates" /></h4>
-        <hr>
-        <h4 class="f">Check out <br><input type="date" id="check-out" name="check-out"
-                style="border:#ffffff;border-radius: 25px;" /></h4>
-        <hr>
-        <!-- <button class="f" style="background-color: red;border-radius: 20px;">SEARCH</button> -->
-        <h4 class="f">Who<br><button style="text-decoration: none;border: #ffffff;" id="addguest">Add Guests</button>
-        </h4>
-        <div>
-            <i class="fas fa-search" id="i"></i>
+        <div class="first" id="first">
+            <h4 class="f">Where <br><input type="text" id="d_name" name="name"
+                    style="border:#ffffff;border-radius: 25px;" placeholder="search destinations" required /><button
+                    id="d_search">search</button></h4>
+            <hr>
+            <h4 class="f">Check in <br><input type="date" id="check-in" name="check-in"
+                    style="border:#ffffff;border-radius: 25px;" placeholder="Add Dates" /></h4>
+            <hr>
+            <h4 class="f">Check out <br><input type="date" id="check-out" name="check-out"
+                    style="border:#ffffff;border-radius: 25px;" /></h4>
+            <hr>
+            <h4 class="f">Who<br><button style="text-decoration: none;border: #ffffff;" id="addguest">Add
+                    Guests</button>
+            </h4>
+            <div id="nav_search">
+                <i class="fas fa-search" id="i"></i>
+            </div>
         </div>
+
     </div>
 
     <div id="m_container">
-        <!-- <div class="guest-counter">
-        <span>Adults:</span>
-        <button id="adult-minus">-</button>
-        <span id="adult-count">0</span>
-        <button id="adult-plus">+</button>
-      </div>
-      
-      <div class="guest-counter">
-        <span>Children:</span>
-        <button id="child-minus">-</button>
-        <span id="child-count">0</span>
-        <button id="child-plus">+</button>
-      </div>
-      
-      <div class="guest-counter">
-        <span>Infants:</span>
-        <button id="infant-minus">-</button>
-        <span id="infant-count">0</span>
-        <button id="infant-plus">+</button>
-      </div>
-      
-      <div class="guest-counter">
-        <span>Pets:</span>
-        <button id="pet-minus">-</button>
-        <span id="pet-count">0</span>
-        <button id="pet-plus">+</button>
-      </div> -->
     </div>
+
+    <script src="Mindex.js"></script>
     <!-- Manas end -->
 
     <!-- Rakesh start -->
@@ -396,14 +378,14 @@
             <button id="mymainbutton">Show All</button>
         </div>
     </div>
-    <div id="main_container"></div>
-    <div id="Empty"></div>
-    <div id="carding_container">
+
     </div>
     <!-- Rakesh end -->
     <!-- MBabakhalil start -->
-    
+    <a href="./MBabakhalil/Bindex1.html" target="_blank" rel="noopener noreferrer"
+        class="newtab">jhkjvhknekjfnkhfkds</a>
     <br>
+    <br><br><br><br><br><br><br><br><br>
     <div class="B_uupercourosel">
         <div class="posi">
             <div class="carousel-container">
@@ -418,9 +400,9 @@
                     </span></button>
             </div>
         </div>
-        <div class="buttonfilter"><span class="material-symbols-outlined">
+        <button onclick="btnfilter()" class="buttonfilter"><span class="material-symbols-outlined">
                 tune
-            </span>filter</div>
+            </span>Filter</button>
 
         <div class="form-check form-switch">
 
@@ -432,6 +414,7 @@
 
         <div></div>
     </div>
+    <br>
     <div class="cont">
         <div class="carousel-container1">
             <div class="carousel-slider1">
@@ -439,9 +422,14 @@
             </div>
         </div>
     </div>
+    <br>
+    <div id="carding_container"></div>
+
     <div class="showdiv"></div>
+    <br>
+
     <div class="b_inspiration">
-        
+
         <h2 style="margin-left: 50px;">Inspiration for future getaways</h2>
         <div class="headinpirration">
 

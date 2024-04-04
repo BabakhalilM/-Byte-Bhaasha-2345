@@ -1,7 +1,7 @@
 let buttonfilter = document.querySelector(".buttonfilter");
 let filter_container = document.getElementById("filter");
 buttonfilter.addEventListener("click",()=>{
-    filter_container.style.display="block";
+    filter_container.style.opacity=1;
 }
 );
 
@@ -100,7 +100,7 @@ buttonfilter.addEventListener("click",()=>{
 
     mininput.value = '₹836';
     maxinput.value = '₹27776';
-    document.addEventListener('DOMContentLoaded', function () {
+    // document.addEventListener('DOMContentLoaded', function () {
         var isDragging = false;
         var startX, startY;
 
@@ -150,7 +150,7 @@ buttonfilter.addEventListener("click",()=>{
             document.removeEventListener('mousemove', ofMouseMove);
             document.removeEventListener('mouseup', ofMouseUp);
         }
-    });
+    // });
 
     show_more_extrainfo.addEventListener("click", () => {
         if (bool === false) {
@@ -1006,15 +1006,3 @@ buttonfilter.addEventListener("click",()=>{
 
         })
     }
-    // booking_container.addEventListener('click',()=>{
-    //     console.log(booking_container.value)
-    // })
-
-    // booking_container2.addEventListener('click',()=>{
-    //     console.log(booking_container2.value)
-    // })
-
-    // booking_container3.addEventListener('click',()=>{
-    //     console.log(booking_container3.value)
-    // })
-// };

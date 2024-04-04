@@ -1,83 +1,109 @@
+var lastScrollTop = 0; // Variable to store the last scroll position
+
+function logScrollHeight() {
+    var scrollHeight = document.documentElement.scrollHeight;
+    var first = document.getElementById("first");
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        
+        first.style.visibility = "hidden";
+        first.style.position = "absolute";
+    } else {
+        // Scrolling up
+        first.style.visibility = "visible";
+        first.style.position = "static";
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+}
+
+window.addEventListener("scroll", logScrollHeight);
+
 // manasjs start
-let button = document.getElementById("button");
+
+// let button = document.getElementById("button");
 let signInCard = document.getElementById("signInCard");
 let addguest = document.getElementById("addguest");
 let m_container = document.getElementById("m_container");
-let d_name = document.getElementById("d_name");
+let d_name=document.getElementById("d_name");
+let s=document.getElementById("s");
 
-button.addEventListener('click', function () {
+let nav_search=document.getElementById("nav_search");
+let submit=document.getElementById("submit");
+
+s.addEventListener('click', function () {
     signInCard.classList.toggle("hidden");
-});
+    signInCard.style.visibility="visible";
+    signInCard.style.zIndex=10;
+  });
 
 const counters = {
-    adult: {
-        count: 0
-    },
-    child: {
-        count: 0
-    },
-    infant: {
-        count: 0
-    },
-    pet: {
-        count: 0
-    }
+  adult: {
+    count: 0
+  },
+  child: {
+    count: 0
+  },
+  infant: {
+    count: 0
+  },
+  pet: {
+    count: 0
+  }
 };
 
 function updateCounter(type, operation) {
-    let countElement = document.getElementById(type + '-count');
-    let count = parseInt(countElement.textContent);
-    if (operation === 'increment') {
-        countElement.textContent = count + 1;
-    } else if (operation === 'decrement' && count > 0) {
-        countElement.textContent = count - 1;
-    }
+  let countElement = document.getElementById(type + '-count');
+  let count = parseInt(countElement.textContent);
+  if (operation === 'increment') {
+    countElement.textContent = count + 1;
+  } else if (operation === 'decrement' && count > 0) {
+    countElement.textContent = count - 1;
+  }
 }
+let guestCard;
 
 addguest.addEventListener('click', () => {
-    // Create a new div element to contain the guest counters
-    let guestCard = document.createElement("div");
-    guestCard.classList.add("card", "guest-card", "hidden");
-
-    // Append each guest counter to the guest card
-    for (let key in counters) {
-        let counterDiv = document.createElement("div");
-        counterDiv.classList.add("guest-counter");
-
-        let span = document.createElement("span");
-        span.textContent = key.charAt(0).toUpperCase() + key.slice(1) + ':';
-        counterDiv.appendChild(span);
-
-        let buttonMinus = document.createElement("button");
-        buttonMinus.textContent = '-';
-        buttonMinus.addEventListener('click', () => {
-            updateCounter(key, 'decrement');
-        });
-        counterDiv.appendChild(buttonMinus);
-
-        let countSpan = document.createElement("span");
-        countSpan.id = key + '-count';
-        countSpan.textContent = counters[key].count;
-        counterDiv.appendChild(countSpan);
-
-        let buttonPlus = document.createElement("button");
-        buttonPlus.textContent = '+';
-        buttonPlus.addEventListener('click', () => {
-            updateCounter(key, 'increment');
-        });
-        counterDiv.appendChild(buttonPlus);
-
-        guestCard.appendChild(counterDiv);
-    }
-
-    // Toggle the visibility of the guest card
-    guestCard.classList.toggle("hidden");
-
-    // Append the guest card to the m_container div
-    m_container.appendChild(guestCard);
-    m_container.style.display = "flex";
+  guestCard = document.createElement("div");
+  guestCard.classList.add( "guest-card", "hidden");
+  guestCard.style.zindex=12;
+  
+  for (let key in counters) {
+    let counterDiv = document.createElement("div");
+    counterDiv.classList.add("guest-counter");
+    
+    let span = document.createElement("span");
+    span.textContent = key.charAt(0).toUpperCase() + key.slice(1) + ':';
+    counterDiv.appendChild(span);
+    
+    let buttonMinus = document.createElement("button");
+    buttonMinus.textContent = '-';
+    buttonMinus.addEventListener('click', () => {
+      updateCounter(key, 'decrement');
+    });
+    counterDiv.appendChild(buttonMinus);
+    
+    let countSpan = document.createElement("span");
+    countSpan.id = key + '-count';
+    countSpan.textContent = counters[key].count;
+    counterDiv.appendChild(countSpan);
+    
+    let buttonPlus = document.createElement("button");
+    buttonPlus.textContent = '+';
+    buttonPlus.addEventListener('click', () => {
+      updateCounter(key, 'increment');
+    });
+    counterDiv.appendChild(buttonPlus);
+    
+    guestCard.appendChild(counterDiv);
+  }
+  
+  guestCard.classList.toggle("hidden");
+  m_container.appendChild(guestCard);
+  m_container.style.display = "flex";
 });
-
 
 
 async function fetchdata(val) {
@@ -89,10 +115,9 @@ async function fetchdata(val) {
             // console.log(i.cards);
             for (let j of i.cards) {
                 //    console.log(j.place_name);
-                if(val==j.place_name){
-                    return [j,true];
+                if (val == j.place_name) {
+                    return [j, true];
                 }
-
             }
         }
         alert("Data not found");
@@ -104,15 +129,13 @@ async function fetchdata(val) {
 
 d_name.addEventListener('change', async () => {
     console.log(d_name.value);
-    
+
     try {
         let data = await fetchdata(d_name.value);
         console.log(data);
         if (data[1]) {
-            // findCategoryByName(data[0], data[1]);
-            // auto=false;
-            createCard1(data[0],data[1]);
-            
+            createCard1(data[0], data[1]);
+
             console.log(data[0], data[1]);
         }
         d_name.value = "";
@@ -121,17 +144,48 @@ d_name.addEventListener('change', async () => {
     }
 });
 
-// d_name.addEventListener('change', async () => {
-//     console.log(d_name.value);
-    
-//     let data = fetchdata(d_name.value);
-//     console.log(data);
-//     if(data[2]){
-//     findCategoryByName(data[0], data[1]);
-//     console.log(data[0],data[1]);
-//     }
-//     d_name.value="";
-// })
+window.addEventListener('click', (event) => {
+    if (guestCard && !guestCard.classList.contains("hidden") && !guestCard.contains(event.target) && event.target !== addguest && event.target !== s && !signInCard.contains(event.target)) {
+      guestCard.classList.add("hidden"); // Hide guestCard
+      console.log("Guest card hidden");
+    }
+  });
+
+
+
+
+
+submit.addEventListener('click', () => {
+    let usernameValue = document.getElementById('PHONE-NO').value;
+    let passwordValue = document.getElementById('password').value;
+
+    let data = {
+        username: usernameValue,
+        password: passwordValue
+    };
+
+    // Access cart from local storage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if the user is already signed up
+    let alreadySignedUp = cart.some(item => item.username === usernameValue);
+
+    if (alreadySignedUp) {
+        alert("You are already signed up.");
+    } else {
+        // Add countofitem property to data object
+        data.countofitem = 1;
+
+        // Push data object to cart array
+        cart.push(data);
+
+        // Store updated cart in local storage
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Log the added data
+        console.log(data);
+    }
+});
 // manas js end
 
 // MBaba khalil js start
@@ -148,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "https://a0.muscache.com/pictures/957f8022-dfd7-426c-99fd-77ed792f6d7a.jpg",
         "https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg",
         "https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg"]
-  
+
     const categories = [
         "Islands", "Design", "Arctic", "Luxe", "Earth homes", "Top of the world", "Treehouses",
         "Tiny homes", "Beach", "Caves", "OMG!", "Historical homes", "Rooms", "Castles", "National parks",
@@ -159,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Domes", "Casas particulares", "Desert", "Off-the-grid", "Play", "Adapted", "Ski-in/out", "Boats",
         "Houseboats", "Containers", "Beachfront", "Grand pianos", "Creative spaces", "Riads", "Trulli", "Dammusi"
     ];
-  
+
     function createSlide(startIndex) {
         let div = document.createElement("div");
         div.className = "slide";
@@ -177,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 async function fetchDataAndProcess() {
                     try {
                         let mydata = await fetchcardData();
-  
+
                         if (mydata) {
                             findCategoryByName(categories[i], mydata);
                         } else {
@@ -187,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.error(err);
                     }
                 }
-  
+
                 fetchDataAndProcess();
             });
             btn.append(figure);
@@ -195,57 +249,56 @@ document.addEventListener('DOMContentLoaded', function () {
             figcaption.innerText = categories[i];
             div.appendChild(btn);
         }
-  
+
         slider.appendChild(div);
     }
-  
+
     function updateSlides() {
         slider.innerHTML = '';
-  
+
         for (let i = 0; i < categories.length; i += 6) {
             createSlide(i);
         }
-  
+
         slideWidth = slider.querySelector('.slide').clientWidth;
     }
-  
+
     updateSlides();
-  
+
     function updateSlider() {
         slider.style.transform = `translateX(${currentIndex * -slideWidth}px)`;
-  
-        // Update visibility of prevBtn and nextBtn based on currentIndex
+
         if (currentIndex === 0) {
             prevBtn.style.display = "none";
         } else {
             prevBtn.style.display = "block";
         }
-  
+
         if (currentIndex >= Math.floor(categories.length / 6) - 1) {
             nextBtn.style.display = "none";
         } else {
             nextBtn.style.display = "block";
         }
     }
-  
+
     prevBtn.addEventListener('click', function () {
         if (currentIndex > 0) {
             currentIndex--;
             updateSlider();
         }
     });
-  
+
     nextBtn.addEventListener('click', function () {
         if (currentIndex < Math.floor(categories.length / 6) - 1) {
             currentIndex++;
             updateSlider();
         }
     });
-  });
-  
-  
-  
-  async function fetchcartdata(url) {
+});
+
+
+
+async function fetchcartdata(url) {
     try {
         let ans = await fetch(url);
         let data = await ans.json();
@@ -253,18 +306,18 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (err) {
         console.log("error getting", err);
     }
-  }
-  
-  async function fetchcardData() {
+}
+
+async function fetchcardData() {
     try {
         let mydata = await fetchcartdata("https://airbnbproject-id6p.onrender.com/categories");
         return mydata;
     } catch (err) {
         console.log(err);
     }
-  }
-  
-  async function fetchDataAndProcess() {
+}
+
+async function fetchDataAndProcess() {
     try {
         let mydata = await fetchcardData();
         // console.log(mydata);        
@@ -276,31 +329,30 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (err) {
         console.log(err);
     }
-  }
-  auto=true;
-  // if(auto){
-  fetchDataAndProcess();
-  // }
-  
-  let cont = document.querySelector(".cont");
-  function findCategoryByName(name, mydata) {
+}
+auto = true;
+fetchDataAndProcess();
+
+
+let cont = document.querySelector(".cont");
+function findCategoryByName(name, mydata) {
     cont.innerHTML = "";
     let islandsCategory = mydata.find(category => category.name === name);
     if (islandsCategory) {
         const islandsCards = islandsCategory.cards;
         // console.log(islandsCards);
         islandsCards.forEach(element => {
-            createCard1(element,false);
+            createCard1(element, false);
         });
         createmorebtn(name);
     } else {
         console.log("Category not found.");
     }
-  }
-  let z = 32;
-  
-  let showdi = document.querySelector(".showdiv");
-  function createmorebtn(name) {
+}
+let z = 32;
+
+let showdi = document.querySelector(".showdiv");
+function createmorebtn(name) {
     let h2 = document.createElement("h2");
     h2.innerText = `Continue exploring ${name}`;
     showdi.innerHTML = "";
@@ -310,20 +362,20 @@ document.addEventListener('DOMContentLoaded', function () {
     showmorebtn.className = "showbtn";
     showmorebtn.innerText = "Show More";
     showmorebtn.style.borderRadius = "10px";
-  
+
     showmorebtn.addEventListener("click", () => {
         const showmoredata = generateCardData(name, z);
         showmoredata.cards.forEach(element => {
-            createCard1(element,false);
+            createCard1(element, false);
         });
         z += 20;
         createmorebtn(name);
     })
-  
+
     showdi.append(h2, showdiv);
-  }
-  
-  function generateCardData(category, z) {
+}
+
+function generateCardData(category, z) {
     const data = { name: category, cards: [] };
     for (let i = z; i < z + 20; i++) {
         const card = {
@@ -339,14 +391,14 @@ document.addEventListener('DOMContentLoaded', function () {
             Ratting: ((Math.random() * 4) + 1).toFixed(2),
             distance_away_km: Math.floor(Math.random() * 5000) + 1,
             date_available: randomDateRange(),
-            price_per_night: Math.floor(Math.random() * 9001) + 1000 // Random price between 1000 and 10000
+            price_per_night: Math.floor(Math.random() * 9001) + 1000 
         };
         data.cards.push(card);
     }
-    return data; // Return the generated data
-  }
-  
-  function randomDateRange() {
+    return data; 
+}
+
+function randomDateRange() {
     const start = new Date();
     const end = new Date(start.getTime() + (365 * 24 * 60 * 60 * 1000));
     const startDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
@@ -360,20 +412,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const endDay = endDate.getDate().toString().padStart(2, '0');
     const endMonthName = monthNames[endDate.getMonth()];
     return `${startDay} ${startMonthName} - ${endDay} ${endMonthName}`;
-  }
-  
-  function createCard1(data,check) {
-    
+}
+
+function createCard1(data, check) {
+
     let div = document.createElement("div");
     // div.style.border="solid";
-    if(check){
-        cont.innerHTML="";
+    if (check) {
+        cont.innerHTML = "";
         // div.style.width="300px";
-        div.style.flexGrow="0";
+        div.style.flexGrow = "0";
     }
     let fav = document.createElement("button");
     fav.innerText = `\u2661`;
-    div.className = "slide1"; // Add the .slide class to the div
+    div.className = "slide1"; 
     let divhead = document.createElement("div");
     divhead.className = "divhead";
     let divbody = document.createElement("div");
@@ -385,21 +437,20 @@ document.addEventListener('DOMContentLoaded', function () {
     let carouselDiv = document.createElement("div");
     carouselDiv.className = "carousel";
     fav.className = "b_favorate";
-    // divhead.append(fav);
+    
     fav.addEventListener("click", (e) => {
     });
     let k = Math.floor(Math.random() * data.images.length);
-  
+
     for (let i = k; i < k + data.images.length; i++) {
         let div = document.createElement("div");
         div.addEventListener("click", () => {
-            createnewpage(data);
+            // createnewpage(data);
+            console.log("hi");
             let a = document.querySelector(".newtab");
             a.click();
-  
+
         });
-        // console.log("len",data.images.length-1);
-        // div.style.backgroundColor="red";
         let index = i;
         if (i >= data.images.length) {
             index = i - data.images.length;
@@ -408,44 +459,38 @@ document.addEventListener('DOMContentLoaded', function () {
         let backimg = data.images[index];
         // console.log(backimg);
         div.style.backgroundImage = `url(${backimg})`;
-        // let img = document.createElement("img");
-        // img.src = data.images[i];
         carouselDiv.appendChild(div);
         // carouselDiv.style.backgroundColor="yellow";
     }
-  
+
     divhead.appendChild(carouselDiv);
     divhead.appendChild(fav);
-    // divhead.style.border="solid red";
     placename.innerText = data.place_name;
     placename.style.fontWeight = "700";
     rating.innerText = `\u2605 ${data.Ratting}`;
     rating.style.float = "right";
-  
+
     distance.innerHTML = `<span style="font-weight: bold;"> ${data.distance_away_km}</span> Kilometres away`;
     dateavailable.innerText = data.date_available;
-    // price.innerText = `<span style="font-weight: bold;">\u20B9 ${data.price_per_night}</span> night`;
     price.innerHTML = `<span style="font-weight: bold;">\u20B9 ${data.price_per_night}</span> night`;
-  
+
     divbody.append(rating, placename, distance, dateavailable, price);
     div.append(divhead, divbody);
-    // div.style.border="solid red";
     cont.appendChild(div);
-  
-  }
-  
-  async function fetchfooterdata(url) {
+
+}
+
+async function fetchfooterdata(url) {
     try {
         let ans = await fetch(url);
         let data = await ans.json();
-        // console.log(data);
         return data;
     }
     catch (err) {
         console.log("error getting", err);
     }
-  }
-  async function fetchDataforfooter() {
+}
+async function fetchDataforfooter() {
     try {
         let footer = await fetchfooterdata("https://airbnbproject-id6p.onrender.com/footer");
         // console.log(footer);
@@ -455,14 +500,14 @@ document.addEventListener('DOMContentLoaded', function () {
         // Handle errors if needed
         console.error(err);
     }
-  }
-  fetchDataforfooter();
-  
-  let inspiration = document.querySelector(".b_inspiration");
-  let headinspiration = document.querySelector(".headinpirration");
-  let bodyinspiration = document.querySelector(".bodyinspiration");
-  
-  function createheadinspiration(footer) {
+}
+fetchDataforfooter();
+
+let inspiration = document.querySelector(".b_inspiration");
+let headinspiration = document.querySelector(".headinpirration");
+let bodyinspiration = document.querySelector(".bodyinspiration");
+
+function createheadinspiration(footer) {
     for (let key in footer) {
         // console.log(key);
         let p = document.createElement("button");
@@ -472,9 +517,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         headinspiration.append(p);
     }
-  }
-  let flages = true;
-  function createbodyinspiration(key, arr) {
+}
+let flages = true;
+function createbodyinspiration(key, arr) {
     bodyinspiration.innerHTML = "";
     if (!arr || !Array.isArray(arr)) {
         console.error("Invalid input array:", arr);
@@ -497,12 +542,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         const readMoreButton = document.createElement("button");
         readMoreButton.innerText = `Read More \u25BC`;
-  
+
         readMoreButton.addEventListener("click", () => {
             flages = false;
             createbodyinspiration(key, arr);
         });
-  
+
         bodyinspiration.append(readMoreButton);
     }
     if (!flages) {
@@ -521,19 +566,21 @@ document.addEventListener('DOMContentLoaded', function () {
             bodyinspiration.append(div);
         });
     }
-  }
-  
+}
+
 // M Baba khalil js end
 
 // Rakesh js start
 let buttonfilter = document.querySelector(".buttonfilter");
 let filter_container = document.getElementById("filter");
-buttonfilter.addEventListener("click", () => {
-    filter_container.style.display = "block";
-}
-);
 
-// function filtershow() {
+function btnfilter(){
+    filter_container.style.zIndex=5;
+    filter_container.style.visibility="visible";
+    console.log("hi");
+};
+
+
 
 let main_conatiner = document.getElementById("main_container");
 
@@ -590,8 +637,6 @@ var Amenities_button6 = document.querySelector("#Amenities>div:nth-of-type(6)>in
 var booking_container = document.querySelectorAll("#booking_container input");
 var close_button = document.querySelector(".material-symbols-outlined");
 var clear_button = document.querySelector(".lower button:nth-of-type(1)");
-// var booking_container2=document.querySelector("#booking_container input:nth-of-type(2)");
-// var booking_container3=document.querySelector("#booking_container input:nth-of-type(3)");
 var maxX = range_container.offsetWidth - min_button.offsetWidth;
 var minY = range_container.offsetWidth - min_button.offsetWidth;
 let bool = false;
@@ -614,71 +659,70 @@ var query13 = "";
 close_button.addEventListener('click', () => {
     // filter_container.innerHTML = " ";
     filter_container.style.border = "none"
-    filter_container.style.display = "none";
-})
+    filter_container.style.opacity = 0;
+});
 clear_button.addEventListener('click', () => {
     data = [];
     // console.log(data, "clear")
     main_button.innerText = "Show All"
-    location.reload()
+    // location.reload()
 
 
 })
 let url = "https://airbin-data-8.onrender.com/data/";
 
 mininput.value = '₹836';
-maxinput.value = '₹27776';
-document.addEventListener('DOMContentLoaded', function () {
-    var isDragging = false;
-    var startX, startY;
+maxinput.value = '₹2776';
+var isDragging = false;
+var startX, startY;
 
-    min_button.addEventListener('mousedown', function (event) {
-        isDragging = true;
-        startX = event.clientX - min_button.offsetLeft;
-        //console.log("hii")
-        document.addEventListener('mousemove', onMouseMove);
+min_button.addEventListener('mousedown', function (event) {
+    isDragging = true;
+    startX = event.clientX - min_button.offsetLeft;
+    console.log("hii")
+    document.addEventListener('mousemove', onMouseMove);
 
-        document.addEventListener('mouseup', onMouseUp);
-    });
-
-    max_button.addEventListener('mousedown', function (event) {
-        isDragging = true;
-        startY = event.clientX - max_button.offsetLeft;
-
-        document.addEventListener('mousemove', ofMouseMove);
-
-        document.addEventListener('mouseup', ofMouseUp);
-    });
-    //var vals=filter_container.clientWidth;
-    function onMouseMove(event) {
-        if (isDragging) {
-            var newX = event.clientX - startX;
-            newX = Math.min(maxX, Math.max(0, newX));
-            min_button.style.left = newX + 'px';
-
-        }
-    }
-
-    function onMouseUp() {
-        isDragging = false;
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-    }
-
-    function ofMouseMove(event) {
-        if (isDragging) {
-            var newY = event.clientX - startY;
-            newY = Math.min(minY, Math.max(0, newY));
-            max_button.style.left = newY + 'px';
-        }
-    }
-
-    function ofMouseUp() {
-        isDragging = false;
-        document.removeEventListener('mousemove', ofMouseMove);
-        document.removeEventListener('mouseup', ofMouseUp);
-    }
+    document.addEventListener('mouseup', onMouseUp);
 });
+
+max_button.addEventListener('mousedown', function (event) {
+    isDragging = true;
+    startY = event.clientX - max_button.offsetLeft;
+    console.log(startY);
+    document.addEventListener('mousemove', ofMouseMove);
+
+    document.addEventListener('mouseup', ofMouseUp);
+});
+//var vals=filter_container.clientWidth;
+function onMouseMove(event) {
+    if (isDragging) {
+        var newX = event.clientX - startX;
+        newX = Math.min(maxX, Math.max(0, newX));
+        min_button.style.left = newX + 'px';
+
+    }
+}
+
+function onMouseUp() {
+    isDragging = false;
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+}
+
+function ofMouseMove(event) {
+    if (isDragging) {
+        var newY = event.clientX - startY;
+        newY = Math.min(minY, Math.max(0, newY));
+        max_button.style.left = newY + 'px';
+    }
+}
+
+function ofMouseUp() {
+    isDragging = false;
+    document.removeEventListener('mousemove', ofMouseMove);
+    document.removeEventListener('mouseup', ofMouseUp);
+}
+// });
 
 show_more_extrainfo.addEventListener("click", () => {
     if (bool === false) {
@@ -905,15 +949,13 @@ document.addEventListener('DOMContentLoaded', function () {
             ans = 836;
         }
         if (event.pageX >= 1100 && !reachedMax) {
-            ans = 27776; // Limit the value to 27776 only if it hasn't reached yet
-            reachedMax = true; // Set reachedMax to true once the limit is reached
+            ans = 27776; 
+            reachedMax = true; 
         }
         if (event.pageX >= 700 && event.pageX <= 710) {
             ans = 13333;
         }
-        // ans += direction * 100; // Increase or decrease ans based on direction
         mininput.value = `₹${Math.ceil(ans)}`
-        //startX = event.clientX; // Update startX for the next movement
     }
 
     function onMouseUps() {
@@ -932,7 +974,6 @@ document.addEventListener('DOMContentLoaded', function () {
         newY = Math.min(minY, Math.max(0, newY));
         isDragging = true;
         //console.log(newY)
-        // Calculate the direction of mouse movement
         if (event.pageX > startY && ans2 <= 27776 && ans2 >= 0) {
             if (event.pageX > mde) {
                 ans2 += 45; // Decrease by 45
@@ -942,18 +983,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Limit the value to 27776 only if it hasn't reached yet
-        if (event.pageX >= 1100 && !reachedMax) {
+        if (newY >= 722 ) {
             ans2 = 27776;
-            reachedMax = true;
         }
-        if (newY < 210 && newY > 305) {
+        if (newY> 300 && newY <305) {
             ans2 = 13336;
         }
-        if (newY <= 0) {
-            ans2 = 836;
-        }
-
-
         // Update max input value
         maxinput.value = `₹${Math.ceil(ans2)}`;
 
@@ -1004,8 +1039,8 @@ async function filterFetch(url, querys1 = "", querys2 = "", querys3 = "", querys
         }
         main_button.addEventListener('click', () => {
             if (data) {
-                filter_container.innerHTML = " ";
-                filter_container.style.border = "none"
+                filter_container.style.display = "none";
+                // filter_container.style.border = "none"
                 appendData(data)
             }
         })
@@ -1526,25 +1561,14 @@ var container = document.getElementById("carding_container"); // Replace "contai
 
 
 function appendData(arr) {
-    container.innerHTML = ""
+    container.innerHTML = "";
+    cont.innerHTML = "";
     arr.forEach(ele => {
         const images = [ele.listings.images[0].img1, ele.listings.images[1].img2, ele.listings.images[2].img3];
-        let ans = createCard(ele, images)
-        container.append(ans);
+        let ans = createCard(ele, images);
+        container.appendChild(ans);
 
-    })
+    });
+
 }
-// booking_container.addEventListener('click',()=>{
-//     console.log(booking_container.value)
-// })
-
-// booking_container2.addEventListener('click',()=>{
-//     console.log(booking_container2.value)
-// })
-
-// booking_container3.addEventListener('click',()=>{
-//     console.log(booking_container3.value)
-// })
-// };
-
 // Rakesh js end

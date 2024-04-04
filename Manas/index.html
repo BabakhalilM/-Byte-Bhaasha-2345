@@ -5,142 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/e913741245.js" crossorigin="anonymous"></script>
-    <style>
-        .card {
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 40vw;
-  font-size: 20px;
-  padding: 20px;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-/* .hiddens{
-display:none;
-} */
-.hidden {
-  display: none;
-}
-#co {
-            width: 100vw;
-            height: 10vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-        #co img {
-            width: 90px;
-        }
-
-        #cv span {
-            margin: 20px;
-        }
-
-        .first {
-            width: 1200px;
-            height: 5vh;
-            margin: auto;
-            display: flex;
-            border-radius: 50px;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-            padding: 30px; 
-            justify-content: space-between;
-            align-items: center;
-        }
-        .f{
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-            padding: 10px;
-            box-sizing: border-box;
-            border-radius: 25px;
-        }
-        #i {
-            font-size: 30px;
-            background-color: red;
-            padding: 10px;
-            border-radius: 50%;
-            color: white;
-            margin-left: 20px;
-        }
-
-        hr {
-            opacity: 0.6;
-            margin: 0;
-        }
-
-        h4, a {
-            margin: 0;
-            text-decoration: none;
-            color: black;
-        }
-
-        /* a:hover {
-            color: blue;
-        } */
-
-        /* h4:hover {
-            background-color: gray;
-            border-radius: 40px;
-            width: 250px;
-            height: 50px;
-        } */
-
-        .secondIcon {
-            display: flex;
-            align-items: center; 
-        }
-
-        .iconContainer {
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-            padding: 20px;
-            border-radius: 14px;
-            margin-left: 20px; 
-        }
-
-        .iconContainer i {
-            font-size: 25px; /* Adjusted font size */
-            margin-right: 10px; /* Added margin */
-        }
-        .guest-card{
-            background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 40vw;
-  font-size: 20px;
-  padding: 20px;
-  position: absolute;
-  top: 40%;
-  left: 80%;
-  transform: translate(-50%, -50%);
-        }
-  #m_container{
-    display: none;
-  }
-
-  .guest-counter button {
-    font-size: 20px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-
-    </style>
+    <style></style>
+    <link rel="stylesheet" href="manas.css">
 </head>
 <body>
-    <button id="button">SIGN IN</button>
-
     <div id="signInCard" class="card hidden">
         <div class="card-content">
             <h4 style="text-align: center;">Log In Or Sign Up</h4>
           <h2>Welcome to Airbnb</h2>
           <form>
-            <!-- <label for="username">Country/Region:</label> -->
-            <!-- <input type="text" id="username" name="username" value="Country/Region" required> -->
-            <!-- <label for="password">Password:</label> -->
+            
             <select class="form-control" id="country-code" placeholder="Country/Region">
                 <option value="" disabled selected hidden>Please select an option</option>
                 <option value="+91" >India (+91)</option>
@@ -152,7 +26,10 @@ display:none;
             <div>
             <input type="text" id="PHONE-NO" name="PHONE-NO" placeholder="Phone"  required>
             </div>
-            <button type="submit" style="background-color: red;color: white;width: 200px;">Continue</button>
+            <div>
+                <input type="password" id="password" name="password" placeholder="password"  required>
+                </div>
+            <button type="submit" id="submit" style="background-color: red;color: white;width: 200px;">Continue</button>
           </form>
         </div>
       </div>
@@ -168,14 +45,14 @@ display:none;
         <div class="secondIcon"> 
             <span>Airbnb Your Home</span>
             <i class="fas fa-globe" style="margin-left: 9px;"></i>
-            <div class="iconContainer"> 
+            <div class="iconContainer" id="s"> 
                 <i class="fas fa-list"></i> 
                 <i class="fas fa-user"></i> 
             </div>
         </div>
     </div>
 
-    <div class="first">
+    <div class="first" id="first">
         <h4 class="f">Where <br><input type="text" id="d_name" name="name" style="border:#ffffff;border-radius: 25px;" placeholder="search destinations"  required  /><button id="d_search">search</button></h4><hr>
         <h4 class="f">Check in <br><input
             type="date"
@@ -190,40 +67,14 @@ display:none;
         <!-- <button class="f" style="background-color: red;border-radius: 20px;">SEARCH</button> -->
         <h4 class="f">Who<br><button style="text-decoration: none;border: #ffffff;" id="addguest">Add Guests</button>
         </h4>
-        <div>
+        <div id="nav_search">
             <i class="fas fa-search" id="i"></i>
         </div>
     </div>
 
 <div id="m_container">
-    <!-- <div class="guest-counter">
-        <span>Adults:</span>
-        <button id="adult-minus">-</button>
-        <span id="adult-count">0</span>
-        <button id="adult-plus">+</button>
-      </div>
-      
-      <div class="guest-counter">
-        <span>Children:</span>
-        <button id="child-minus">-</button>
-        <span id="child-count">0</span>
-        <button id="child-plus">+</button>
-      </div>
-      
-      <div class="guest-counter">
-        <span>Infants:</span>
-        <button id="infant-minus">-</button>
-        <span id="infant-count">0</span>
-        <button id="infant-plus">+</button>
-      </div>
-      
-      <div class="guest-counter">
-        <span>Pets:</span>
-        <button id="pet-minus">-</button>
-        <span id="pet-count">0</span>
-        <button id="pet-plus">+</button>
-      </div> -->
 </div>
-      <script src="index.js"></script>
+
+      <script src="Mindex.js"></script>
 </body>
 </html>

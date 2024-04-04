@@ -1,11 +1,32 @@
-let button = document.getElementById("button");
+
+
+
+
+
+
+// let button = document.getElementById("button");
 let signInCard = document.getElementById("signInCard");
 let addguest = document.getElementById("addguest");
 let m_container = document.getElementById("m_container");
 let d_name=document.getElementById("d_name");
+let s=document.getElementById("s");
+let nav_search=document.getElementById("nav_search");
+let submit=document.getElementById("submit");
+let first=document.getElementById("first");
 
-button.addEventListener('click', function () {
+
+// function logScrollHeight() {
+//     console.log("Scroll Height:", document.documentElement.scrollHeight);
+// }
+
+// // Attach an event listener to the scroll event of the window
+// window.addEventListener("scroll", logScrollHeight);
+
+s.addEventListener('click', function () {
   signInCard.classList.toggle("hidden");
+  signInCard.style.visibility="visible";
+  signInCard.style.zIndex=10;
+
 });
 
 const counters = {
@@ -32,11 +53,12 @@ function updateCounter(type, operation) {
     countElement.textContent = count - 1;
   }
 }
+let guestCard;
 
 addguest.addEventListener('click', () => {
   // Create a new div element to contain the guest counters
-  let guestCard = document.createElement("div");
-  guestCard.classList.add("card", "guest-card", "hidden");
+    guestCard = document.createElement("div");
+  guestCard.classList.add( "guest-card", "hidden");
   
   // Append each guest counter to the guest card
   for (let key in counters) {
@@ -101,3 +123,49 @@ fetchdata();
 d_name.addEventListener('change',()=>{
     fetchdata();
 })
+
+window.addEventListener('click', (event) => {
+    // Check if guestCard exists and is visible and if the clicked element is not part of guestCard or addguest button or s button or signInCard
+    if (guestCard && !guestCard.classList.contains("hidden") && !guestCard.contains(event.target) && event.target !== addguest && event.target !== s && !signInCard.contains(event.target)) {
+      guestCard.classList.add("hidden"); // Hide guestCard
+      console.log("Guest card hidden");
+    }
+  });
+
+
+
+
+
+submit.addEventListener('click', () => {
+    // Collect username and password from input fields
+    let usernameValue = document.getElementById('PHONE-NO').value;
+    let passwordValue = document.getElementById('password').value;
+
+    // Prepare data object
+    let data = {
+        username: usernameValue,
+        password: passwordValue
+    };
+
+    // Access cart from local storage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if the user is already signed up
+    let alreadySignedUp = cart.some(item => item.username === usernameValue);
+
+    if (alreadySignedUp) {
+        alert("You are already signed up.");
+    } else {
+        // Add countofitem property to data object
+        data.countofitem = 1;
+
+        // Push data object to cart array
+        cart.push(data);
+
+        // Store updated cart in local storage
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Log the added data
+        console.log(data);
+    }
+});

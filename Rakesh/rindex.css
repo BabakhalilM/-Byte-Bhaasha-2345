@@ -1,6 +1,6 @@
 #carding_container {
     display: flex;
-    ;
+    
     flex-wrap: wrap;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -43,8 +43,12 @@
 }
 
 #filter {
-    z-index: 8;
-    display: none;
+    z-index: -1;
+    visibility: hidden;
+    /* display: none; */
+    
+    /* opacity: 0; */
+    /* transition: opacity 0.3s ease-in-out; */
     background: white;
     width: 60%;
     height: 83vh;
@@ -89,8 +93,6 @@ a {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
     font-weight: 800;
-
-
 }
 
 .middle {
