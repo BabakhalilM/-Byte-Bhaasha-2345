@@ -890,6 +890,8 @@ document.addEventListener('DOMContentLoaded', function () {
         //console.log(newX)
         // Calculate the direction of mouse movement
         if (event.pageX > startX && event.pageX < 1100 && ans < 27776 && ans >= 0) {
+            console.log(md,"md");
+            console.log(event.pageX)
             if (event.pageX > md) {
                 ans += 45;
             }
