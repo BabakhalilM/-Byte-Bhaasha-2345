@@ -572,15 +572,17 @@ function createbodyinspiration(key, arr) {
 // Rakesh js start
 let buttonfilter = document.querySelector(".buttonfilter");
 let filter_container = document.getElementById("filter");
-function btnfilter() {
-    filter_container.style.zIndex = 5;
-    filter_container.style.visibility = "visible";
-    console.log("hi");
-};
+buttonfilter.addEventListener("click", () => {
+    console.log("hii")
+    filter_container.style.zIndex = 3;
+    filter_container.style.visibility = "visible"
+}
+);
 
 // function filtershow() {
-
+var buttons=document.querySelectorAll('button')
 let main_conatiner = document.getElementById("main_container");
+const original=filter_container.innerHTML;
 
 let range_container = document.getElementById("range");
 let extra_features_add = document.querySelector("#addmore");
@@ -635,6 +637,8 @@ var Amenities_button6 = document.querySelector("#Amenities>div:nth-of-type(6)>in
 var booking_container = document.querySelectorAll("#booking_container input");
 var close_button = document.querySelector(".material-symbols-outlined");
 var clear_button = document.querySelector(".lower button:nth-of-type(1)");
+// var booking_container2=document.querySelector("#booking_container input:nth-of-type(2)");
+// var booking_container3=document.querySelector("#booking_container input:nth-of-type(3)");
 var maxX = range_container.offsetWidth - min_button.offsetWidth;
 var minY = range_container.offsetWidth - min_button.offsetWidth;
 let bool = false;
@@ -656,71 +660,67 @@ var query13 = "";
 
 close_button.addEventListener('click', () => {
     // filter_container.innerHTML = " ";
-    filter_container.style.border = "none"
-    filter_container.style.opacity = 0;
-});
-clear_button.addEventListener('click', () => {
-    data = [];
-    // console.log(data, "clear")
-    main_button.innerText = "Show All"
-    // location.reload()
-
-
+    filter_container.style.zIndex = -1;
+    filter_container.style.visibility = "hidden"
+    location.reload()
 })
+
+
 let url = "https://airbin-data-8.onrender.com/data/";
 
 mininput.value = '₹836';
-maxinput.value = '₹2776';
-var isDragging = false;
-var startX, startY;
+maxinput.value = '₹27776';
+document.addEventListener('DOMContentLoaded', function () {
+    var isDragging = false;
+    var startX, startY;
 
-min_button.addEventListener('mousedown', function (event) {
-    isDragging = true;
-    startX = event.clientX - min_button.offsetLeft;
-    console.log("hii")
-    document.addEventListener('mousemove', onMouseMove);
+    min_button.addEventListener('mousedown', function (event) {
+        isDragging = true;
+        startX = event.clientX - min_button.offsetLeft;
+        //console.log("hii")
+        document.addEventListener('mousemove', onMouseMove);
 
-    document.addEventListener('mouseup', onMouseUp);
-});
+        document.addEventListener('mouseup', onMouseUp);
+    });
 
-max_button.addEventListener('mousedown', function (event) {
-    isDragging = true;
-    startY = event.clientX - max_button.offsetLeft;
-    console.log(startY);
-    document.addEventListener('mousemove', ofMouseMove);
+    max_button.addEventListener('mousedown', function (event) {
+        isDragging = true;
+        startY = event.clientX - max_button.offsetLeft;
 
-    document.addEventListener('mouseup', ofMouseUp);
-});
-//var vals=filter_container.clientWidth;
-function onMouseMove(event) {
-    if (isDragging) {
-        var newX = event.clientX - startX;
-        newX = Math.min(maxX, Math.max(0, newX));
-        min_button.style.left = newX + 'px';
+        document.addEventListener('mousemove', ofMouseMove);
 
+        document.addEventListener('mouseup', ofMouseUp);
+    });
+    //var vals=filter_container.clientWidth;
+    function onMouseMove(event) {
+        if (isDragging) {
+            var newX = event.clientX - startX;
+            newX = Math.min(maxX, Math.max(0, newX));
+            min_button.style.left = newX + 'px';
+
+        }
     }
-}
 
-function onMouseUp() {
-    isDragging = false;
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
-}
-
-function ofMouseMove(event) {
-    if (isDragging) {
-        var newY = event.clientX - startY;
-        newY = Math.min(minY, Math.max(0, newY));
-        max_button.style.left = newY + 'px';
+    function onMouseUp() {
+        isDragging = false;
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
     }
-}
 
-function ofMouseUp() {
-    isDragging = false;
-    document.removeEventListener('mousemove', ofMouseMove);
-    document.removeEventListener('mouseup', ofMouseUp);
-}
-// });
+    function ofMouseMove(event) {
+        if (isDragging) {
+            var newY = event.clientX - startY;
+            newY = Math.min(minY, Math.max(0, newY));
+            max_button.style.left = newY + 'px';
+        }
+    }
+
+    function ofMouseUp() {
+        isDragging = false;
+        document.removeEventListener('mousemove', ofMouseMove);
+        document.removeEventListener('mouseup', ofMouseUp);
+    }
+});
 
 show_more_extrainfo.addEventListener("click", () => {
     if (bool === false) {
@@ -935,6 +935,8 @@ document.addEventListener('DOMContentLoaded', function () {
         //console.log(newX)
         // Calculate the direction of mouse movement
         if (event.pageX > startX && event.pageX < 1100 && ans < 27776 && ans >= 0) {
+            console.log(md,"md");
+            console.log(event.pageX)
             if (event.pageX > md) {
                 ans += 45;
             }
@@ -974,21 +976,27 @@ document.addEventListener('DOMContentLoaded', function () {
         newY = Math.min(minY, Math.max(0, newY));
         isDragging = true;
         //console.log(newY)
+        // Calculate the direction of mouse movement
         if (event.pageX > startY && ans2 <= 27776 && ans2 >= 0) {
             if (event.pageX > mde) {
-                ans2 += 45; // Decrease by 45
+                ans2 += 45;
             } else {
-                ans2 -= 45; // Increase by 45
+                ans2 -= 45;
             }
         }
 
-        // Limit the value to 27776 only if it hasn't reached yet
-        if (newY >= 722) {
+
+        if (newY >= 722 || ans2 > 27776) {
             ans2 = 27776;
         }
         if (newY > 300 && newY < 305) {
             ans2 = 13336;
         }
+        if (newY <= 0 || ans2 <= 836) {
+            ans2 = 836;
+        }
+
+
         // Update max input value
         maxinput.value = `₹${Math.ceil(ans2)}`;
 
@@ -1039,8 +1047,10 @@ async function filterFetch(url, querys1 = "", querys2 = "", querys3 = "", querys
         }
         main_button.addEventListener('click', () => {
             if (data) {
-                filter_container.style.display = "none";
-                // filter_container.style.border = "none"
+                filter_container.innerHTML = " ";
+                filter_container.style.border = "none"
+                filter_container.style.zIndex=-1;
+                filter_container.style.visibility="hidden"
                 appendData(data)
             }
         })
@@ -1399,10 +1409,11 @@ bathroom_button9.addEventListener('click', () => {
 })
 
 rating_button.addEventListener('click', () => {
-    rating_button.style.border = "1px solid black"
+    rating_button.style.border="1px solid black"
     filterFetch(url, query1, query2, query3, query4, `&listings.rating_gte=${4}`, query5, query6, query7, query8, query9, query10, '')
+   
 })
-
+  
 prototype_button1.addEventListener('click', () => {
     prototype_button1.style.border = "1px solid black";
     prototype_button2.style.border = "1px solid rgb(195, 190, 190)";
@@ -1561,14 +1572,84 @@ var container = document.getElementById("carding_container"); // Replace "contai
 
 
 function appendData(arr) {
-    container.innerHTML = "";
-    cont.innerHTML = "";
+    container.innerHTML = ""
     arr.forEach(ele => {
         const images = [ele.listings.images[0].img1, ele.listings.images[1].img2, ele.listings.images[2].img3];
-        let ans = createCard(ele, images);
-        container.appendChild(ans);
+        let ans = createCard(ele, images)
+        container.append(ans);
 
-    });
-
+    })
 }
+
+clear_button.addEventListener('click', () => {
+    var languages_input=document.querySelectorAll('#languages_container input')
+    var Amenties_input=document.querySelectorAll('#Amenities input')
+    var features_input=document.querySelectorAll("#features input");
+    var booking_input=document.querySelectorAll("#booking_container input")
+    var extra_input=document.querySelectorAll("#extra_features input")
+    data = [];
+    // console.log(data, "clear")
+    main_button.innerText = "Show All"
+    //filter_container = original;
+    mininput.value="₹836";
+    maxinput.value="₹27776";
+    buttons.forEach(btn => {
+        btn.style.backgroundColor = "white";
+        btn.style.color = "black"
+
+    })
+    max_button.style.left = 692+ 'px';
+    min_button.style.left=0+'px';
+    bathroom_button1.classList.remove('selected')
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bed_button1.classList.remove('selected')
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
+    room_button1.classList.remove('selected')
+    room_button2.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button8.classList.remove('selected')
+
+    prototype_button1.style.border="1px solid rgb(147, 145, 145)"
+    prototype_button2.style.border="1px solid rgb(147, 145, 145)"
+    prototype_button3.style.border="1px solid rgb(147, 145, 145)"
+    prototype_button4.style.border="1px solid rgb(147, 145, 145)"
+    
+    languages_input.forEach(inp=>{
+        console.log("hii")
+        inp.checked=false;
+    })
+    Amenties_input.forEach(inp1=>{
+        inp1.checked=false;
+    })
+    features_input.forEach(inp2=>{
+        inp2.checked=false;
+    })
+    booking_input.forEach(inp3=>{
+        inp3.checked=false;
+    })
+    extra_input.forEach(inp4=>{
+        inp4.checked=false;
+    })
+    rating_button.style.border="1px solid grey"
+    main_button.style.backgroundColor = "rgb(54,54,54)"
+    main_button.style.color = "white"
+    
+})
 // Rakesh js end

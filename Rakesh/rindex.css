@@ -1,9 +1,9 @@
 #carding_container {
     display: flex;
-    
+    ;
     flex-wrap: wrap;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto ;
+    margin-right: auto;
     gap: 10px;
 }
 
@@ -44,11 +44,7 @@
 
 #filter {
     z-index: -1;
-    visibility: hidden;
-    /* display: none; */
-    
-    /* opacity: 0; */
-    /* transition: opacity 0.3s ease-in-out; */
+     visibility: hidden;
     background: white;
     width: 60%;
     height: 83vh;
@@ -65,8 +61,8 @@
 #filter h3,
 h5,
 a {
-    margin-left: 15px;
-    margin-top: 10px;
+    margin-left: 15px ;
+    margin-top: 10px ;
 }
 
 #filter a {
@@ -90,9 +86,12 @@ a {
     margin-left: 40%;
     margin-right: 50%;
     margin-top: 10px;
+    margin-bottom: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
     font-weight: 800;
+
+
 }
 
 .middle {
@@ -111,8 +110,9 @@ a {
 
 #pricerange_container {
     width: 100%;
-    height: 250px;
+    height: 270px;
     margin-top: 20px;
+    padding-bottom: 20px;
     border-bottom: 1px solid rgb(219, 219, 219);
 }
 
@@ -227,7 +227,7 @@ p {
     width: 100% !important;
     margin-top: 20px;
     border-bottom: 1px solid rgb(219, 219, 219);
-    height: 150px;
+    height: 160px;
 }
 
 .place_type h3 {
@@ -337,33 +337,37 @@ p {
 
 
 
-.toptier_container {
+#Toptier_container {
     margin-top: 10px;
     border-top: 1px solid rgb(219, 219, 219);
     width: 100%;
     height: 300px;
 }
 
-.toptier_container h3 {
+#Toptier_container h3 {
     margin-top: 10px;
 }
 
-.toptier_container>div:nth-of-type(1) {
+.button_selected{
+   border: 1px solid black;
+}
+#Toptier_container>div:nth-of-type(1) {
     width: 400px;
     height: 200px;
     margin-left: 15px;
-    border: 1px solid rgb(190, 188, 188);
-    transition: transform 0.25s ease;
+    border: 1px solid rgb(190, 188, 188) ;
+    transition: transform 0.25s ease ;
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px ;
 }
 
-.toptier_container>div:nth-of-type(1):hover {
+#Toptier_container>div:nth-of-type(1):hover {
+    border: 1px solid black ;
+}
+
+#Toptier_container>div:nth-of-type(1):active {
+    transform: scale(0.8) ;
     border: 1px solid black;
-}
-
-.toptier_container>div:nth-of-type(1):active {
-    transform: scale(0.8);
 }
 
 .selected {
@@ -454,7 +458,7 @@ label {
 }
 
 #booking_container p:nth-of-type(1) {
-    margin-bottom: 0px !important;
+    margin-bottom: 0px;
 }
 
 #booking_container input {
