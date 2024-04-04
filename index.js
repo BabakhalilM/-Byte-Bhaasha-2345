@@ -89,8 +89,8 @@ async function fetchdata(val) {
             // console.log(i.cards);
             for (let j of i.cards) {
                 //    console.log(j.place_name);
-                if(val==j.place_name){
-                    return [j,true];
+                if (val == j.place_name) {
+                    return [j, true];
                 }
 
             }
@@ -104,15 +104,15 @@ async function fetchdata(val) {
 
 d_name.addEventListener('change', async () => {
     console.log(d_name.value);
-    
+
     try {
         let data = await fetchdata(d_name.value);
         console.log(data);
         if (data[1]) {
             // findCategoryByName(data[0], data[1]);
             // auto=false;
-            createCard1(data[0],data[1]);
-            
+            createCard1(data[0], data[1]);
+
             console.log(data[0], data[1]);
         }
         d_name.value = "";
@@ -123,7 +123,7 @@ d_name.addEventListener('change', async () => {
 
 // d_name.addEventListener('change', async () => {
 //     console.log(d_name.value);
-    
+
 //     let data = fetchdata(d_name.value);
 //     console.log(data);
 //     if(data[2]){
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "https://a0.muscache.com/pictures/957f8022-dfd7-426c-99fd-77ed792f6d7a.jpg",
         "https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg",
         "https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg"]
-  
+
     const categories = [
         "Islands", "Design", "Arctic", "Luxe", "Earth homes", "Top of the world", "Treehouses",
         "Tiny homes", "Beach", "Caves", "OMG!", "Historical homes", "Rooms", "Castles", "National parks",
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Domes", "Casas particulares", "Desert", "Off-the-grid", "Play", "Adapted", "Ski-in/out", "Boats",
         "Houseboats", "Containers", "Beachfront", "Grand pianos", "Creative spaces", "Riads", "Trulli", "Dammusi"
     ];
-  
+
     function createSlide(startIndex) {
         let div = document.createElement("div");
         div.className = "slide";
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 async function fetchDataAndProcess() {
                     try {
                         let mydata = await fetchcardData();
-  
+
                         if (mydata) {
                             findCategoryByName(categories[i], mydata);
                         } else {
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.error(err);
                     }
                 }
-  
+
                 fetchDataAndProcess();
             });
             btn.append(figure);
@@ -195,57 +195,57 @@ document.addEventListener('DOMContentLoaded', function () {
             figcaption.innerText = categories[i];
             div.appendChild(btn);
         }
-  
+
         slider.appendChild(div);
     }
-  
+
     function updateSlides() {
         slider.innerHTML = '';
-  
+
         for (let i = 0; i < categories.length; i += 6) {
             createSlide(i);
         }
-  
+
         slideWidth = slider.querySelector('.slide').clientWidth;
     }
-  
+
     updateSlides();
-  
+
     function updateSlider() {
         slider.style.transform = `translateX(${currentIndex * -slideWidth}px)`;
-  
+
         // Update visibility of prevBtn and nextBtn based on currentIndex
         if (currentIndex === 0) {
             prevBtn.style.display = "none";
         } else {
             prevBtn.style.display = "block";
         }
-  
+
         if (currentIndex >= Math.floor(categories.length / 6) - 1) {
             nextBtn.style.display = "none";
         } else {
             nextBtn.style.display = "block";
         }
     }
-  
+
     prevBtn.addEventListener('click', function () {
         if (currentIndex > 0) {
             currentIndex--;
             updateSlider();
         }
     });
-  
+
     nextBtn.addEventListener('click', function () {
         if (currentIndex < Math.floor(categories.length / 6) - 1) {
             currentIndex++;
             updateSlider();
         }
     });
-  });
-  
-  
-  
-  async function fetchcartdata(url) {
+});
+
+
+
+async function fetchcartdata(url) {
     try {
         let ans = await fetch(url);
         let data = await ans.json();
@@ -253,18 +253,18 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (err) {
         console.log("error getting", err);
     }
-  }
-  
-  async function fetchcardData() {
+}
+
+async function fetchcardData() {
     try {
         let mydata = await fetchcartdata("https://airbnbproject-id6p.onrender.com/categories");
         return mydata;
     } catch (err) {
         console.log(err);
     }
-  }
-  
-  async function fetchDataAndProcess() {
+}
+
+async function fetchDataAndProcess() {
     try {
         let mydata = await fetchcardData();
         // console.log(mydata);        
@@ -276,31 +276,31 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (err) {
         console.log(err);
     }
-  }
-  auto=true;
-  // if(auto){
-  fetchDataAndProcess();
-  // }
-  
-  let cont = document.querySelector(".cont");
-  function findCategoryByName(name, mydata) {
+}
+auto = true;
+// if(auto){
+fetchDataAndProcess();
+// }
+
+let cont = document.querySelector(".cont");
+function findCategoryByName(name, mydata) {
     cont.innerHTML = "";
     let islandsCategory = mydata.find(category => category.name === name);
     if (islandsCategory) {
         const islandsCards = islandsCategory.cards;
         // console.log(islandsCards);
         islandsCards.forEach(element => {
-            createCard1(element,false);
+            createCard1(element, false);
         });
         createmorebtn(name);
     } else {
         console.log("Category not found.");
     }
-  }
-  let z = 32;
-  
-  let showdi = document.querySelector(".showdiv");
-  function createmorebtn(name) {
+}
+let z = 32;
+
+let showdi = document.querySelector(".showdiv");
+function createmorebtn(name) {
     let h2 = document.createElement("h2");
     h2.innerText = `Continue exploring ${name}`;
     showdi.innerHTML = "";
@@ -310,20 +310,20 @@ document.addEventListener('DOMContentLoaded', function () {
     showmorebtn.className = "showbtn";
     showmorebtn.innerText = "Show More";
     showmorebtn.style.borderRadius = "10px";
-  
+
     showmorebtn.addEventListener("click", () => {
         const showmoredata = generateCardData(name, z);
         showmoredata.cards.forEach(element => {
-            createCard1(element,false);
+            createCard1(element, false);
         });
         z += 20;
         createmorebtn(name);
     })
-  
+
     showdi.append(h2, showdiv);
-  }
-  
-  function generateCardData(category, z) {
+}
+
+function generateCardData(category, z) {
     const data = { name: category, cards: [] };
     for (let i = z; i < z + 20; i++) {
         const card = {
@@ -344,9 +344,9 @@ document.addEventListener('DOMContentLoaded', function () {
         data.cards.push(card);
     }
     return data; // Return the generated data
-  }
-  
-  function randomDateRange() {
+}
+
+function randomDateRange() {
     const start = new Date();
     const end = new Date(start.getTime() + (365 * 24 * 60 * 60 * 1000));
     const startDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
@@ -360,16 +360,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const endDay = endDate.getDate().toString().padStart(2, '0');
     const endMonthName = monthNames[endDate.getMonth()];
     return `${startDay} ${startMonthName} - ${endDay} ${endMonthName}`;
-  }
-  
-  function createCard1(data,check) {
-    
+}
+
+function createCard1(data, check) {
+
     let div = document.createElement("div");
     // div.style.border="solid";
-    if(check){
-        cont.innerHTML="";
+    if (check) {
+        cont.innerHTML = "";
         // div.style.width="300px";
-        div.style.flexGrow="0";
+        div.style.flexGrow = "0";
     }
     let fav = document.createElement("button");
     fav.innerText = `\u2661`;
@@ -389,14 +389,14 @@ document.addEventListener('DOMContentLoaded', function () {
     fav.addEventListener("click", (e) => {
     });
     let k = Math.floor(Math.random() * data.images.length);
-  
+
     for (let i = k; i < k + data.images.length; i++) {
         let div = document.createElement("div");
         div.addEventListener("click", () => {
             createnewpage(data);
             let a = document.querySelector(".newtab");
             a.click();
-  
+
         });
         // console.log("len",data.images.length-1);
         // div.style.backgroundColor="red";
@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function () {
         carouselDiv.appendChild(div);
         // carouselDiv.style.backgroundColor="yellow";
     }
-  
+
     divhead.appendChild(carouselDiv);
     divhead.appendChild(fav);
     // divhead.style.border="solid red";
@@ -421,20 +421,20 @@ document.addEventListener('DOMContentLoaded', function () {
     placename.style.fontWeight = "700";
     rating.innerText = `\u2605 ${data.Ratting}`;
     rating.style.float = "right";
-  
+
     distance.innerHTML = `<span style="font-weight: bold;"> ${data.distance_away_km}</span> Kilometres away`;
     dateavailable.innerText = data.date_available;
     // price.innerText = `<span style="font-weight: bold;">\u20B9 ${data.price_per_night}</span> night`;
     price.innerHTML = `<span style="font-weight: bold;">\u20B9 ${data.price_per_night}</span> night`;
-  
+
     divbody.append(rating, placename, distance, dateavailable, price);
     div.append(divhead, divbody);
     // div.style.border="solid red";
     cont.appendChild(div);
-  
-  }
-  
-  async function fetchfooterdata(url) {
+
+}
+
+async function fetchfooterdata(url) {
     try {
         let ans = await fetch(url);
         let data = await ans.json();
@@ -444,8 +444,8 @@ document.addEventListener('DOMContentLoaded', function () {
     catch (err) {
         console.log("error getting", err);
     }
-  }
-  async function fetchDataforfooter() {
+}
+async function fetchDataforfooter() {
     try {
         let footer = await fetchfooterdata("https://airbnbproject-id6p.onrender.com/footer");
         // console.log(footer);
@@ -455,14 +455,14 @@ document.addEventListener('DOMContentLoaded', function () {
         // Handle errors if needed
         console.error(err);
     }
-  }
-  fetchDataforfooter();
-  
-  let inspiration = document.querySelector(".b_inspiration");
-  let headinspiration = document.querySelector(".headinpirration");
-  let bodyinspiration = document.querySelector(".bodyinspiration");
-  
-  function createheadinspiration(footer) {
+}
+fetchDataforfooter();
+
+let inspiration = document.querySelector(".b_inspiration");
+let headinspiration = document.querySelector(".headinpirration");
+let bodyinspiration = document.querySelector(".bodyinspiration");
+
+function createheadinspiration(footer) {
     for (let key in footer) {
         // console.log(key);
         let p = document.createElement("button");
@@ -472,9 +472,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         headinspiration.append(p);
     }
-  }
-  let flages = true;
-  function createbodyinspiration(key, arr) {
+}
+let flages = true;
+function createbodyinspiration(key, arr) {
     bodyinspiration.innerHTML = "";
     if (!arr || !Array.isArray(arr)) {
         console.error("Invalid input array:", arr);
@@ -497,12 +497,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         const readMoreButton = document.createElement("button");
         readMoreButton.innerText = `Read More \u25BC`;
-  
+
         readMoreButton.addEventListener("click", () => {
             flages = false;
             createbodyinspiration(key, arr);
         });
-  
+
         bodyinspiration.append(readMoreButton);
     }
     if (!flages) {
@@ -521,21 +521,23 @@ document.addEventListener('DOMContentLoaded', function () {
             bodyinspiration.append(div);
         });
     }
-  }
-  
+}
+
 // M Baba khalil js end
 
 // Rakesh js start
 let buttonfilter = document.querySelector(".buttonfilter");
 let filter_container = document.getElementById("filter");
 buttonfilter.addEventListener("click", () => {
-    filter_container.style.display = "block";
+    filter_container.style.zIndex = 3;
+    filter_container.style.visibility = "visible"
 }
 );
 
 // function filtershow() {
-
+    var buttons=document.querySelectorAll('button')
 let main_conatiner = document.getElementById("main_container");
+const original=filter_container.innerHTML;
 
 let range_container = document.getElementById("range");
 let extra_features_add = document.querySelector("#addmore");
@@ -576,7 +578,7 @@ var bathroom_button6 = document.querySelector(".rooms_container>div:nth-of-type(
 var bathroom_button7 = document.querySelector(".rooms_container>div:nth-of-type(3)>button:nth-of-type(7)")
 var bathroom_button8 = document.querySelector(".rooms_container>div:nth-of-type(3)>button:nth-of-type(8)")
 var bathroom_button9 = document.querySelector(".rooms_container>div:nth-of-type(3)>button:nth-of-type(9)")
-var rating_button = document.getElementById("rating")
+var rating_button = document.querySelector("#Toptier_container>div:nth-of-type(1)")
 var prototype_button1 = document.querySelector("#prototype>div:nth-of-type(1)");
 var prototype_button2 = document.querySelector("#prototype>div:nth-of-type(2)");
 var prototype_button3 = document.querySelector("#prototype>div:nth-of-type(3)");
@@ -613,17 +615,12 @@ var query13 = "";
 
 close_button.addEventListener('click', () => {
     // filter_container.innerHTML = " ";
-    filter_container.style.border = "none"
-    filter_container.style.display = "none";
-})
-clear_button.addEventListener('click', () => {
-    data = [];
-    // console.log(data, "clear")
-    main_button.innerText = "Show All"
+    filter_container.style.zIndex = -1;
+    filter_container.style.visibility = "hidden"
     location.reload()
-
-
 })
+
+
 let url = "https://airbin-data-8.onrender.com/data/";
 
 mininput.value = '₹836';
@@ -935,21 +932,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // Calculate the direction of mouse movement
         if (event.pageX > startY && ans2 <= 27776 && ans2 >= 0) {
             if (event.pageX > mde) {
-                ans2 += 45; // Decrease by 45
+                ans2 += 45;
             } else {
-                ans2 -= 45; // Increase by 45
+                ans2 -= 45;
             }
         }
 
-        // Limit the value to 27776 only if it hasn't reached yet
-        if (event.pageX >= 1100 && !reachedMax) {
+
+        if (newY >= 722 || ans2 > 27776) {
             ans2 = 27776;
-            reachedMax = true;
         }
-        if (newY < 210 && newY > 305) {
+        if (newY > 300 && newY < 305) {
             ans2 = 13336;
         }
-        if (newY <= 0) {
+        if (newY <= 0 || ans2 <= 836) {
             ans2 = 836;
         }
 
@@ -1006,6 +1002,8 @@ async function filterFetch(url, querys1 = "", querys2 = "", querys3 = "", querys
             if (data) {
                 filter_container.innerHTML = " ";
                 filter_container.style.border = "none"
+                filter_container.style.zIndex=-1;
+                filter_container.style.visibility="hidden"
                 appendData(data)
             }
         })
@@ -1364,10 +1362,11 @@ bathroom_button9.addEventListener('click', () => {
 })
 
 rating_button.addEventListener('click', () => {
-    rating_button.style.border = "1px solid black"
+    rating_button.classList.add('button_selected')
     filterFetch(url, query1, query2, query3, query4, `&listings.rating_gte=${4}`, query5, query6, query7, query8, query9, query10, '')
+   
 })
-
+  
 prototype_button1.addEventListener('click', () => {
     prototype_button1.style.border = "1px solid black";
     prototype_button2.style.border = "1px solid rgb(195, 190, 190)";
@@ -1534,6 +1533,80 @@ function appendData(arr) {
 
     })
 }
+
+clear_button.addEventListener('click', () => {
+    var languages_input=document.querySelectorAll('#languages_container input')
+    var Amenties_input=document.querySelectorAll('#Amenities input')
+    var features_input=document.querySelectorAll("#features input");
+    var booking_input=document.querySelectorAll("#booking_container input")
+    var extra_input=document.querySelectorAll("#extra_features input")
+    data = [];
+    // console.log(data, "clear")
+    main_button.innerText = "Show All"
+    //filter_container = original;
+    mininput.value="₹836";
+    maxinput.value="₹27776";
+    buttons.forEach(btn => {
+        btn.style.backgroundColor = "white";
+        btn.style.color = "black"
+
+    })
+    max_button.style.left = 692+ 'px';
+    min_button.style.left=0+'px';
+    bathroom_button1.classList.remove('selected')
+    bathroom_button2.classList.remove('selected')
+    bathroom_button3.classList.remove('selected')
+    bathroom_button4.classList.remove('selected')
+    bathroom_button5.classList.remove('selected')
+    bathroom_button6.classList.remove('selected')
+    bathroom_button7.classList.remove('selected')
+    bathroom_button8.classList.remove('selected')
+    bed_button1.classList.remove('selected')
+    bed_button2.classList.remove('selected')
+    bed_button3.classList.remove('selected')
+    bed_button4.classList.remove('selected')
+    bed_button5.classList.remove('selected')
+    bed_button6.classList.remove('selected')
+    bed_button7.classList.remove('selected')
+    bed_button8.classList.remove('selected')
+    bed_button9.classList.remove('selected')
+    room_button1.classList.remove('selected')
+    room_button2.classList.remove('selected')
+    room_button3.classList.remove('selected')
+    room_button4.classList.remove('selected')
+    room_button5.classList.remove('selected')
+    room_button6.classList.remove('selected')
+    room_button7.classList.remove('selected')
+    room_button8.classList.remove('selected')
+
+    prototype_button1.style.border="1px solid rgb(147, 145, 145)"
+    prototype_button2.style.border="1px solid rgb(147, 145, 145)"
+    prototype_button3.style.border="1px solid rgb(147, 145, 145)"
+    prototype_button4.style.border="1px solid rgb(147, 145, 145)"
+    
+    languages_input.forEach(inp=>{
+        console.log("hii")
+        inp.checked=false;
+    })
+    Amenties_input.forEach(inp1=>{
+        inp1.checked=false;
+    })
+    features_input.forEach(inp2=>{
+        inp2.checked=false;
+    })
+    booking_input.forEach(inp3=>{
+        inp3.checked=false;
+    })
+    extra_input.forEach(inp4=>{
+        inp4.checked=false;
+    })
+    rating_button.style.border="rgb(147, 145, 145)"
+    main_button.style.backgroundColor = "rgb(54,54,54)"
+    main_button.style.color = "white"
+    
+})
+
+
 // booking_container.addEventListener('click',()=>{
 //     console.log(booking_container.value)
 // })

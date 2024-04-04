@@ -92,7 +92,14 @@ buttonfilter.addEventListener("click",()=>{
         data = [];
         console.log(data, "clear")
         main_button.innerText = "Show All"
-        location.reload()
+        filter_container=original;
+        main_button.innerText = "Show All"
+        buttons.forEach(btn=>{
+            btn.style.backgroundColor="white";
+            btn.style.color="black"  
+        })
+        main_button.style.backgroundColor="rgb(54,54,54)"
+        main_button.style.color="white"
 
 
     })
