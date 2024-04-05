@@ -19,21 +19,19 @@ Airbnb: https://660ed2f31f56241d114e76cc--calm-bombolone-94435e.netlify.app/
 
 3- Rakesh (ft30_143)
 
-4- Onkar ()
+4- Onkar (ft30_312)
 
 5- Manas Mishra (ft30_164)
 
 ## Directory Structure
-my-app/
-├─ backend/
-├─ frontend/
-│  ├─ ...
+![image](https://github.com/BabakhalilM/-Byte-Bhaasha-2345/assets/154895694/0edbd9d8-40f8-4e1c-bec4-dc6456777638)
+
 
 ## Video Walkthrough of the project
-video walkthough project:-https://drive.google.com/file/d/1_IWCxphXtcqtUIbKcEEpuZsk3CbjCu_o/view?usp=sharing
+video walkthrough project:-https://drive.google.com/file/d/1_IWCxphXtcqtUIbKcEEpuZsk3CbjCu_o/view?usp=sharing
 
 ## Features
-List out the key features of your application.
+Features 
 
 - Sign Up and Sign In: Easily create an Airbnb account or sign in to access the full range of features and book your dream accommodation.
 
@@ -44,7 +42,6 @@ List out the key features of your application.
 - Advanced Filters: Narrow down your search results with advanced filtering options based on price, location, amenities, and more, to find the perfect place to stay.
 
 ## design decisions or assumptions
-List your design desissions & assumptions
 
 Airbnb addresses common challenges faced by travelers when booking accommodations, including:
 
@@ -81,14 +78,13 @@ npm start
 ```
 
 ## Usage
-Provide instructions and examples on how to use your project.
+clone from the repository (By using the git clone URL) and open with the live server.
 
-```bash
-# Example
-```
-
-Include screenshots as necessary.
 ![alt text](image.png)
+![image](https://github.com/BabakhalilM/-Byte-Bhaasha-2345/assets/154895694/bb6621f9-2fbf-41b0-beca-58208f667aee)
+![image](https://github.com/BabakhalilM/-Byte-Bhaasha-2345/assets/154895694/403897a9-aab3-45d3-b0a8-e1c2dab1824b)
+![image](https://github.com/BabakhalilM/-Byte-Bhaasha-2345/assets/154895694/31478fa4-db99-4fd1-a0c6-b3d506045909)
+![image](https://github.com/BabakhalilM/-Byte-Bhaasha-2345/assets/154895694/8be3d257-c1d4-44e7-96c7-4be77fa83f75)
 
 ## Credentials
 Provide user credentials for autheticated pages
